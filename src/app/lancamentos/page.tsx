@@ -1,220 +1,355 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
+import { ArrowRight, X, ChevronRight, Sparkles } from "lucide-react";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" as const } },
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
+
+type Lancamento = {
+  id: string;
+  tag: string;
+  titulo: string;
+  subtitulo: string;
+  desc: string;
+  detalhes: string[];
+  cor: string;
+  img?: string;
+  novo: boolean;
 };
 
-const stagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
-};
-
-const LANCAMENTOS = [
+const LANCAMENTOS: Lancamento[] = [
   {
-    id: 1,
-    name: "Sofá Modular Connect",
-    tag: "NOVO",
-    mes: "Jun 2026",
-    linha: "Contemporânea",
-    cor: "#2563EB",
-    desc: "Sistema modular de sofá que permite infinitas configurações. Perfeito para salas de todos os tamanhos. Disponível em 12 tecidos.",
-    destaque: true,
+    id: "supermatte",
+    tag: "Novo acabamento",
+    titulo: "Linha Supermatte",
+    subtitulo: "O fosco que não mostra nada.",
+    desc: "Superfície com altíssima resistência a impressões digitais e riscos. Acabamento fosco profundo — para projetos onde perfeição é o único padrão.",
+    detalhes: [
+      "Resistência superior a riscos e impressões digitais",
+      "Acabamento fosco de profundidade óptica exclusiva",
+      "Disponível em Asfalto, Cinza e Branco Gelo",
+      "Compatível com todas as linhas Fabriko",
+      "Já disponível no Promob Studio Fabriko",
+    ],
+    cor: "#2A2A28",
+    img: "/fotos/29.png",
+    novo: true,
   },
   {
-    id: 2,
-    name: "Mesa Tokio 4 Lugares",
-    tag: "NOVO",
-    mes: "Jun 2026",
-    linha: "Contemporânea",
-    cor: "#2563EB",
-    desc: "Mesa com base de metal preto fosco e tampo em MDF laqueado. Extensível até 6 lugares.",
-    destaque: false,
+    id: "velluto",
+    tag: "Novidade",
+    titulo: "Acabamento Velluto",
+    subtitulo: "Textura de veludo. Tato premium.",
+    desc: "Superfície com micro-textura que simula tecido de veludo. Suave ao toque, sofisticado ao olhar. Uma experiência sensorial em cada projeto.",
+    detalhes: [
+      "Micro-textura que simula veludo natural",
+      "Superfície quente e sofisticada ao toque",
+      "Disponível em Ocre Solar, Sage e Terracota",
+      "Ideal para projetos de alto padrão e design autoral",
+      "Resistente a marcas e manchas superficiais",
+    ],
+    cor: "#C8963C",
+    img: "/fotos/44.png",
+    novo: true,
   },
   {
-    id: 3,
-    name: "Roupeiro Slide 4 Portas",
-    tag: "NOVO",
-    mes: "Mai 2026",
-    linha: "Essencial",
-    cor: "#16A34A",
-    desc: "Guarda-roupa com portas de correr e espelho. Ótimo custo-benefício. Disponível em 4 cores.",
-    destaque: false,
-  },
-  {
-    id: 4,
-    name: "Cadeira Ferro Studio",
-    tag: "CHEGOU",
-    mes: "Mai 2026",
-    linha: "Industrial",
-    cor: "#4B5563",
-    desc: "Cadeira com estrutura de ferro e assento almofadado. Empilhável. Ideal para bares, restaurantes e home.",
-    destaque: false,
-  },
-  {
-    id: 5,
-    name: "Cama Castelo Júnior",
-    tag: "NOVO",
-    mes: "Abr 2026",
-    linha: "Kids",
-    cor: "#DB2777",
-    desc: "Cama com design de castelo, em MDF azul ou rosa. Com espaço de brincar embaixo e escada lateral.",
-    destaque: false,
-  },
-  {
-    id: 6,
-    name: "Poltrona Vintage III",
-    tag: "RELANÇAMENTO",
-    mes: "Abr 2026",
-    linha: "Clássica",
+    id: "porta-provence",
+    tag: "Modelo especial",
+    titulo: "Porta Provence",
+    subtitulo: "Estilo clássico. Acabamento que destaca.",
+    desc: "Porta 15mm com borda perimetral de 6mm que totaliza 21mm de espessura visual. O detalhe que eleva qualquer projeto a outro patamar.",
+    detalhes: [
+      "MDF 15mm + borda perimetral 6mm = 21mm de espessura total",
+      "Disponível em todos os acabamentos do portfólio Fabriko",
+      "Design clássico que combina com estilos contemporâneos e tradicionais",
+      "Disponível via Promob Studio na biblioteca Fabriko",
+      "Entrega no prazo padrão de 20 dias úteis",
+    ],
     cor: "#8B6914",
-    desc: "Versão atualizada da bestseller poltrona vintage. Novo couro, mesma elegância clássica.",
-    destaque: false,
+    img: "/items/66.png",
+    novo: false,
+  },
+  {
+    id: "metala-vetro",
+    tag: "Premium",
+    titulo: "Porta Metala Vetro",
+    subtitulo: "Alumínio e vidro. Sofisticação máxima.",
+    desc: "Estrutura em alumínio com vidro. Acompanha puxador modelo Novo em ampla gama de cores. Para o projeto que não admite meio-termo.",
+    detalhes: [
+      "Estrutura em alumínio de alta qualidade",
+      "Vidro temperado incluso",
+      "Puxador modelo Novo incluso — várias cores disponíveis",
+      "Ideal para cozinhas gourmet e closets de alto padrão",
+      "Consulte disponibilidade e prazo com seu consultor",
+    ],
+    cor: "#3A3A3A",
+    img: "/items/67.png",
+    novo: false,
+  },
+  {
+    id: "paineis-led",
+    tag: "Estrutura",
+    titulo: "Painéis com Canaleta LED",
+    subtitulo: "Iluminação integrada, formas livres.",
+    desc: "Painéis e prateleiras com canaleta para LED em 4 espessuras. Formas 100% personalizáveis e todos os acabamentos do portfólio.",
+    detalhes: [
+      "Espessuras disponíveis: 15mm, 18mm, 30mm e 36mm",
+      "Canaleta para fita LED integrada na estrutura",
+      "Formas personalizadas via Promob Studio Fabriko",
+      "Todos os acabamentos do portfólio disponíveis",
+      "Soluções para nichos, estantes e painéis de TV",
+    ],
+    cor: "#E67A22",
+    img: "/items/71.png",
+    novo: false,
+  },
+  {
+    id: "puxador-rometal",
+    tag: "Acessórios",
+    titulo: "Coleção Rometal 2026",
+    subtitulo: "Design contemporâneo. 6 acabamentos.",
+    desc: "Três novos modelos de abas Rometal — Aria, Cielo e Luna — com design europeu e 6 acabamentos exclusivos para projetos de alto padrão.",
+    detalhes: [
+      "3 modelos: Aria (angular), Cielo (slim plano), Luna (curvo)",
+      "6 acabamentos: Anodizado, Inox, Branco Fosco, Champagne, Preto Fosco, Champagne 1001",
+      "Tamanhos de 96mm a 192mm dependendo do modelo",
+      "Design europeu com ergonomia validada",
+      "Disponível no catálogo Fabriko 2026",
+    ],
+    cor: "#A0A0A0",
+    img: "/items/50.png",
+    novo: true,
   },
 ];
 
+function LancamentoModal({ item, onClose }: { item: Lancamento; onClose: () => void }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[200] bg-black/80 flex items-center justify-center p-4 lg:p-12"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.94, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.94, opacity: 0, y: 20 }}
+        transition={{ duration: 0.25 }}
+        className="w-full max-w-2xl bg-white overflow-hidden relative"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Image or color bar */}
+        <div className="relative h-48 overflow-hidden"
+          style={{ backgroundColor: item.cor }}>
+          {item.img && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={item.img}
+              alt={item.titulo}
+              className="w-full h-full object-cover opacity-60"
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          <div className="absolute bottom-5 left-6">
+            <span className="text-[#E67A22] text-[10px] font-bold uppercase tracking-widest">{item.tag}</span>
+            {item.novo && (
+              <span className="ml-2 bg-[#E67A22] text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-widest">Novo</span>
+            )}
+          </div>
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 h-8 w-8 bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-colors"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+
+        <div className="p-8">
+          <h2 className="text-2xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] mb-1">
+            {item.titulo}
+          </h2>
+          <p className="text-[#E67A22] text-sm font-medium mb-4">{item.subtitulo}</p>
+          <p className="text-[#6B6966] text-sm leading-relaxed mb-6">{item.desc}</p>
+
+          <div className="border-t border-[#E8E6E3] pt-5">
+            <p className="text-[#1A1917]/35 text-xs font-bold uppercase tracking-widest mb-4">Detalhes</p>
+            <ul className="space-y-2.5">
+              {item.detalhes.map((d) => (
+                <li key={d} className="flex items-start gap-3 text-[#6B6966] text-sm">
+                  <ChevronRight className="h-3.5 w-3.5 text-[#E67A22] shrink-0 mt-0.5" />
+                  {d}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex gap-3 mt-8">
+            <Link href="/seja-parceiro" onClick={onClose}
+              className="flex-1 group flex items-center justify-center gap-2 bg-[#E67A22] hover:bg-[#C85E0F] text-white text-xs font-bold py-3.5 tracking-widest uppercase transition-all">
+              Quero ser parceiro
+              <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <button onClick={onClose}
+              className="border border-[#E8E6E3] text-[#1A1917]/40 hover:border-[#1A1917]/20 hover:text-[#1A1917] text-xs font-medium px-5 tracking-widest uppercase transition-all">
+              Fechar
+            </button>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 export default function Lancamentos() {
+  const [selected, setSelected] = useState<Lancamento | null>(null);
+
   return (
     <>
-      {/* Hero */}
-      <section className="relative bg-[#1B1A18] pt-32 pb-20 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: "repeating-linear-gradient(45deg, #E67A22 0, #E67A22 1px, transparent 0, transparent 50%)",
-            backgroundSize: "30px 30px",
-          }}
+      {/* Hero Banner */}
+      <section className="relative bg-[#1A1917] pt-36 pb-20 overflow-hidden">
+        <div className="absolute inset-0"
+          style={{ background: "radial-gradient(ellipse at 70% 50%, #E67A22/10 0%, transparent 60%)" }}
         />
+        <div className="absolute right-0 top-0 w-1/2 h-full opacity-5"
+          style={{ background: "radial-gradient(ellipse at right top, #E67A22 0%, transparent 60%)" }} />
+
         <div className="relative max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.span variants={fadeUp} className="text-xs font-bold uppercase tracking-widest text-[#E67A22]">
-              Novidades
-            </motion.span>
+            <motion.div variants={fadeUp} className="flex items-center gap-3 mb-5">
+              <Sparkles className="h-4 w-4 text-[#E67A22]" />
+              <p className="label-tag">Novidades Fabriko</p>
+            </motion.div>
             <motion.h1
               variants={fadeUp}
-              className="text-5xl lg:text-7xl font-[family-name:var(--font-barlow)] font-extrabold text-white uppercase leading-none mt-3"
+              className="text-[clamp(2.8rem,7vw,6rem)] font-[family-name:var(--font-oswald)] font-bold text-white leading-[0.92] mb-6 uppercase tracking-tight"
             >
               Lança-<br />
               <span className="text-[#E67A22]">mentos</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-white/60 text-lg mt-4 max-w-xl">
-              Os produtos mais recentes saídos da nossa linha de produção.
+            <motion.p variants={fadeUp} className="text-white/45 text-lg max-w-2xl">
+              Novos acabamentos, modelos e acessórios para elevar seus projetos.
+              Clique em qualquer card para ver todos os detalhes.
             </motion.p>
           </motion.div>
         </div>
+
+        {/* Banner strip */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="relative mt-16 border-t border-white/10 bg-[#E67A22]/10"
+        >
+          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center gap-8 overflow-x-auto">
+            {LANCAMENTOS.filter(l => l.novo).map(l => (
+              <div key={l.id} className="flex items-center gap-2 shrink-0">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#E67A22]" />
+                <span className="text-white/70 text-xs font-medium tracking-widest uppercase">{l.titulo}</span>
+              </div>
+            ))}
+            <span className="text-white/20 text-xs ml-auto shrink-0 uppercase tracking-widest">2026</span>
+          </div>
+        </motion.div>
       </section>
 
-      {/* Destaque */}
-      {LANCAMENTOS.filter(l => l.destaque).map((l) => (
-        <section key={l.id} className="py-16 bg-[#f7f6f4]">
-          <div className="max-w-7xl mx-auto px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-white rounded-xl border-2 border-[#E67A22]/30 overflow-hidden shadow-xl"
-            >
-              <div className="grid lg:grid-cols-2">
-                <div
-                  className="h-64 lg:h-auto min-h-64 flex items-center justify-center"
-                  style={{ background: `linear-gradient(135deg, ${l.cor}15, ${l.cor}35)` }}
-                >
-                  <div className="text-center">
-                    <Sparkles className="h-16 w-16 mx-auto mb-3" style={{ color: l.cor }} />
-                    <p className="text-sm font-bold uppercase tracking-widest" style={{ color: l.cor }}>
-                      {l.mes}
-                    </p>
-                  </div>
-                </div>
-                <div className="p-10">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="bg-[#E67A22] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                      ⚡ Destaque do mês
-                    </span>
-                    <span
-                      className="text-xs font-bold px-2.5 py-1 rounded-full text-white"
-                      style={{ backgroundColor: l.cor }}
-                    >
-                      {l.linha}
-                    </span>
-                  </div>
-                  <h2 className="text-3xl font-[family-name:var(--font-barlow)] font-extrabold text-[#1B1A18] uppercase mb-4">
-                    {l.name}
-                  </h2>
-                  <p className="text-[#6b6b6b] leading-relaxed mb-6">{l.desc}</p>
-                  <Link
-                    href="/seja-parceiro"
-                    className="inline-block bg-[#E67A22] hover:bg-[#c9601a] text-white font-bold px-6 py-3 rounded-sm uppercase tracking-wider text-sm transition-colors"
-                  >
-                    Solicitar informações
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      ))}
-
-      {/* Grid de lançamentos */}
-      <section className="py-16 bg-white">
+      {/* Cards */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.1 }}
             variants={stagger}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
           >
-            {LANCAMENTOS.filter(l => !l.destaque).map((l) => (
+            {LANCAMENTOS.map((item) => (
               <motion.div
-                key={l.id}
+                key={item.id}
                 variants={fadeUp}
-                className="rounded-lg border border-[#e5e5e5] overflow-hidden hover:shadow-lg transition-all group"
+                onClick={() => setSelected(item)}
+                className="group cursor-pointer border border-[#E8E6E3] hover:border-[#E67A22]/40 transition-all overflow-hidden hover:shadow-sm"
               >
-                <div
-                  className="h-44 flex items-center justify-center"
-                  style={{ background: `linear-gradient(135deg, ${l.cor}10, ${l.cor}25)` }}
-                >
-                  <div className="text-center">
-                    <div
-                      className="h-16 w-16 mx-auto rounded-sm opacity-40"
-                      style={{ backgroundColor: l.cor }}
+                {/* Image/color area */}
+                <div className="relative h-44 overflow-hidden"
+                  style={{ backgroundColor: item.cor }}>
+                  {item.img && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={item.img}
+                      alt={item.titulo}
+                      className="w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500"
                     />
-                    <p className="text-xs font-bold uppercase tracking-widest mt-2" style={{ color: l.cor }}>
-                      {l.mes}
-                    </p>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute top-3 left-4 flex items-center gap-2">
+                    <span className="text-[#E67A22] text-[9px] font-bold uppercase tracking-widest bg-black/30 px-2 py-1">
+                      {item.tag}
+                    </span>
+                    {item.novo && (
+                      <span className="bg-[#E67A22] text-white text-[9px] font-bold px-2 py-1 uppercase tracking-widest">
+                        Novo
+                      </span>
+                    )}
                   </div>
                 </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span
-                      className="text-xs font-bold px-2 py-0.5 rounded-full text-white"
-                      style={{ backgroundColor: l.cor }}
-                    >
-                      {l.tag}
-                    </span>
-                    <span className="text-xs text-[#6b6b6b]">{l.linha}</span>
-                  </div>
-                  <h3 className="font-[family-name:var(--font-barlow)] font-bold text-lg text-[#1B1A18] uppercase mb-2">
-                    {l.name}
+
+                {/* Content */}
+                <div className="p-6 bg-white">
+                  <h3 className="text-[#1A1917] font-[family-name:var(--font-playfair)] font-bold text-lg mb-1">
+                    {item.titulo}
                   </h3>
-                  <p className="text-[#6b6b6b] text-sm leading-relaxed mb-4">{l.desc}</p>
-                  <Link
-                    href="/seja-parceiro"
-                    className="block text-center border border-[#1B1A18] hover:bg-[#1B1A18] hover:text-white text-[#1B1A18] text-xs font-bold py-2 rounded-sm uppercase tracking-wider transition-colors"
-                  >
-                    Quero saber mais
-                  </Link>
+                  <p className="text-[#E67A22] text-xs font-medium mb-3">{item.subtitulo}</p>
+                  <p className="text-[#6B6966] text-xs leading-relaxed line-clamp-2 mb-4">{item.desc}</p>
+                  <div className="flex items-center gap-1 text-[#E67A22] text-xs font-bold uppercase tracking-widest group-hover:gap-2 transition-all">
+                    Ver detalhes
+                    <ChevronRight className="h-3.5 w-3.5" />
+                  </div>
                 </div>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-[#1A1917]">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
+            <motion.h2 variants={fadeUp}
+              className="text-4xl font-[family-name:var(--font-playfair)] font-black text-white mb-4">
+              Fique sempre atualizado com o que há de novo.
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-white/40 text-sm mb-8">
+              Parceiros Fabriko recebem todas as novidades em primeira mão.
+            </motion.p>
+            <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-4">
+              <Link href="/seja-parceiro"
+                className="group flex items-center gap-3 bg-[#E67A22] hover:bg-[#C85E0F] text-white text-xs font-bold px-7 py-4 tracking-widest uppercase transition-all">
+                Ser parceiro Fabriko
+                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link href="/acabamentos"
+                className="border border-white/20 text-white/50 hover:text-white hover:border-white/40 text-xs font-medium px-7 py-4 tracking-widest uppercase transition-all">
+                Ver portfólio completo
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {selected && (
+          <LancamentoModal item={selected} onClose={() => setSelected(null)} />
+        )}
+      </AnimatePresence>
     </>
   );
 }

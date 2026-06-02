@@ -2,170 +2,182 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { CheckCircle2, Target, Eye, Heart } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" as const } },
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.1 } } };
 
-const stagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
-};
+const FOTOS_FABRICA = [
+  { src: "/fotos/2.png", legenda: "Parque fabril — Americana-SP" },
+  { src: "/fotos/4.png", legenda: "Maquinário CNC de última geração" },
+  { src: "/fotos/6.png", legenda: "Equipe de produção" },
+  { src: "/fotos/14.png", legenda: "Processo de acabamento PUR" },
+];
 
 export default function QuemSomos() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#1B1A18] pt-32 pb-20 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: "repeating-linear-gradient(45deg, #E67A22 0, #E67A22 1px, transparent 0, transparent 50%)",
-            backgroundSize: "30px 30px",
-          }}
-        />
+      <section className="relative bg-[#1A1917] pt-36 pb-20 overflow-hidden">
+        <div className="absolute right-0 top-0 w-1/2 h-full opacity-5"
+          style={{ background: "radial-gradient(ellipse at right top, #E67A22 0%, transparent 60%)" }} />
         <div className="relative max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.span variants={fadeUp} className="text-xs font-bold uppercase tracking-widest text-[#E67A22]">
-              Nossa história
-            </motion.span>
+            <motion.p variants={fadeUp} className="label-tag mb-5">Nossa história</motion.p>
             <motion.h1
               variants={fadeUp}
-              className="text-5xl lg:text-7xl font-[family-name:var(--font-barlow)] font-extrabold text-white uppercase leading-none mt-3"
+              className="text-[clamp(2.8rem,7vw,6rem)] font-[family-name:var(--font-oswald)] font-bold text-white leading-[0.92] mb-6 uppercase tracking-tight"
             >
-              Quem é a<br />
-              <span className="text-[#E67A22]">Fabriko</span>
+              Fundada para ser<br />
+              <span className="text-[#E67A22]">a mais confiável.</span>
             </motion.h1>
+            <motion.p variants={fadeUp} className="text-white/45 text-lg max-w-2xl">
+              Em Americana-SP, em meio a um polo industrial em constante crescimento,
+              nasceu o desejo de se tornar a empresa mais confiável na fabricação e
+              fornecimento de móveis planejados essenciais e de alta qualidade.
+            </motion.p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Fotos da fábrica */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {FOTOS_FABRICA.map(({ src, legenda }, i) => (
+              <motion.div
+                key={src}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="group"
+              >
+                <div className="aspect-square overflow-hidden bg-[#F0EEE8] mb-2 relative">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={src}
+                    alt={legenda}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = "none";
+                    }}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {/* Fallback elegante — visível enquanto não há foto */}
+                  <div className="absolute inset-0 flex items-end p-4 pointer-events-none">
+                    <span className="text-[#E67A22]/20 font-[family-name:var(--font-playfair)] font-black text-5xl leading-none select-none">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                </div>
+                <p className="text-[#1A1917]/50 text-xs font-medium">{legenda}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* História */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.4 }}
-            variants={stagger}
-          >
-            <motion.span variants={fadeUp} className="text-xs font-bold uppercase tracking-widest text-[#E67A22]">
-              A empresa
-            </motion.span>
-            <motion.h2
-              variants={fadeUp}
-              className="text-3xl lg:text-4xl font-[family-name:var(--font-barlow)] font-extrabold text-[#1B1A18] uppercase mt-3 mb-6"
-            >
-              Mais de uma década transformando madeira em negócio
-            </motion.h2>
-            <motion.div variants={fadeUp} className="space-y-4 text-[#6b6b6b] leading-relaxed">
-              <p>
-                A Fabriko nasceu da visão de criar uma indústria moveleira que colocasse o lojista no centro.
-                Desde o início, entendemos que nosso sucesso depende diretamente do sucesso dos nossos parceiros
-                de revenda.
-              </p>
-              <p>
-                Ao longo dos anos, investimos em tecnologia de produção, controle de qualidade e logística para
-                entregar um produto que vende e uma experiência que fideliza.
-              </p>
-              <p>
-                Hoje, somos referência no setor moveleiro com distribuição para todo o Brasil, um portfólio
-                diversificado e uma equipe comprometida com resultados reais para os nossos parceiros.
-              </p>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-2 gap-4"
-          >
-            {[
-              { value: "10+", label: "Anos de experiência" },
-              { value: "200+", label: "Produtos no catálogo" },
-              { value: "500+", label: "Parceiros ativos" },
-              { value: "5.000+", label: "Peças produzidas/mês" },
-            ].map(({ value, label }) => (
-              <div key={label} className="bg-[#f7f6f4] rounded-lg p-6 border border-[#e5e5e5]">
-                <p className="text-4xl font-[family-name:var(--font-barlow)] font-extrabold text-[#E67A22] mb-2">
-                  {value}
-                </p>
-                <p className="text-[#6b6b6b] text-sm">{label}</p>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Missão, Visão, Valores */}
-      <section className="py-24 bg-[#f7f6f4]">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-24 bg-[#FAFAF8] border-y border-[#E8E6E3]">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start">
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             variants={stagger}
-            className="text-center mb-14"
           >
-            <motion.span variants={fadeUp} className="text-xs font-bold uppercase tracking-widest text-[#E67A22]">
-              Propósito
-            </motion.span>
-            <motion.h2
-              variants={fadeUp}
-              className="text-4xl font-[family-name:var(--font-barlow)] font-extrabold text-[#1B1A18] uppercase mt-3"
-            >
-              Missão, Visão e Valores
+            <motion.p variants={fadeUp} className="label-tag mb-5">A empresa</motion.p>
+            <motion.h2 variants={fadeUp}
+              className="text-4xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] leading-tight mb-7">
+              Mais do que uma fábrica.<br />
+              Um ponto de apoio.
             </motion.h2>
+            <motion.div variants={stagger} className="space-y-5 text-[#6B6966] text-base leading-relaxed">
+              <motion.p variants={fadeUp}>
+                A Fabriko investiu desde o início em tecnologia de ponta, maquinários de última geração
+                e uma equipe altamente qualificada para fabricar com excelência seus produtos.
+              </motion.p>
+              <motion.p variants={fadeUp}>
+                Mas o diferencial sempre esteve além da técnica. Está no respeito ao prazo,
+                no cuidado com cada peça e na busca incansável por facilitar o dia a dia de
+                quem trabalha com móveis sob medida.
+              </motion.p>
+              <motion.p variants={fadeUp}>
+                Hoje, a Fabriko é um ponto de apoio para lojistas que desejam crescer com
+                organização, agilidade e segurança. É a escolha de quem entende que um bom
+                projeto começa com uma parceria sólida.
+              </motion.p>
+            </motion.div>
           </motion.div>
 
           <motion.div
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.3 }}
             variants={stagger}
-            className="grid md:grid-cols-3 gap-6"
+            className="space-y-4"
           >
             {[
-              {
-                icon: Target,
-                title: "Missão",
-                text: "Fabricar móveis de alta qualidade que impulsionem o crescimento dos nossos parceiros, entregando produto, prazo e rentabilidade.",
-              },
-              {
-                icon: Eye,
-                title: "Visão",
-                text: "Ser reconhecida como a indústria moveleira mais confiável do Brasil pelos seus lojistas parceiros.",
-              },
-              {
-                icon: Heart,
-                title: "Valores",
-                text: "Qualidade sem negociação. Parceria de verdade. Transparência no negócio. Inovação constante. Compromisso com prazo.",
-              },
-            ].map(({ icon: Icon, title, text }) => (
-              <motion.div
-                key={title}
-                variants={fadeUp}
-                className="bg-white rounded-lg p-7 border border-[#e5e5e5] hover:shadow-lg transition-all"
-              >
-                <div className="h-12 w-12 rounded-sm bg-[#E67A22]/10 flex items-center justify-center mb-5">
-                  <Icon className="h-6 w-6 text-[#E67A22]" />
+              { t: "Acabamentos premium", d: "Selecionados entre os principais fornecedores de matéria-prima. Alinhados com as tendências da decoração e design." },
+              { t: "100% MDF", d: "Toda produção em MDF. Bordas com 1mm de espessura e colagem PUR — maior resistência e acabamento premium." },
+              { t: "Totalmente editável", d: "Produto sob medida milímetro a milímetro. Projetado via Promob Studio com nossa biblioteca exclusiva." },
+              { t: "Lado a lado com o lojista", d: "Consultoria permanente e suporte técnico online. Seu consultor Fabriko acompanha cada projeto." },
+            ].map(({ t, d }, i) => (
+              <motion.div key={t} variants={fadeUp}
+                className="border border-[#E8E6E3] bg-white p-6 hover:border-[#E67A22]/30 transition-colors">
+                <div className="flex items-start gap-3">
+                  <span className="text-[#E67A22]/40 font-[family-name:var(--font-playfair)] font-black text-2xl leading-none mt-1">
+                    0{i + 1}
+                  </span>
+                  <div>
+                    <h3 className="text-[#1A1917] font-semibold text-sm mb-2">{t}</h3>
+                    <p className="text-[#6B6966] text-xs leading-relaxed">{d}</p>
+                  </div>
                 </div>
-                <h3 className="font-[family-name:var(--font-barlow)] font-bold text-xl text-[#1B1A18] uppercase mb-3">
-                  {title}
-                </h3>
-                <p className="text-[#6b6b6b] text-sm leading-relaxed">{text}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Diferenciais */}
-      <section className="py-24 bg-[#1B1A18]">
+      {/* Estrutura */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger} className="mb-14">
+            <motion.p variants={fadeUp} className="label-tag mb-4">Estrutura industrial</motion.p>
+            <motion.h2 variants={fadeUp}
+              className="text-4xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] max-w-xl">
+              Infraestrutura robusta e moderna.
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={stagger}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E8E6E3]"
+          >
+            {[
+              { t: "Parque Fabril Moderno", d: "Maquinário CNC e seccionadoras automatizadas para cortes precisos e consistentes." },
+              { t: "Equipe Técnica", d: "Profissionais treinados e especializados em cada etapa da produção." },
+              { t: "Processos Padronizados", d: "Fluxos documentados que garantem consistência e qualidade em cada peça." },
+              { t: "Capacidade Escalável", d: "Estrutura preparada para absorver demandas crescentes sem comprometer prazos." },
+            ].map(({ t, d }) => (
+              <motion.div key={t} variants={fadeUp} className="bg-white p-8 hover:bg-[#FAFAF8] transition-colors">
+                <h3 className="text-[#1A1917] font-semibold text-sm mb-3">{t}</h3>
+                <p className="text-[#6B6966] text-xs leading-relaxed">{d}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Checklist Produção */}
+      <section className="py-20 bg-[#FAFAF8] border-t border-[#E8E6E3]">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial="hidden"
@@ -173,51 +185,106 @@ export default function QuemSomos() {
             viewport={{ once: true, amount: 0.3 }}
             variants={stagger}
           >
-            <motion.span variants={fadeUp} className="text-xs font-bold uppercase tracking-widest text-[#E67A22]">
-              Diferenciais
-            </motion.span>
-            <motion.h2
-              variants={fadeUp}
-              className="text-4xl font-[family-name:var(--font-barlow)] font-extrabold text-white uppercase mt-3 mb-8"
-            >
-              O que nos faz diferentes
+            <motion.p variants={fadeUp} className="label-tag mb-5">Processo produtivo</motion.p>
+            <motion.h2 variants={fadeUp}
+              className="text-3xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] mb-6">
+              Do projeto à entrega — 20 dias úteis.
             </motion.h2>
-            <motion.ul variants={stagger} className="space-y-4">
+            <motion.ul variants={stagger} className="space-y-3">
               {[
-                "Produção própria — total controle de qualidade",
-                "Logística estruturada para todo o Brasil",
-                "Portfólio atualizado com as tendências do mercado",
-                "Atendimento comercial especializado por região",
-                "Possibilidade de personalização e sob medida",
-                "Transparência total em preços e condições",
+                "Projeto enviado via Promob Studio Fabriko",
+                "Revisão técnica e aprovação financeira",
+                "Corte CNC conforme especificações",
+                "Colagem de bordas PUR 1mm em todas as peças",
+                "Conferência e embalagem individual",
+                "Expedição com prazo garantido",
               ].map((item) => (
-                <motion.li key={item} variants={fadeUp} className="flex items-start gap-3 text-white/70 text-sm">
-                  <CheckCircle2 className="h-5 w-5 text-[#E67A22] shrink-0 mt-0.5" />
+                <motion.li key={item} variants={fadeUp} className="flex items-start gap-3 text-[#6B6966] text-sm">
+                  <Check className="h-4 w-4 text-[#E67A22] shrink-0 mt-0.5" />
                   {item}
                 </motion.li>
               ))}
             </motion.ul>
           </motion.div>
 
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { v: "20 dias", l: "Prazo de produção úteis" },
+              { v: "PUR 1mm", l: "Colagem de borda industrial" },
+              { v: "CNC", l: "Corte automatizado de precisão" },
+              { v: "Promob", l: "Biblioteca exclusiva Fabriko" },
+            ].map(({ v, l }) => (
+              <motion.div
+                key={l}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="bg-white border border-[#E8E6E3] p-6 text-center"
+              >
+                <p className="text-[#E67A22] font-[family-name:var(--font-playfair)] font-black text-2xl mb-2">{v}</p>
+                <p className="text-[#1A1917]/40 text-xs leading-relaxed">{l}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Foto da equipe */}
+      <section className="py-20 bg-[#FAFAF8] border-t border-[#E8E6E3]">
+        <div className="max-w-7xl mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.6 }}
-            className="bg-[#E67A22] rounded-lg p-10"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={stagger}
+            className="mb-10"
           >
-            <h3 className="font-[family-name:var(--font-barlow)] font-extrabold text-3xl text-white uppercase mb-4">
-              Pronto para fazer parte?
-            </h3>
-            <p className="text-white/80 text-sm leading-relaxed mb-6">
-              Junte-se a centenas de lojistas que já escolheram a Fabriko como parceira de crescimento.
-            </p>
-            <Link
-              href="/seja-parceiro"
-              className="inline-block bg-white text-[#E67A22] font-bold px-6 py-3 rounded-sm uppercase tracking-wider text-sm hover:bg-white/90 transition-colors"
-            >
-              Seja parceiro
-            </Link>
+            <motion.p variants={fadeUp} className="label-tag mb-4">Nossa equipe</motion.p>
+            <motion.h2 variants={fadeUp}
+              className="text-3xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917]">
+              As pessoas por trás de cada peça.
+            </motion.h2>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7 }}
+            className="overflow-hidden border border-[#E8E6E3]"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/fotos/equipe.png"
+              alt="Equipe Fabriko"
+              className="w-full h-80 object-cover object-top"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-[#1A1917]">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
+            <motion.h2 variants={fadeUp}
+              className="text-4xl font-[family-name:var(--font-playfair)] font-black text-white mb-4">
+              Fabriko — essencial para o seu negócio.
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-white/40 text-sm mb-8">
+              Conheça nossas linhas ou inicie agora sua parceria.
+            </motion.p>
+            <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-4">
+              <Link href="/seja-parceiro"
+                className="group flex items-center gap-3 bg-[#E67A22] hover:bg-[#C85E0F] text-white text-xs font-bold px-7 py-4 tracking-widest uppercase transition-all">
+                Seja parceiro
+                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link href="/linhas"
+                className="border border-white/20 text-white/50 hover:text-white hover:border-white/40 text-xs font-medium px-7 py-4 tracking-widest uppercase transition-all">
+                Ver linhas de produto
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>

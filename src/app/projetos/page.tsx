@@ -1,156 +1,260 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" as const } },
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
 
-const stagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
-};
-
-const TIPOS = ["Todos", "Residencial", "Comercial", "Hotel", "Corporativo"];
-
-const PROJETOS = [
-  { id: 1, nome: "Residência Alto Padrão — São Paulo", tipo: "Residencial", linha: "Clássica", cor: "#8B6914", descricao: "Projeto completo de sala de estar e jantar com linha clássica. Móveis sob medida integrados ao projeto arquitetônico.", area: "320m²" },
-  { id: 2, nome: "Pousada Serra Gaúcha", tipo: "Hotel", linha: "Industrial", cor: "#4B5563", descricao: "Fornecimento de 24 quartos completos com móveis da linha industrial. Conceito rústico-contemporâneo.", area: "18 unidades" },
-  { id: 3, nome: "Escritório Corporativo — BH", tipo: "Corporativo", linha: "Contemporânea", cor: "#2563EB", descricao: "Projeto de home office e sala de reunião para empresa de tecnologia. Foco em ergonomia e design moderno.", area: "180m²" },
-  { id: 4, nome: "Loja de Roupas — Curitiba", tipo: "Comercial", linha: "Industrial", cor: "#4B5563", descricao: "Expositores e balcões sob medida para loja de moda. Estrutura metálica com madeira.", area: "95m²" },
-  { id: 5, nome: "Apartamento Decorado — Rio", tipo: "Residencial", linha: "Contemporânea", cor: "#2563EB", descricao: "Apartamento decorado para construtora. Sala, quarto e home office com linha contemporânea.", area: "75m²" },
-  { id: 6, nome: "Creche Escola — Campinas", tipo: "Comercial", linha: "Kids", cor: "#DB2777", descricao: "Mobiliário completo para creche. Mesas, cadeiras e armários infantis. Seguro e colorido.", area: "Salas múltiplas" },
-  { id: 7, nome: "Cobertura Duplex — Florianópolis", tipo: "Residencial", linha: "Clássica", cor: "#8B6914", descricao: "Cobertura de alto padrão mobiliada com peças exclusivas da linha clássica e sob medida.", area: "280m²" },
-  { id: 8, nome: "Hotel Boutique — Gramado", tipo: "Hotel", linha: "Clássica", cor: "#8B6914", descricao: "Hotel com 32 suítes. Conceito europeu com móveis da linha clássica personalizados.", area: "32 suítes" },
-  { id: 9, nome: "Startup Hub — São Paulo", tipo: "Corporativo", linha: "Industrial", cor: "#4B5563", descricao: "Espaço de coworking com mesas industriais, lounges e salas de reunião.", area: "420m²" },
+const AMBIENTES = [
+  {
+    nome: "Cozinha Planejada",
+    desc: "Cozinhas modernas com ilhas, bancadas e soluções sob medida para todos os estilos.",
+    fotos: [
+      "/fotos/22.png",
+      "/fotos/23.png",
+      "/fotos/26.png",
+      "/fotos/27.png",
+      "/fotos/28.png",
+      "/fotos/29.png",
+      "/fotos/33.png",
+      "/fotos/37.png",
+      "/fotos/41.png",
+      "/fotos/46.png",
+    ],
+  },
+  {
+    nome: "Sala & Painel TV",
+    desc: "Salas de estar, painéis de TV, nichos com LED e estantes integradas de alto padrão.",
+    fotos: [
+      "/fotos/25.png",
+      "/fotos/30.png",
+      "/fotos/32.png",
+      "/fotos/35.png",
+      "/fotos/38.png",
+      "/fotos/44.png",
+      "/fotos/40.png",
+      "/fotos/43.png",
+    ],
+  },
+  {
+    nome: "Jantar & Home Bar",
+    desc: "Ambientes de jantar, home bars e salas integradas com acabamentos exclusivos.",
+    fotos: [
+      "/fotos/24.png",
+      "/fotos/31.png",
+      "/fotos/34.png",
+      "/fotos/45.png",
+      "/fotos/47.png",
+      "/fotos/50.png",
+    ],
+  },
+  {
+    nome: "Escritório & Multifunção",
+    desc: "Home offices, escritórios corporativos e ambientes de trabalho planejados.",
+    fotos: [
+      "/fotos/36.png",
+      "/fotos/39.png",
+      "/fotos/42.png",
+      "/fotos/49.png",
+      "/fotos/48.png",
+    ],
+  },
+  {
+    nome: "Banheiro & Lavabo",
+    desc: "Móveis para banheiros e lavabos com acabamentos resistentes à umidade e design sofisticado.",
+    fotos: [
+      "/fotos/32.png",
+      "/fotos/35.png",
+      "/fotos/38.png",
+      "/fotos/40.png",
+      "/fotos/43.png",
+      "/fotos/26.png",
+    ],
+  },
+  {
+    nome: "Área Gourmet",
+    desc: "Cozinhas abertas, adegas e ambientes integrados para receber com estilo.",
+    fotos: [
+      "/fotos/25.png",
+      "/fotos/31.png",
+      "/fotos/34.png",
+      "/fotos/45.png",
+      "/fotos/46.png",
+      "/fotos/50.png",
+    ],
+  },
+  {
+    nome: "Hall de Entrada",
+    desc: "Aparadores, painéis e estantes que valorizam o primeiro ambiente de qualquer projeto.",
+    fotos: [
+      "/fotos/30.png",
+      "/fotos/33.png",
+      "/fotos/44.png",
+      "/fotos/27.png",
+      "/fotos/29.png",
+    ],
+  },
+  {
+    nome: "Área de Jogos",
+    desc: "Ambientes multifunção e de entretenimento com móveis planejados e soluções de armazenamento.",
+    fotos: [
+      "/fotos/43.png",
+      "/fotos/40.png",
+      "/fotos/38.png",
+      "/fotos/35.png",
+      "/fotos/48.png",
+    ],
+  },
+  {
+    nome: "Cinema Residencial",
+    desc: "Painéis integrados, nichos e prateleiras para home theaters de alto padrão.",
+    fotos: [
+      "/fotos/25.png",
+      "/fotos/30.png",
+      "/fotos/32.png",
+      "/fotos/44.png",
+      "/fotos/43.png",
+    ],
+  },
 ];
 
+function AmbienteCarousel({ ambiente }: { ambiente: typeof AMBIENTES[0] }) {
+  const [idx, setIdx] = useState(0);
+  const total = ambiente.fotos.length;
+
+  const prev = () => setIdx((i) => (i - 1 + total) % total);
+  const next = () => setIdx((i) => (i + 1) % total);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.6 }}
+      className="border border-[#E8E6E3] overflow-hidden hover:border-[#E67A22]/30 transition-colors"
+    >
+      {/* Image */}
+      <div className="relative aspect-[4/3] overflow-hidden bg-[#F5F3F0]">
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={idx}
+            src={ambiente.fotos[idx]}
+            alt={`${ambiente.nome} ${idx + 1}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="w-full h-full object-cover"
+          />
+        </AnimatePresence>
+
+        {/* Controls */}
+        <button
+          onClick={prev}
+          className="absolute left-3 top-1/2 -translate-y-1/2 h-8 w-8 bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors"
+          aria-label="anterior"
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </button>
+        <button
+          onClick={next}
+          className="absolute right-3 top-1/2 -translate-y-1/2 h-8 w-8 bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors"
+          aria-label="próximo"
+        >
+          <ChevronRight className="h-4 w-4" />
+        </button>
+
+        {/* Counter */}
+        <div className="absolute bottom-3 right-3 bg-black/50 text-white text-xs px-2 py-1">
+          {idx + 1}/{total}
+        </div>
+      </div>
+
+      {/* Info */}
+      <div className="p-5 bg-white">
+        <h3 className="text-[#1A1917] font-[family-name:var(--font-playfair)] font-bold text-lg mb-1">
+          {ambiente.nome}
+        </h3>
+        <p className="text-[#6B6966] text-xs leading-relaxed">{ambiente.desc}</p>
+
+        {/* Dots */}
+        <div className="flex gap-1.5 mt-3">
+          {ambiente.fotos.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIdx(i)}
+              className={`h-1 transition-all ${
+                i === idx ? "w-5 bg-[#E67A22]" : "w-1 bg-[#E8E6E3] hover:bg-[#1A1917]/20"
+              }`}
+              aria-label={`foto ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Projetos() {
-  const [tipo, setTipo] = useState("Todos");
-
-  const filtered = tipo === "Todos" ? PROJETOS : PROJETOS.filter(p => p.tipo === tipo);
-
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#1B1A18] pt-32 pb-20 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: "repeating-linear-gradient(45deg, #E67A22 0, #E67A22 1px, transparent 0, transparent 50%)",
-            backgroundSize: "30px 30px",
-          }}
-        />
+      <section className="relative bg-[#1A1917] pt-36 pb-20">
         <div className="relative max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.span variants={fadeUp} className="text-xs font-bold uppercase tracking-widest text-[#E67A22]">
-              Portfólio
-            </motion.span>
+            <motion.p variants={fadeUp} className="label-tag mb-5">Ambientes & Aplicações</motion.p>
             <motion.h1
               variants={fadeUp}
-              className="text-5xl lg:text-7xl font-[family-name:var(--font-barlow)] font-extrabold text-white uppercase leading-none mt-3"
+              className="text-[clamp(2.8rem,7vw,6rem)] font-[family-name:var(--font-oswald)] font-bold text-white leading-[0.92] mb-6 uppercase tracking-tight"
             >
-              Projetos<br />
-              <span className="text-[#E67A22]">realizados</span>
+              Projetos em<br />
+              <span className="text-[#E67A22]">destaque</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-white/60 text-lg mt-4 max-w-xl">
-              Da fábrica até o ambiente final. Veja como nossos móveis transformam espaços.
+            <motion.p variants={fadeUp} className="text-white/45 text-lg max-w-xl">
+              Referências de ambientes criados com móveis planejados de alto padrão.
+              Da cozinha ao escritório corporativo — inspiração para cada projeto.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* Filtros */}
-      <section className="bg-white border-b border-[#e5e5e5]">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex gap-2 overflow-x-auto">
-          {TIPOS.map((t) => (
-            <button
-              key={t}
-              onClick={() => setTipo(t)}
-              className={`whitespace-nowrap px-4 py-2 rounded-sm text-xs font-bold uppercase tracking-wide transition-all ${
-                tipo === t
-                  ? "bg-[#E67A22] text-white"
-                  : "bg-[#f7f6f4] text-[#6b6b6b] hover:bg-[#e5e5e5]"
-              }`}
-            >
-              {t}
-            </button>
-          ))}
-        </div>
-      </section>
-
-      {/* Grid */}
-      <section className="py-16 bg-[#f7f6f4]">
+      {/* Grid de ambientes */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            layout
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {filtered.map((p, i) => (
-              <motion.div
-                key={p.id}
-                layout
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="bg-white rounded-lg overflow-hidden border border-[#e5e5e5] hover:shadow-xl transition-all group"
-              >
-                <div
-                  className="h-52 flex items-end p-5"
-                  style={{ background: `linear-gradient(160deg, ${p.cor}20, ${p.cor}40)` }}
-                >
-                  <div>
-                    <span
-                      className="text-xs font-bold px-2.5 py-1 rounded-full text-white"
-                      style={{ backgroundColor: p.cor }}
-                    >
-                      {p.tipo}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-[#6b6b6b]">{p.linha}</span>
-                    <span className="text-xs font-semibold text-[#6b6b6b]">{p.area}</span>
-                  </div>
-                  <h3 className="font-[family-name:var(--font-barlow)] font-bold text-base text-[#1B1A18] uppercase mb-2 leading-tight">
-                    {p.nome}
-                  </h3>
-                  <p className="text-[#6b6b6b] text-xs leading-relaxed">{p.descricao}</p>
-                </div>
-              </motion.div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {AMBIENTES.map((ambiente) => (
+              <AmbienteCarousel key={ambiente.nome} ambiente={ambiente} />
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-[#1B1A18]">
+      <section className="py-20 bg-[#1A1917]">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            variants={stagger}
-          >
-            <motion.h2
-              variants={fadeUp}
-              className="text-3xl font-[family-name:var(--font-barlow)] font-extrabold text-white uppercase mb-4"
-            >
-              Tem um projeto em mente?
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
+            <motion.h2 variants={fadeUp}
+              className="text-3xl font-[family-name:var(--font-playfair)] font-black text-white mb-4">
+              Crie projetos assim com os acabamentos Fabriko.
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-white/60 text-sm mb-6">
-              Desenvolvemos soluções sob medida para construtoras, hotéis, corporativo e residencial.
+            <motion.p variants={fadeUp} className="text-white/40 text-sm mb-8">
+              Acesse a biblioteca no Promob e projete com qualidade industrial.
             </motion.p>
-            <motion.div variants={fadeUp}>
-              <Link
-                href="/contato"
-                className="inline-block bg-[#E67A22] text-white font-bold px-7 py-3 rounded-sm uppercase tracking-wider text-sm hover:bg-[#c9601a] transition-colors"
-              >
-                Fale com nossa equipe
+            <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-4">
+              <Link href="/seja-parceiro"
+                className="group flex items-center gap-3 bg-[#E67A22] hover:bg-[#C85E0F] text-white text-xs font-bold px-7 py-4 tracking-widest uppercase transition-all">
+                Quero ser parceiro
+                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link href="/acabamentos"
+                className="border border-white/20 text-white/50 hover:text-white hover:border-white/50 text-xs font-medium px-7 py-4 tracking-widest uppercase transition-all">
+                Ver acabamentos
               </Link>
             </motion.div>
           </motion.div>

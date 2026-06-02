@@ -1,38 +1,54 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #ffffff;
-  --color-foreground: #1B1A18;
   --color-brand: #E67A22;
-  --color-brand-dark: #c9601a;
-  --color-dark: #1B1A18;
-  --color-dark-2: #2a2926;
-  --color-muted: #6b6b6b;
-  --color-border: #e5e5e5;
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-barlow);
+  --color-brand-dark: #C85E0F;
+  --color-ink: #1A1917;
+  --color-ink-2: #2A2825;
+  --color-muted: #6B6966;
+  --color-surface: #FAFAF8;
+  --color-border: #E8E6E3;
+  --color-border-dark: #D0CEC9;
+  --font-display: var(--font-playfair);
+  --font-sans: var(--font-dm-sans);
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--color-background);
-  color: var(--color-foreground);
-  font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
+  background: #FFFFFF;
+  color: #1A1917;
+  font-family: var(--font-sans), 'DM Sans', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f1f1f1; }
-::-webkit-scrollbar-thumb { background: #E67A22; border-radius: 3px; }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #F0EDEA; }
+::-webkit-scrollbar-thumb { background: #E67A22; border-radius: 2px; }
+::selection { background: #E67A22; color: #fff; }
 
-/* Selection */
-::selection { background: #E67A22; color: white; }
+.label-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #E67A22;
+}
+.label-tag::before {
+  content: '';
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: #E67A22;
+  flex-shrink: 0;
+}
+
+.section-light { background: #FFFFFF; color: #1A1917; }
+.section-surface { background: #FAFAF8; color: #1A1917; }
+.section-dark { background: #1A1917; color: #FAFAF8; }

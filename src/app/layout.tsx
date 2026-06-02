@@ -1,41 +1,48 @@
 import type { Metadata } from "next";
-import { Inter, Barlow_Condensed } from "next/font/google";
+import { DM_Sans, Playfair_Display, Oswald } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
-const inter = Inter({
-  variable: "--font-inter",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const barlow = Barlow_Condensed({
-  variable: "--font-barlow",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
+  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
+
+const oswald = Oswald({
+  variable: "--font-oswald",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Fabriko — Indústria de Móveis",
+  title: "Fabriko — Indústria de Móveis Planejados",
   description:
-    "Fábrica de móveis com qualidade, prazo e condições exclusivas para lojistas. Conheça nossas linhas e torne-se um parceiro Fabriko.",
-  keywords: "fábrica de móveis, móveis atacado, lojista, indústria moveleira, móveis para revenda",
+    "Fábrica de móveis planejados em Americana-SP. Parceira ideal das lojas de móveis planejados. 100% MDF, bordas PUR, 3 linhas, via Promob.",
+  keywords: "fábrica móveis planejados, móveis planejados atacado, promob, lojistas móveis, indústria moveleira americana SP",
   openGraph: {
-    title: "Fabriko — Indústria de Móveis",
-    description: "Qualidade de fábrica para o seu negócio.",
+    title: "Fabriko — Indústria de Móveis Planejados",
+    description: "Mais do que produção. Compromisso com o seu negócio.",
     type: "website",
     locale: "pt_BR",
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${barlow.variable}`}>
-      <body className="min-h-screen flex flex-col">
+    <html lang="pt-BR" className={`${dmSans.variable} ${playfair.variable} ${oswald.variable}`}>
+      <body className="min-h-screen flex flex-col bg-white">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
