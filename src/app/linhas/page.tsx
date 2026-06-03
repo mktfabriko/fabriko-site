@@ -154,7 +154,7 @@ export default function Linhas() {
     <>
       {/* Hero */}
       <section className="relative bg-[#1A1917] pt-36 pb-20 overflow-hidden">
-        <div className="relative max-w-4xl mx-auto px-6">
+        <div className="relative max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
             <motion.p variants={fadeUp} className="label-tag mb-5">Portfólio</motion.p>
             <motion.h1

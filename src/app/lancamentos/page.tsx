@@ -220,7 +220,7 @@ export default function Lancamentos() {
         <div className="absolute right-0 top-0 w-1/2 h-full opacity-5"
           style={{ background: "radial-gradient(ellipse at right top, #E67A22 0%, transparent 60%)" }} />
 
-        <div className="relative max-w-4xl mx-auto px-6">
+        <div className="relative max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
             <motion.div variants={fadeUp} className="flex items-center gap-3 mb-5">
               <Sparkles className="h-4 w-4 text-[#E67A22]" />

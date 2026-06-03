@@ -34,7 +34,7 @@ export default function QuemSomos() {
       <section className="relative bg-[#1A1917] pt-36 pb-20 overflow-hidden">
         <div className="absolute right-0 top-0 w-1/2 h-full opacity-5"
           style={{ background: "radial-gradient(ellipse at right top, #E67A22 0%, transparent 60%)" }} />
-        <div className="relative max-w-4xl mx-auto px-6">
+        <div className="relative max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
             <motion.p variants={fadeUp} className="label-tag mb-5">Nossa história</motion.p>
             <motion.h1

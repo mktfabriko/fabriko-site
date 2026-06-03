@@ -53,7 +53,7 @@ export default function SejaParceiro() {
         <div className="absolute bottom-0 left-0 w-1/2 h-1/2 opacity-5"
           style={{ background: "radial-gradient(ellipse at left bottom, #E67A22, transparent 70%)" }}
         />
-        <div className="relative max-w-4xl mx-auto px-6">
+        <div className="relative max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
             <motion.p variants={fadeUp} className="label-tag mb-5">Para lojistas e marcenarias</motion.p>
             <motion.h1
