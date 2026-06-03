@@ -213,7 +213,7 @@ export default function Lancamentos() {
   return (
     <>
       {/* Hero Banner */}
-      <section className="relative bg-[#1A1917] pt-36 pb-20 overflow-hidden">
+      <section className="relative bg-[#1A1917] pt-28 pb-12 md:pt-36 md:pb-20 overflow-hidden">
         <div className="absolute inset-0"
           style={{ background: "radial-gradient(ellipse at 70% 50%, #E67A22/10 0%, transparent 60%)" }}
         />
@@ -260,7 +260,7 @@ export default function Lancamentos() {
       </section>
 
       {/* Cards */}
-      <section className="py-20 bg-white">
+      <section className="py-10 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial="hidden"
@@ -319,7 +319,7 @@ export default function Lancamentos() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[#1A1917]">
+      <section className="py-10 md:py-20 bg-[#1A1917]">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.h2 variants={fadeUp}

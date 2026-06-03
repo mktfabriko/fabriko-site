@@ -111,7 +111,7 @@ export default function Catalogo() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#1A1917] pt-36 pb-20 overflow-hidden">
+      <section className="relative bg-[#1A1917] pt-28 pb-12 md:pt-36 md:pb-20 overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
             <motion.p variants={fadeUp} className="label-tag mb-5">Acessórios e acabamentos</motion.p>
@@ -139,7 +139,7 @@ export default function Catalogo() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.6 }}
-            className={`border-b border-[#E8E6E3] py-20 ${gi % 2 !== 0 ? "bg-[#FAFAF8]" : "bg-white"}`}
+            className={`border-b border-[#E8E6E3] py-10 md:py-20 ${gi % 2 !== 0 ? "bg-[#FAFAF8]" : "bg-white"}`}
           >
             <div className="max-w-7xl mx-auto px-6">
               <div className="mb-10">
@@ -203,7 +203,7 @@ export default function Catalogo() {
       </section>
 
       {/* Modelos de porta */}
-      <section className="py-20 bg-white border-b border-[#E8E6E3]">
+      <section className="py-10 md:py-20 bg-white border-b border-[#E8E6E3]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial="hidden"
@@ -254,7 +254,7 @@ export default function Catalogo() {
       </section>
 
       {/* Painéis LED */}
-      <section className="py-20 bg-[#FAFAF8] border-b border-[#E8E6E3]">
+      <section className="py-10 md:py-20 bg-[#FAFAF8] border-b border-[#E8E6E3]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -294,7 +294,7 @@ export default function Catalogo() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[#1A1917]">
+      <section className="py-10 md:py-20 bg-[#1A1917]">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.h2 variants={fadeUp}

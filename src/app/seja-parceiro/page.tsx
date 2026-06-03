@@ -49,7 +49,7 @@ export default function SejaParceiro() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#1A1917] pt-36 pb-20 overflow-hidden">
+      <section className="relative bg-[#1A1917] pt-28 pb-12 md:pt-36 md:pb-20 overflow-hidden">
         <div className="absolute bottom-0 left-0 w-1/2 h-1/2 opacity-5"
           style={{ background: "radial-gradient(ellipse at left bottom, #E67A22, transparent 70%)" }}
         />
@@ -72,9 +72,9 @@ export default function SejaParceiro() {
       </section>
 
       {/* Como funciona */}
-      <section className="py-24 bg-white border-b border-[#E8E6E3]">
+      <section className="py-12 md:py-24 bg-white border-b border-[#E8E6E3]">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger} className="mb-14">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger} className="mb-8 md:mb-14">
             <motion.p variants={fadeUp} className="label-tag mb-4">Como funciona</motion.p>
             <motion.h2 variants={fadeUp}
               className="text-4xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917]">
@@ -123,8 +123,8 @@ export default function SejaParceiro() {
       </section>
 
       {/* Benefícios + Form */}
-      <section className="py-24 bg-[#FAFAF8]">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
+      <section className="py-12 md:py-24 bg-[#FAFAF8]">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Benefícios */}
           <motion.div
             initial="hidden"
@@ -171,7 +171,7 @@ export default function SejaParceiro() {
             transition={{ duration: 0.7 }}
           >
             {sent ? (
-              <div className="flex flex-col items-center justify-center h-full text-center py-20 border border-[#E8E6E3] bg-white">
+              <div className="flex flex-col items-center justify-center h-full text-center py-10 md:py-20 border border-[#E8E6E3] bg-white">
                 <CheckCircle2 className="h-12 w-12 text-[#E67A22] mb-4" />
                 <h3 className="font-[family-name:var(--font-playfair)] font-black text-2xl text-[#1A1917] mb-2">
                   Recebemos seu cadastro.
@@ -184,7 +184,7 @@ export default function SejaParceiro() {
               <div className="border border-[#E8E6E3] bg-white p-8">
                 <p className="label-tag mb-5">Cadastro de parceiro</p>
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {[
                       { n: "nome", p: "Seu nome", label: "Nome *", type: "text" },
                       { n: "empresa", p: "Nome da empresa", label: "Empresa *", type: "text" },
@@ -214,7 +214,7 @@ export default function SejaParceiro() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {[
                       { n: "telefone", p: "(19) 99999-9999", label: "Telefone *" },
                       { n: "email", p: "seu@email.com", label: "E-mail *" },

@@ -68,8 +68,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#E67A22]/8 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0B] via-[#0D0D0B]/40 to-[#0D0D0B]/10" />
 
-        {/* Headline — alinhado com o logo do navbar */}
-        <div className="relative max-w-7xl mx-auto w-full px-6 pt-40 pb-10">
+        <div className="relative max-w-7xl mx-auto w-full px-6 pt-32 md:pt-40 pb-10">
           <motion.div initial="hidden" animate="show" variants={stagger} className="max-w-lg">
             <motion.p
               variants={fadeUp}
@@ -79,7 +78,7 @@ export default function Home() {
             </motion.p>
             <motion.h1
               variants={fadeUp}
-              className="text-[clamp(3rem,5.5vw,5.5rem)] font-[family-name:var(--font-oswald)] font-bold text-white leading-[0.95] mb-6 uppercase tracking-tight"
+              className="text-[clamp(2.6rem,5.5vw,5.5rem)] font-[family-name:var(--font-oswald)] font-bold text-white leading-[0.95] mb-6 uppercase tracking-tight"
             >
               Sua fábrica de{" "}
               <span className="text-[#E67A22]">móveis planejados.</span>
@@ -99,16 +98,16 @@ export default function Home() {
           transition={{ delay: 0.8 }}
           className="relative border-t border-white/10 bg-[#0D0D0B]/80 backdrop-blur-sm"
         >
-          <div className="max-w-7xl mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+          <div className="max-w-7xl mx-auto px-6 py-4 grid grid-cols-2 md:grid-cols-4 gap-y-4 divide-x divide-white/10">
             {[
               { v: "Mais margem", l: "Preço de fábrica direto" },
               { v: "Mais agilidade", l: "Prazo garantido: 20 dias úteis" },
               { v: "Mais segurança", l: "Processo 100% documentado" },
               { v: "Mais projetos", l: "Suporte Promob exclusivo" },
             ].map(({ v, l }) => (
-              <div key={v} className="px-6 first:pl-0 last:pr-0 py-1">
-                <p className="text-white font-[family-name:var(--font-playfair)] font-bold text-xl">{v}</p>
-                <p className="text-white/35 text-xs mt-0.5">{l}</p>
+              <div key={v} className="px-4 sm:px-6 first:pl-0 py-1">
+                <p className="text-white font-[family-name:var(--font-playfair)] font-bold text-base sm:text-xl">{v}</p>
+                <p className="text-white/35 text-[10px] sm:text-xs mt-0.5">{l}</p>
               </div>
             ))}
           </div>
@@ -116,19 +115,19 @@ export default function Home() {
       </section>
 
       {/* ═══ LINHAS ══════════════════════════════════════════════ */}
-      <section className="py-28 bg-white">
+      <section className="py-14 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             variants={stagger}
-            className="mb-16"
+            className="mb-10 md:mb-16"
           >
             <motion.p variants={fadeUp} className="label-tag mb-4">Portfólio</motion.p>
             <motion.h2
               variants={fadeUp}
-              className="text-4xl lg:text-5xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917]"
+              className="text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917]"
             >
               Três linhas.<br />
               <span className="text-[#1A1917]/30">Uma parceria.</span>
@@ -148,7 +147,7 @@ export default function Home() {
                 variants={fadeUp}
                 className="group border border-[#E8E6E3] hover:border-[#E67A22]/30 transition-colors overflow-hidden"
               >
-                <div className="h-52 overflow-hidden bg-[#F5F3F0]">
+                <div className="h-48 md:h-52 overflow-hidden bg-[#F5F3F0]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={img}
@@ -156,11 +155,11 @@ export default function Home() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="p-8">
+                <div className="p-5 md:p-8">
                   <h3 className="font-[family-name:var(--font-playfair)] font-black text-2xl text-[#1A1917] mb-1">
                     Linha {nome}
                   </h3>
-                  <div className="flex gap-4 mb-5 mt-3">
+                  <div className="flex gap-3 mb-4 mt-3">
                     <div className={`px-3 py-1.5 border ${caixas === "18mm" ? "bg-[#FFF3E8] border-[#E67A22]/40" : "border-[#E8E6E3]"}`}>
                       <p className={`text-[10px] uppercase tracking-wider mb-0.5 ${caixas === "18mm" ? "text-[#E67A22]/70" : "text-[#1A1917]/40"}`}>Caixas</p>
                       <p className={`text-sm font-bold ${caixas === "18mm" ? "text-[#E67A22]" : "text-[#1A1917]"}`}>{caixas}</p>
@@ -195,20 +194,20 @@ export default function Home() {
       </section>
 
       {/* ═══ ACABAMENTOS ═════════════════════════════════════════ */}
-      <section className="py-28 bg-[#FAFAF8]">
+      <section className="py-14 md:py-28 bg-[#FAFAF8]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             variants={stagger}
-            className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-14 gap-6"
+            className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-10 md:mb-14 gap-4"
           >
             <div>
               <motion.p variants={fadeUp} className="label-tag mb-4">Acabamentos</motion.p>
               <motion.h2
                 variants={fadeUp}
-                className="text-4xl lg:text-5xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917]"
+                className="text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917]"
               >
                 Alinhados às tendências.<br />
                 <span className="text-[#1A1917]/30 font-medium italic">Em todos os ambientes.</span>
@@ -229,12 +228,12 @@ export default function Home() {
             whileInView="show"
             viewport={{ once: true, amount: 0.1 }}
             variants={stagger}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4"
           >
             {ACABAMENTOS_PREVIEW.map(({ cat, img, itens }) => (
               <motion.div key={cat} variants={fadeUp} className="group cursor-pointer">
                 <Link href="/acabamentos">
-                  <div className="h-52 mb-4 relative overflow-hidden bg-[#1A1917]">
+                  <div className="h-40 sm:h-52 mb-3 md:mb-4 relative overflow-hidden bg-[#1A1917]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={img}
@@ -242,13 +241,13 @@ export default function Home() {
                       className="w-full h-[115%] object-cover object-top group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1A1917]/70 to-transparent" />
-                    <div className="absolute bottom-4 left-4">
-                      <p className="text-white font-[family-name:var(--font-playfair)] font-bold text-xl drop-shadow">
+                    <div className="absolute bottom-3 left-3 md:bottom-4 md:left-4">
+                      <p className="text-white font-[family-name:var(--font-playfair)] font-bold text-lg md:text-xl drop-shadow">
                         {cat}
                       </p>
                     </div>
                   </div>
-                  <p className="text-[#6B6966] text-xs leading-relaxed group-hover:text-[#1A1917] transition-colors">
+                  <p className="text-[#6B6966] text-xs leading-relaxed group-hover:text-[#1A1917] transition-colors hidden sm:block">
                     {itens}
                   </p>
                 </Link>
@@ -259,19 +258,19 @@ export default function Home() {
       </section>
 
       {/* ═══ DIFERENCIAIS ════════════════════════════════════════ */}
-      <section className="py-28 bg-white">
+      <section className="py-14 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             variants={stagger}
-            className="mb-16"
+            className="mb-10 md:mb-16"
           >
             <motion.p variants={fadeUp} className="label-tag mb-4">Por que Fabriko</motion.p>
             <motion.h2
               variants={fadeUp}
-              className="text-4xl lg:text-5xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] max-w-xl"
+              className="text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] max-w-xl"
             >
               Mais do que produção.<br />
               <span className="text-[#1A1917]/30 font-normal">Compromisso com o seu negócio.</span>
@@ -289,9 +288,9 @@ export default function Home() {
               <motion.div
                 key={n}
                 variants={fadeUp}
-                className="bg-white p-8 hover:bg-[#FAFAF8] transition-colors group"
+                className="bg-white p-6 md:p-8 hover:bg-[#FAFAF8] transition-colors group"
               >
-                <p className="text-[#E67A22]/20 font-[family-name:var(--font-playfair)] font-black text-4xl mb-5 group-hover:text-[#E67A22]/40 transition-colors">
+                <p className="text-[#E67A22]/20 font-[family-name:var(--font-playfair)] font-black text-4xl mb-4 md:mb-5 group-hover:text-[#E67A22]/40 transition-colors">
                   {n}
                 </p>
                 <h3 className="text-[#1A1917] font-semibold text-base mb-3">{titulo}</h3>
@@ -303,8 +302,8 @@ export default function Home() {
       </section>
 
       {/* ═══ ESTRUTURA INDUSTRIAL + VÍDEO ════════════════════════ */}
-      <section className="py-28 bg-[#FAFAF8] border-y border-[#E8E6E3]">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+      <section className="py-14 md:py-28 bg-[#FAFAF8] border-y border-[#E8E6E3]">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <motion.div
             initial="hidden"
             whileInView="show"
@@ -314,11 +313,11 @@ export default function Home() {
             <motion.p variants={fadeUp} className="label-tag mb-5">A fábrica por trás do seu negócio</motion.p>
             <motion.h2
               variants={fadeUp}
-              className="text-4xl lg:text-5xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] leading-tight mb-8"
+              className="text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] leading-tight mb-7"
             >
               Somos a fábrica que o lojista sempre quis ter.
             </motion.h2>
-            <motion.ul variants={stagger} className="space-y-4">
+            <motion.ul variants={stagger} className="space-y-3 md:space-y-4">
               {[
                 "Prazo de 20 dias úteis — documentado e cumprido em cada pedido",
                 "Setor de suporte técnico Promob 100% dedicado ao lojista parceiro",
@@ -350,8 +349,8 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-[#1A1917]/40 group-hover:bg-[#1A1917]/20 transition-colors duration-300" />
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <div className="h-16 w-16 rounded-full border border-white/30 flex items-center justify-center group-hover:border-[#E67A22] group-hover:bg-[#E67A22]/20 transition-all duration-300 mb-4">
-                <Play className="h-6 w-6 text-white ml-1" />
+              <div className="h-14 w-14 md:h-16 md:w-16 rounded-full border border-white/30 flex items-center justify-center group-hover:border-[#E67A22] group-hover:bg-[#E67A22]/20 transition-all duration-300 mb-3 md:mb-4">
+                <Play className="h-5 w-5 md:h-6 md:w-6 text-white ml-1" />
               </div>
               <p className="text-white/70 text-xs font-medium tracking-widest uppercase group-hover:text-white transition-colors">
                 Apresentação da Fábrica
@@ -365,9 +364,9 @@ export default function Home() {
       </section>
 
       {/* ═══ SEJA PARCEIRO — FORM ════════════════════════════════ */}
-      <section className="py-28 bg-[#1A1917]">
+      <section className="py-14 md:py-28 bg-[#1A1917]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
             <motion.div
               initial="hidden"
               whileInView="show"
@@ -379,15 +378,15 @@ export default function Home() {
               </motion.p>
               <motion.h2
                 variants={fadeUp}
-                className="text-4xl lg:text-5xl font-[family-name:var(--font-playfair)] font-black text-white leading-tight mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-playfair)] font-black text-white leading-tight mb-6"
               >
                 Baixe o catálogo e<br />comece a vender hoje.
               </motion.h2>
-              <motion.p variants={fadeUp} className="text-white/40 text-base leading-relaxed mb-8">
+              <motion.p variants={fadeUp} className="text-white/40 text-base leading-relaxed mb-7">
                 Preencha o formulário e receba no seu e-mail o catálogo completo + apresentação da Fabriko com linhas,
                 acabamentos, prazos e condições exclusivas. Nosso consultor também entrará em contato pelo WhatsApp.
               </motion.p>
-              <motion.div variants={stagger} className="space-y-4">
+              <motion.div variants={stagger} className="space-y-3 md:space-y-4">
                 {[
                   "Catálogo completo com todos os acabamentos",
                   "Apresentação com condições para lojistas parceiros",
@@ -407,7 +406,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-[#FAFAF8] p-8 lg:p-10"
+              className="bg-[#FAFAF8] p-6 md:p-8 lg:p-10"
             >
               <SejaParceiroForm />
             </motion.div>
@@ -416,31 +415,31 @@ export default function Home() {
       </section>
 
       {/* ═══ CTA FINAL ════════════════════════════════════════════ */}
-      <section className="py-28 bg-[#F4F2EF]">
+      <section className="py-14 md:py-28 bg-[#F4F2EF]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.4 }}
             variants={stagger}
-            className="border border-[#E67A22]/25 p-12 lg:p-16 relative overflow-hidden bg-white"
+            className="border border-[#E67A22]/25 p-6 sm:p-10 lg:p-16 relative overflow-hidden bg-white"
           >
             <div
               className="absolute top-0 right-0 w-1/2 h-full opacity-[0.04]"
               style={{ background: "radial-gradient(ellipse at right, #E67A22, transparent 70%)" }}
             />
-            <motion.p variants={fadeUp} className="label-tag mb-6">Para lojistas</motion.p>
+            <motion.p variants={fadeUp} className="label-tag mb-5 md:mb-6">Para lojistas</motion.p>
             <motion.h2
               variants={fadeUp}
-              className="text-4xl lg:text-6xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] leading-tight mb-6 max-w-2xl"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] leading-tight mb-5 md:mb-6 max-w-2xl"
             >
               Cansado de fábrica que atrasa, não atende e ainda culpa o projeto?
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-[#1A1917]/50 text-base mb-6 max-w-xl">
+            <motion.p variants={fadeUp} className="text-[#1A1917]/50 text-sm md:text-base mb-5 md:mb-6 max-w-xl">
               A maioria das fábricas entrega com atraso, não tem suporte técnico e deixa o lojista sozinho na hora do problema.
               Na Fabriko é diferente: prazo garantido, processo transparente e um setor de suporte Promob exclusivo — dedicado ao seu sucesso.
             </motion.p>
-            <motion.div variants={stagger} className="flex flex-col sm:flex-row gap-6 mb-10">
+            <motion.div variants={stagger} className="flex flex-col sm:flex-row gap-4 md:gap-6 mb-8 md:mb-10">
               {[
                 { v: "Prazo cumprido", d: "20 dias úteis, sempre" },
                 { v: "Suporte Promob", d: "Time técnico exclusivo" },
@@ -457,10 +456,10 @@ export default function Home() {
                 </motion.div>
               ))}
             </motion.div>
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 md:gap-4">
               <Link
                 href="/seja-parceiro"
-                className="group flex items-center gap-3 bg-[#E67A22] hover:bg-[#C85E0F] text-white text-xs font-bold px-8 py-4 tracking-widest uppercase transition-all"
+                className="group flex items-center justify-center gap-3 bg-[#E67A22] hover:bg-[#C85E0F] text-white text-xs font-bold px-8 py-4 tracking-widest uppercase transition-all"
               >
                 Quero ser parceiro
                 <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
@@ -469,7 +468,7 @@ export default function Home() {
                 href="https://wa.me/5519996252987"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 border border-[#1A1917]/20 hover:border-[#1A1917]/50 text-[#1A1917]/50 hover:text-[#1A1917] text-xs font-medium px-8 py-4 tracking-widest uppercase transition-all"
+                className="flex items-center justify-center gap-3 border border-[#1A1917]/20 hover:border-[#1A1917]/50 text-[#1A1917]/50 hover:text-[#1A1917] text-xs font-medium px-8 py-4 tracking-widest uppercase transition-all"
               >
                 WhatsApp (19) 99625-2987
               </a>

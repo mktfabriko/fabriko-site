@@ -205,7 +205,7 @@ export default function Projetos() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#1A1917] pt-36 pb-20">
+      <section className="relative bg-[#1A1917] pt-28 pb-12 md:pt-36 md:pb-20">
         <div className="relative max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
             <motion.p variants={fadeUp} className="label-tag mb-5">Ambientes & Aplicações</motion.p>
@@ -225,7 +225,7 @@ export default function Projetos() {
       </section>
 
       {/* Grid de ambientes */}
-      <section className="py-20 bg-white">
+      <section className="py-10 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {AMBIENTES.map((ambiente) => (
@@ -236,7 +236,7 @@ export default function Projetos() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[#1A1917]">
+      <section className="py-10 md:py-20 bg-[#1A1917]">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.h2 variants={fadeUp}

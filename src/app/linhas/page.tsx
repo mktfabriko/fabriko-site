@@ -153,7 +153,7 @@ export default function Linhas() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#1A1917] pt-36 pb-20 overflow-hidden">
+      <section className="relative bg-[#1A1917] pt-28 pb-12 md:pt-36 md:pb-20 overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
             <motion.p variants={fadeUp} className="label-tag mb-5">Portfólio</motion.p>
@@ -183,7 +183,7 @@ export default function Linhas() {
             transition={{ duration: 0.7 }}
             className={`border-b border-[#E8E6E3] ${i % 2 !== 0 ? "bg-[#FAFAF8]" : "bg-white"}`}
           >
-            <div className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-16 items-start">
+            <div className="max-w-7xl mx-auto px-6 py-10 md:py-20 grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
               {/* Carousel */}
               <div className={`overflow-hidden ${i % 2 !== 0 ? "lg:order-last" : ""}`}>
                 <LinhaCarousel fotos={fotos} nome={nome} />
@@ -258,7 +258,7 @@ export default function Linhas() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[#1A1917]">
+      <section className="py-10 md:py-20 bg-[#1A1917]">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial="hidden"

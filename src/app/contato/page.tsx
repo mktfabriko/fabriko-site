@@ -37,7 +37,7 @@ export default function Contato() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#1A1917] pt-36 pb-20">
+      <section className="relative bg-[#1A1917] pt-28 pb-12 md:pt-36 md:pb-20">
         <div className="relative max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
             <motion.p variants={fadeUp} className="label-tag mb-5">Americana — SP</motion.p>
@@ -52,8 +52,8 @@ export default function Contato() {
       </section>
 
       {/* Canais + Form */}
-      <section className="py-24 bg-[#FAFAF8] border-t border-[#E8E6E3]">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
+      <section className="py-12 md:py-24 bg-[#FAFAF8] border-t border-[#E8E6E3]">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Canais */}
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
             <motion.p variants={fadeUp} className="label-tag mb-5">Canais de contato</motion.p>
@@ -94,7 +94,7 @@ export default function Contato() {
             transition={{ duration: 0.7 }}
           >
             {sent ? (
-              <div className="flex flex-col items-center justify-center h-full text-center py-20 border border-[#E8E6E3] bg-white">
+              <div className="flex flex-col items-center justify-center h-full text-center py-10 md:py-20 border border-[#E8E6E3] bg-white">
                 <CheckCircle2 className="h-12 w-12 text-[#E67A22] mb-4" />
                 <h3 className="font-[family-name:var(--font-playfair)] font-black text-2xl text-[#1A1917] mb-2">
                   Mensagem recebida.
@@ -105,7 +105,7 @@ export default function Contato() {
               <div className="border border-[#E8E6E3] bg-white p-8">
                 <p className="label-tag mb-5">Envie uma mensagem</p>
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-[#1A1917]/40 text-[10px] uppercase tracking-widest mb-2">Nome *</label>
                       <input required name="nome" value={form.nome} onChange={handleChange}

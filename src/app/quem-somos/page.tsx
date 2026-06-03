@@ -31,7 +31,7 @@ export default function QuemSomos() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#1A1917] pt-36 pb-20 overflow-hidden">
+      <section className="relative bg-[#1A1917] pt-28 pb-12 md:pt-36 md:pb-20 overflow-hidden">
         <div className="absolute right-0 top-0 w-1/2 h-full opacity-5"
           style={{ background: "radial-gradient(ellipse at right top, #E67A22 0%, transparent 60%)" }} />
         <div className="relative max-w-7xl mx-auto px-6">
@@ -54,7 +54,7 @@ export default function QuemSomos() {
       </section>
 
       {/* Fotos da fábrica — carrossel */}
-      <section className="py-20 bg-white">
+      <section className="py-10 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="relative">
             <div className="overflow-hidden">
@@ -119,8 +119,8 @@ export default function QuemSomos() {
       </section>
 
       {/* História */}
-      <section className="py-24 bg-[#FAFAF8] border-y border-[#E8E6E3]">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start">
+      <section className="py-12 md:py-24 bg-[#FAFAF8] border-y border-[#E8E6E3]">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           <motion.div
             initial="hidden"
             whileInView="show"
@@ -182,9 +182,9 @@ export default function QuemSomos() {
       </section>
 
       {/* Estrutura */}
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger} className="mb-14">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger} className="mb-8 md:mb-14">
             <motion.p variants={fadeUp} className="label-tag mb-4">Estrutura industrial</motion.p>
             <motion.h2 variants={fadeUp}
               className="text-4xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] max-w-xl">
@@ -215,7 +215,7 @@ export default function QuemSomos() {
       </section>
 
       {/* Foto da equipe */}
-      <section className="py-20 bg-[#FAFAF8] border-t border-[#E8E6E3]">
+      <section className="py-10 md:py-20 bg-[#FAFAF8] border-t border-[#E8E6E3]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial="hidden"
@@ -248,7 +248,7 @@ export default function QuemSomos() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[#1A1917]">
+      <section className="py-10 md:py-20 bg-[#1A1917]">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.h2 variants={fadeUp}

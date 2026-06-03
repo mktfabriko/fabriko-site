@@ -166,7 +166,7 @@ export default function Promob() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#1A1917] pt-36 pb-24 overflow-hidden border-b-4 border-[#E67A22]">
+      <section className="relative bg-[#1A1917] pt-28 pb-14 md:pt-36 md:pb-24 overflow-hidden border-b-4 border-[#E67A22]">
         <div className="absolute right-0 top-0 w-1/2 h-full opacity-5"
           style={{ background: "radial-gradient(ellipse at right top, #E67A22 0%, transparent 60%)" }} />
         <div className="relative max-w-7xl mx-auto px-6">
@@ -187,7 +187,7 @@ export default function Promob() {
       </section>
 
       {/* Suporte Técnico */}
-      <section className="py-24 bg-white border-b border-[#E8E6E3]">
+      <section className="py-12 md:py-24 bg-white border-b border-[#E8E6E3]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
             <motion.p variants={fadeUp} className="label-tag mb-5">Suporte exclusivo</motion.p>
@@ -212,14 +212,14 @@ export default function Promob() {
       </section>
 
       {/* Procedimentos */}
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             variants={stagger}
-            className="mb-14"
+            className="mb-8 md:mb-14"
           >
             <motion.p variants={fadeUp} className="label-tag mb-4">Procedimentos</motion.p>
             <motion.h2 variants={fadeUp}
@@ -243,7 +243,7 @@ export default function Promob() {
       </section>
 
       {/* Contato */}
-      <section className="py-20 bg-[#FAFAF8] border-t border-[#E8E6E3]">
+      <section className="py-10 md:py-20 bg-[#FAFAF8] border-t border-[#E8E6E3]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial="hidden"
@@ -287,7 +287,7 @@ export default function Promob() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[#1A1917]">
+      <section className="py-10 md:py-20 bg-[#1A1917]">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}>
             <motion.h2 variants={fadeUp}
