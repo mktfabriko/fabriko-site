@@ -41,7 +41,7 @@ const LINHAS = [
 
 const ACABAMENTOS_PREVIEW = [
   { cat: "Madeirado", img: "/items/6.webp", itens: "Carvalho Natural, Freijó, Tauari, Pau Ferro, Louro Freijó..." },
-  { cat: "Unicolor", img: "/items/23.webp", itens: "Branco Diamante, Beton, Cinza Sagrado, Grafito, Azul Sereno..." },
+  { cat: "Unicolor", img: "/items/22.webp", itens: "Branco Diamante, Beton, Cinza Sagrado, Grafito, Azul Sereno..." },
   { cat: "Conceito", img: "/items/11.webp", itens: "Atenna, Bronze, Cosmos, Lino Chess, Lana..." },
   { cat: "Blend", img: "/items/38.webp", itens: "Off White Suave, Gianduia, Ébano Chess, Lenho, Granile..." },
 ];
@@ -63,7 +63,7 @@ export default function Home() {
       {/* ═══ HERO ═══════════════════════════════════════════════ */}
       <section
         className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#1A1917]"
-        style={{ backgroundImage: "url('/fotos/1.webp')", backgroundSize: "cover", backgroundPosition: "center" }}
+        style={{ backgroundImage: "url('/fotos/hero.webp')", backgroundSize: "cover", backgroundPosition: "center" }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-[#E67A22]/8 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0B] via-[#0D0D0B]/40 to-[#0D0D0B]/10" />
@@ -101,10 +101,10 @@ export default function Home() {
         >
           <div className="max-w-7xl mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
             {[
-              { v: "3 Linhas", l: "Village · Milano · Maxximum" },
-              { v: "100% MDF", l: "Bordas PUR 1mm" },
-              { v: "20 dias", l: "Prazo de produção" },
-              { v: "Americana-SP", l: "Polo industrial" },
+              { v: "Mais margem", l: "Preço de fábrica direto" },
+              { v: "Mais agilidade", l: "Prazo garantido: 20 dias úteis" },
+              { v: "Mais segurança", l: "Processo 100% documentado" },
+              { v: "Mais projetos", l: "Suporte Promob exclusivo" },
             ].map(({ v, l }) => (
               <div key={v} className="px-6 first:pl-0 last:pr-0 py-1">
                 <p className="text-white font-[family-name:var(--font-playfair)] font-bold text-xl">{v}</p>
@@ -161,13 +161,13 @@ export default function Home() {
                     Linha {nome}
                   </h3>
                   <div className="flex gap-4 mb-5 mt-3">
-                    <div className="border border-[#E8E6E3] px-3 py-1.5">
-                      <p className="text-[#1A1917]/40 text-[10px] uppercase tracking-wider mb-0.5">Caixas</p>
-                      <p className="text-[#1A1917] text-sm font-bold">{caixas}</p>
+                    <div className={`px-3 py-1.5 border ${caixas === "18mm" ? "bg-[#FFF3E8] border-[#E67A22]/40" : "border-[#E8E6E3]"}`}>
+                      <p className={`text-[10px] uppercase tracking-wider mb-0.5 ${caixas === "18mm" ? "text-[#E67A22]/70" : "text-[#1A1917]/40"}`}>Caixas</p>
+                      <p className={`text-sm font-bold ${caixas === "18mm" ? "text-[#E67A22]" : "text-[#1A1917]"}`}>{caixas}</p>
                     </div>
-                    <div className="border border-[#E8E6E3] px-3 py-1.5">
-                      <p className="text-[#1A1917]/40 text-[10px] uppercase tracking-wider mb-0.5">Portas</p>
-                      <p className="text-[#1A1917] text-sm font-bold">{portas}</p>
+                    <div className={`px-3 py-1.5 border ${portas === "18mm" ? "bg-[#FFF3E8] border-[#E67A22]/40" : "border-[#E8E6E3]"}`}>
+                      <p className={`text-[10px] uppercase tracking-wider mb-0.5 ${portas === "18mm" ? "text-[#E67A22]/70" : "text-[#1A1917]/40"}`}>Portas</p>
+                      <p className={`text-sm font-bold ${portas === "18mm" ? "text-[#E67A22]" : "text-[#1A1917]"}`}>{portas}</p>
                     </div>
                   </div>
                   <p className="text-[#6B6966] text-sm leading-relaxed mb-3">{desc}</p>
@@ -273,7 +273,8 @@ export default function Home() {
               variants={fadeUp}
               className="text-4xl lg:text-5xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] max-w-xl"
             >
-              Mais do que produção. Compromisso com o seu negócio.
+              Mais do que produção.<br />
+              <span className="text-[#1A1917]/30 font-normal">Compromisso com o seu negócio.</span>
             </motion.h2>
           </motion.div>
 
@@ -310,20 +311,20 @@ export default function Home() {
             viewport={{ once: true, amount: 0.3 }}
             variants={stagger}
           >
-            <motion.p variants={fadeUp} className="label-tag mb-5">Estrutura industrial</motion.p>
+            <motion.p variants={fadeUp} className="label-tag mb-5">A fábrica por trás do seu negócio</motion.p>
             <motion.h2
               variants={fadeUp}
               className="text-4xl lg:text-5xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] leading-tight mb-8"
             >
-              Preparada para escalar com você.
+              Somos a fábrica que o lojista sempre quis ter.
             </motion.h2>
             <motion.ul variants={stagger} className="space-y-4">
               {[
-                "Maquinário CNC e seccionadoras automatizadas para cortes precisos",
-                "Processos padronizados e documentados em cada etapa",
-                "Equipe técnica treinada e especializada em móveis planejados",
-                "Capacidade produtiva escalável sem comprometer prazos",
-                "Produto sob medida — totalmente editável, milímetro a milímetro",
+                "Prazo de 20 dias úteis — documentado e cumprido em cada pedido",
+                "Setor de suporte técnico Promob 100% dedicado ao lojista parceiro",
+                "Produção em MDF com borda PUR 1mm — acabamento que não decepciona",
+                "Processo transparente do pedido à entrega, com rastreio em tempo real",
+                "Equipe que conhece o seu negócio e está sempre disponível",
               ].map((item) => (
                 <motion.li key={item} variants={fadeUp} className="flex items-start gap-3 text-[#6B6966] text-sm">
                   <Check className="h-4 w-4 text-[#E67A22] shrink-0 mt-0.5" />
@@ -374,24 +375,24 @@ export default function Home() {
               variants={stagger}
             >
               <motion.p variants={fadeUp} className="label-tag mb-5">
-                <span className="text-[#E67A22]">Para lojistas</span>
+                <span className="text-[#E67A22]">Material gratuito</span>
               </motion.p>
               <motion.h2
                 variants={fadeUp}
                 className="text-4xl lg:text-5xl font-[family-name:var(--font-playfair)] font-black text-white leading-tight mb-6"
               >
-                Receba a apresentação Fabriko.
+                Baixe o catálogo e<br />comece a vender hoje.
               </motion.h2>
               <motion.p variants={fadeUp} className="text-white/40 text-base leading-relaxed mb-8">
-                Cadastre-se e receba no seu e-mail a apresentação completa da Fabriko — linhas, acabamentos,
-                prazos e condições para lojistas parceiros. Nosso time também entrará em contato pelo WhatsApp.
+                Preencha o formulário e receba no seu e-mail o catálogo completo + apresentação da Fabriko com linhas,
+                acabamentos, prazos e condições exclusivas. Nosso consultor também entrará em contato pelo WhatsApp.
               </motion.p>
               <motion.div variants={stagger} className="space-y-4">
                 {[
-                  "Acesso à biblioteca Promob Fabriko",
-                  "Condições exclusivas para lojistas",
-                  "Suporte técnico permanente",
-                  "Prazo de 20 dias úteis garantido",
+                  "Catálogo completo com todos os acabamentos",
+                  "Apresentação com condições para lojistas parceiros",
+                  "Acesso à biblioteca Promob Fabriko (30 dias grátis)",
+                  "Contato direto com um consultor Fabriko",
                 ].map((item) => (
                   <motion.div key={item} variants={fadeUp} className="flex items-center gap-3">
                     <Check className="h-4 w-4 text-[#E67A22] shrink-0" />
@@ -414,70 +415,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ NOSSA HISTÓRIA ══════════════════════════════════════ */}
-      <section className="py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.4 }}
-            variants={stagger}
-          >
-            <motion.p variants={fadeUp} className="label-tag mb-5">Nossa história</motion.p>
-            <motion.h2
-              variants={fadeUp}
-              className="text-4xl lg:text-5xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] leading-tight mb-6"
-            >
-              Fundada em Americana-SP para ser a parceira ideal.
-            </motion.h2>
-            <motion.div variants={fadeUp} className="space-y-4 text-[#6B6966] text-base leading-relaxed">
-              <p>
-                A Fabriko nasceu do desejo de se tornar a empresa mais confiável na fabricação e
-                fornecimento de móveis planejados essenciais e de alta qualidade.
-              </p>
-              <p>
-                Investimos em tecnologia de ponta, maquinários CNC de última geração e uma equipe
-                altamente qualificada — mas nosso diferencial sempre esteve além da técnica.
-              </p>
-              <p>
-                Está no respeito ao prazo, no cuidado com cada peça e na busca incansável por
-                facilitar o dia a dia de quem trabalha com móveis planejados.
-              </p>
-            </motion.div>
-            <motion.div variants={fadeUp} className="mt-8">
-              <Link
-                href="/quem-somos"
-                className="inline-flex items-center gap-2 text-[#E67A22] text-xs font-bold uppercase tracking-widest hover:gap-4 transition-all"
-              >
-                Nossa história completa <ChevronRight className="h-3.5 w-3.5" />
-              </Link>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7 }}
-            className="grid grid-cols-2 gap-4"
-          >
-            {[
-              { v: "MDF 15mm\ne 18mm", l: "3 espessuras de caixa e porta" },
-              { v: "Borda PUR\n1mm", l: "Maior resistência e acabamento premium" },
-              { v: "30 dias\ngrátis", l: "Trial do Promob Studio Fabriko" },
-              { v: "20 dias\núteis", l: "Prazo padrão de produção" },
-            ].map(({ v, l }) => (
-              <div key={l} className="bg-[#FAFAF8] border border-[#E8E6E3] p-6">
-                <p className="text-[#1A1917] font-[family-name:var(--font-playfair)] font-black text-xl whitespace-pre-line mb-2">
-                  {v}
-                </p>
-                <p className="text-[#1A1917]/40 text-xs leading-relaxed">{l}</p>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* ═══ CTA FINAL ════════════════════════════════════════════ */}
       <section className="py-28 bg-[#1A1917]">
         <div className="max-w-7xl mx-auto px-6">
@@ -497,12 +434,29 @@ export default function Home() {
               variants={fadeUp}
               className="text-4xl lg:text-6xl font-[family-name:var(--font-playfair)] font-black text-white leading-tight mb-6 max-w-2xl"
             >
-              Pronto para ter a Fabriko como sua parceira?
+              Cansado de fábrica que atrasa, não atende e ainda culpa o projeto?
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-white/40 text-lg mb-10 max-w-xl">
-              Acesse nossa biblioteca no Promob, projete com nossos acabamentos e envie para produção.
-              Simples assim.
+            <motion.p variants={fadeUp} className="text-white/40 text-base mb-6 max-w-xl">
+              A maioria das fábricas entrega com atraso, não tem suporte técnico e deixa o lojista sozinho na hora do problema.
+              Na Fabriko é diferente: prazo garantido, processo transparente e um setor de suporte Promob exclusivo — dedicado ao seu sucesso.
             </motion.p>
+            <motion.div variants={stagger} className="flex flex-col sm:flex-row gap-6 mb-10">
+              {[
+                { v: "Prazo cumprido", d: "20 dias úteis, sempre" },
+                { v: "Suporte Promob", d: "Time técnico exclusivo" },
+                { v: "Zero surpresas", d: "Processo 100% documentado" },
+              ].map(({ v, d }) => (
+                <motion.div key={v} variants={fadeUp} className="flex items-center gap-3">
+                  <div className="h-8 w-8 bg-[#E67A22]/20 border border-[#E67A22]/30 flex items-center justify-center shrink-0">
+                    <Check className="h-3.5 w-3.5 text-[#E67A22]" />
+                  </div>
+                  <div>
+                    <p className="text-white text-sm font-semibold">{v}</p>
+                    <p className="text-white/35 text-xs">{d}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
               <Link
                 href="/seja-parceiro"
@@ -523,6 +477,20 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* ═══ WHATSAPP FLUTUANTE ══════════════════════════════════ */}
+      <a
+        href="https://wa.me/5519996252987?text=Ol%C3%A1%2C%20visitei%20o%20site%20da%20Fabriko%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#25D366] hover:bg-[#1DA851] text-white px-4 py-3 shadow-lg hover:shadow-xl transition-all duration-300 group"
+        aria-label="WhatsApp Fabriko"
+      >
+        <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span className="text-sm font-semibold">Falar no WhatsApp</span>
+      </a>
 
       {/* ═══ VIDEO MODAL ══════════════════════════════════════════ */}
       {videoOpen && (

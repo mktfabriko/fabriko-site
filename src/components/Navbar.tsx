@@ -46,9 +46,9 @@ export function Navbar() {
           <Image
             src={isTransparent ? "/logo-white-transparent.png" : "/logo-dark-transparent.png"}
             alt="Fabriko"
-            width={240}
-            height={80}
-            className="h-20 w-auto object-contain"
+            width={360}
+            height={120}
+            className="h-[7.5rem] w-auto object-contain"
             priority
           />
         </Link>
