@@ -79,7 +79,7 @@ export default function Home() {
             </motion.p>
             <motion.h1
               variants={fadeUp}
-              className="text-[clamp(2.8rem,4.8vw,4.8rem)] font-[family-name:var(--font-oswald)] font-semibold text-white leading-[1.05] mb-6 uppercase tracking-wide"
+              className="text-[clamp(3rem,5.5vw,5.5rem)] font-[family-name:var(--font-oswald)] font-bold text-white leading-[0.95] mb-6 uppercase tracking-tight"
             >
               Sua fábrica de{" "}
               <span className="text-[#E67A22]">móveis planejados.</span>

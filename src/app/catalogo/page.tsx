@@ -65,9 +65,10 @@ const GRUPOS = [
     cores: CORES_ROMETAL,
   },
   {
-    grupo: "Perfil Integrado",
+    grupo: "Puxador Perfil",
     desc: "Para fresagem em portas. Solução elegante e sem puxador exposto.",
     items: [
+      { nome: "Puxador de Encaixe", desc: "Perfil em U para encaixe em porta. Solução prática e elegante sem parafusos.", tam: "Sob medida", img: "/items/54.webp" },
       { nome: "Gola RM-52", desc: "Perfil gola em alumínio para aplicação em friso superior ou inferior de portas.", tam: "Sob medida", img: "/items/56.webp" },
       { nome: "Gola RM-53", desc: "Versão com encaixe reforçado. Alta sofisticação para projetos premium.", tam: "Sob medida", img: "/items/55.webp" },
     ],
@@ -154,7 +155,7 @@ export default function Catalogo() {
                         <img
                           src={img}
                           alt={nome}
-                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                          className="w-full h-[115%] object-contain object-top group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-[#F5F3F0] to-[#EAE7E3] flex items-center justify-center">
@@ -232,7 +233,7 @@ export default function Catalogo() {
                   <img
                     src={img}
                     alt={nome}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="p-7">

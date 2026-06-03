@@ -3,21 +3,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, ChevronDown, Check, BookOpen, Settings, Phone } from "lucide-react";
+import { ArrowRight, ChevronDown, Check, Phone } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
-
-const MODULOS = [
-  { n: "01", titulo: "Instalação e Acesso", desc: "Ativação da licença via portal Promob, com 30 dias de teste gratuito. Sem custo inicial para começar." },
-  { n: "02", titulo: "Biblioteca Fabriko", desc: "Exploração completa dos acabamentos, puxadores e modelos de porta disponíveis na biblioteca exclusiva." },
-  { n: "03", titulo: "Criando o Primeiro Projeto", desc: "Do ambiente em branco ao projeto finalizado. Nomenclaturas, módulos e ambientes milímetro a milímetro." },
-  { n: "04", titulo: "Enviando para Produção", desc: "Formato do arquivo, nome do ambiente (máx. 20 caracteres), envio por e-mail e acompanhamento do pedido." },
-  { n: "05", titulo: "Suporte e Atualizações", desc: "Como acionar o suporte técnico, diferenciar erro de fábrica de erro de projeto e acompanhar novidades." },
-];
 
 const PROCEDIMENTOS = [
   {
@@ -185,123 +177,33 @@ export default function Promob() {
               className="text-[clamp(2.8rem,7vw,6rem)] font-[family-name:var(--font-oswald)] font-bold text-white leading-[0.92] mb-6 uppercase tracking-tight"
             >
               Promob<br />
-              <span className="text-[#E67A22]">Academy</span>
+              <span className="text-[#E67A22]">Fabriko</span>
             </motion.h1>
             <motion.p variants={fadeUp} className="text-white/45 text-lg max-w-2xl">
-              Aprenda a projetar com a biblioteca exclusiva Fabriko no Promob Studio.
-              Do primeiro acesso ao envio do pedido — tudo o que você precisa saber.
+              A biblioteca exclusiva Fabriko no Promob Studio. Do acesso ao envio do pedido — com suporte técnico dedicado em cada etapa.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* Módulos da Academia */}
-      <section className="py-24 bg-white">
+      {/* Suporte Técnico */}
+      <section className="py-24 bg-[#1A1917]">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={stagger}
-            className="mb-14"
-          >
-            <motion.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-              <BookOpen className="h-5 w-5 text-[#E67A22]" />
-              <p className="label-tag">Módulos de Treinamento</p>
-            </motion.div>
-            <motion.h2 variants={fadeUp}
-              className="text-4xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] max-w-xl">
-              5 aulas para dominar o Promob Fabriko.
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
+            <motion.p variants={fadeUp} className="label-tag mb-5">Suporte exclusivo</motion.p>
+            <motion.h2 variants={fadeUp} className="text-4xl font-[family-name:var(--font-playfair)] font-black text-white max-w-2xl mb-12">
+              Seu projeto tem suporte técnico dedicado.
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-[#6B6966] text-base mt-4 max-w-lg">
-              Treinamento completo — do acesso inicial ao envio de pedidos em produção.
-              Acesse em afconsultorias.com/fabriko/academy após ser parceiro.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={stagger}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E8E6E3]"
-          >
-            {MODULOS.map(({ n, titulo, desc }) => (
-              <motion.div key={n} variants={fadeUp}
-                className="bg-white p-8 hover:bg-[#FAFAF8] transition-colors group">
-                <p className="text-[#E67A22]/20 font-[family-name:var(--font-playfair)] font-black text-5xl mb-5 group-hover:text-[#E67A22]/40 transition-colors leading-none">
-                  {n}
-                </p>
-                <h3 className="text-[#1A1917] font-semibold text-sm mb-3">{titulo}</h3>
-                <p className="text-[#6B6966] text-xs leading-relaxed">{desc}</p>
-              </motion.div>
-            ))}
-            {/* Extra card — acesso */}
-            <motion.div variants={fadeUp}
-              className="bg-[#E67A22] p-8 flex flex-col justify-between col-span-full lg:col-span-1">
-              <div>
-                <p className="text-white/50 text-xs font-bold uppercase tracking-widest mb-4">Acesso gratuito</p>
-                <h3 className="text-white font-[family-name:var(--font-playfair)] font-black text-2xl mb-3">
-                  30 dias de trial
-                </h3>
-                <p className="text-white/70 text-sm leading-relaxed">
-                  Acesse a biblioteca exclusiva Fabriko no Promob Studio gratuitamente por 30 dias.
-                  Sem custo para começar.
-                </p>
-              </div>
-              <Link href="/seja-parceiro"
-                className="mt-6 inline-flex items-center gap-2 bg-white text-[#E67A22] text-xs font-bold px-5 py-3 tracking-widest uppercase hover:bg-[#FFF8F4] transition-colors">
-                Quero o acesso
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Precificação */}
-      <section className="py-20 bg-[#FAFAF8] border-y border-[#E8E6E3]">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={stagger}
-            className="grid lg:grid-cols-2 gap-16 items-center"
-          >
-            <motion.div variants={stagger}>
-              <motion.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-                <Settings className="h-4 w-4 text-[#E67A22]" />
-                <p className="label-tag">Precificação</p>
-              </motion.div>
-              <motion.h2 variants={fadeUp}
-                className="text-4xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] mb-5">
-                Aprenda a precificar com confiança.
-              </motion.h2>
-              <motion.p variants={fadeUp} className="text-[#6B6966] text-base leading-relaxed mb-6">
-                O Academy inclui módulo de precificação com fórmulas de markup e margem — os dois conceitos
-                mais confundidos no setor moveleiro. Saber precificar corretamente é o que separa
-                o lojista rentável do que trabalha muito e ganha pouco.
-              </motion.p>
-            </motion.div>
-
-            <motion.div
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={stagger}
-              className="space-y-4"
-            >
+            <motion.div variants={stagger} className="grid md:grid-cols-3 gap-px bg-white/10">
               {[
-                { titulo: "Markup", formula: "Preço de Venda = Custo Total × Markup", desc: "Multiplicador aplicado sobre o custo para chegar ao preço de venda." },
-                { titulo: "Margem", formula: "Margem % = (Preço − Custo) ÷ Preço × 100", desc: "Percentual de lucro em relação ao preço de venda. Nunca confunda com markup." },
-                { titulo: "Erro mais comum", formula: "50% de markup ≠ 50% de margem", desc: "Confundir os dois pode reduzir sua rentabilidade sem que você perceba." },
-              ].map(({ titulo, formula, desc }) => (
-                <motion.div key={titulo} variants={fadeUp}
-                  className="border border-[#E8E6E3] bg-white p-5">
-                  <h3 className="text-[#1A1917] font-semibold text-sm mb-1">{titulo}</h3>
-                  <p className="text-[#E67A22] font-mono text-xs font-bold mb-2 bg-[#E67A22]/5 px-3 py-1.5 inline-block">{formula}</p>
-                  <p className="text-[#6B6966] text-xs leading-relaxed">{desc}</p>
+                { t: "Dúvidas de Projeto", d: "Suporte via WhatsApp com consultor técnico para esclarecer qualquer dúvida no Promob Fabriko.", icon: "💬" },
+                { t: "Implementação", d: "Apoio na configuração da biblioteca, instalação do Promob e primeiros pedidos do lojista parceiro.", icon: "⚙️" },
+                { t: "Correções e Ajustes", d: "Erros de produção resolvidos em até 5 dias úteis. Análises complexas em até 15 dias.", icon: "🔧" },
+              ].map(({ t, d, icon }) => (
+                <motion.div key={t} variants={fadeUp} className="bg-[#221F1D] p-8 hover:bg-[#2A2725] transition-colors">
+                  <p className="text-2xl mb-4">{icon}</p>
+                  <h3 className="text-white font-semibold text-sm mb-3">{t}</h3>
+                  <p className="text-white/45 text-xs leading-relaxed">{d}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -401,10 +303,6 @@ export default function Promob() {
                 Quero ser parceiro
                 <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <a href="https://afconsultorias.com/fabriko/academy" target="_blank" rel="noopener noreferrer"
-                className="border border-white/20 text-white/50 hover:text-white hover:border-white/40 text-xs font-medium px-7 py-4 tracking-widest uppercase transition-all">
-                Acessar Academy
-              </a>
             </motion.div>
           </motion.div>
         </div>

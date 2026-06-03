@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -18,6 +19,15 @@ const FOTOS_FABRICA = [
 ];
 
 export default function QuemSomos() {
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  function prevSlide() {
+    setSlideIndex((i) => (i - 1 + FOTOS_FABRICA.length) % FOTOS_FABRICA.length);
+  }
+  function nextSlide() {
+    setSlideIndex((i) => (i + 1) % FOTOS_FABRICA.length);
+  }
+
   return (
     <>
       {/* Hero */}
@@ -43,39 +53,58 @@ export default function QuemSomos() {
         </div>
       </section>
 
-      {/* Fotos da fábrica */}
+      {/* Fotos da fábrica — carrossel */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {FOTOS_FABRICA.map(({ src, legenda }, i) => (
-              <motion.div
-                key={src}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group"
+          <div className="relative">
+            <div className="overflow-hidden">
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${slideIndex * (100 / 1)}%)` }}
               >
-                <div className="aspect-square overflow-hidden bg-[#F0EEE8] mb-2 relative">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={src}
-                    alt={legenda}
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = "none";
-                    }}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  {/* Fallback elegante — visível enquanto não há foto */}
-                  <div className="absolute inset-0 flex items-end p-4 pointer-events-none">
-                    <span className="text-[#E67A22]/20 font-[family-name:var(--font-playfair)] font-black text-5xl leading-none select-none">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                {FOTOS_FABRICA.map(({ src, legenda }, i) => (
+                  <div
+                    key={src}
+                    className="min-w-full sm:min-w-[50%] lg:min-w-[25%] px-2 group"
+                    style={{ flex: "0 0 auto" }}
+                  >
+                    <div className="aspect-square overflow-hidden bg-[#F0EEE8] mb-2 relative">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={src}
+                        alt={legenda}
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).style.display = "none";
+                        }}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 flex items-end p-4 pointer-events-none">
+                        <span className="text-[#E67A22]/20 font-[family-name:var(--font-playfair)] font-black text-5xl leading-none select-none">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-[#1A1917]/50 text-xs font-medium">{legenda}</p>
                   </div>
-                </div>
-                <p className="text-[#1A1917]/50 text-xs font-medium">{legenda}</p>
-              </motion.div>
-            ))}
+                ))}
+              </div>
+            </div>
+
+            {/* Botões prev/next */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 h-10 w-10 bg-white border border-[#E8E6E3] hover:border-[#E67A22]/40 flex items-center justify-center shadow-sm transition-colors z-10"
+              aria-label="Anterior"
+            >
+              <ChevronLeft className="h-5 w-5 text-[#1A1917]/50" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 h-10 w-10 bg-white border border-[#E8E6E3] hover:border-[#E67A22]/40 flex items-center justify-center shadow-sm transition-colors z-10"
+              aria-label="Próximo"
+            >
+              <ChevronRight className="h-5 w-5 text-[#1A1917]/50" />
+            </button>
           </div>
         </div>
       </section>
@@ -176,60 +205,6 @@ export default function QuemSomos() {
         </div>
       </section>
 
-      {/* Checklist Produção */}
-      <section className="py-20 bg-[#FAFAF8] border-t border-[#E8E6E3]">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={stagger}
-          >
-            <motion.p variants={fadeUp} className="label-tag mb-5">Processo produtivo</motion.p>
-            <motion.h2 variants={fadeUp}
-              className="text-3xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] mb-6">
-              Do projeto à entrega — 20 dias úteis.
-            </motion.h2>
-            <motion.ul variants={stagger} className="space-y-3">
-              {[
-                "Projeto enviado via Promob Studio Fabriko",
-                "Revisão técnica e aprovação financeira",
-                "Corte CNC conforme especificações",
-                "Colagem de bordas PUR 1mm em todas as peças",
-                "Conferência e embalagem individual",
-                "Expedição com prazo garantido",
-              ].map((item) => (
-                <motion.li key={item} variants={fadeUp} className="flex items-start gap-3 text-[#6B6966] text-sm">
-                  <Check className="h-4 w-4 text-[#E67A22] shrink-0 mt-0.5" />
-                  {item}
-                </motion.li>
-              ))}
-            </motion.ul>
-          </motion.div>
-
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { v: "20 dias", l: "Prazo de produção úteis" },
-              { v: "PUR 1mm", l: "Colagem de borda industrial" },
-              { v: "CNC", l: "Corte automatizado de precisão" },
-              { v: "Promob", l: "Biblioteca exclusiva Fabriko" },
-            ].map(({ v, l }) => (
-              <motion.div
-                key={l}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="bg-white border border-[#E8E6E3] p-6 text-center"
-              >
-                <p className="text-[#E67A22] font-[family-name:var(--font-playfair)] font-black text-2xl mb-2">{v}</p>
-                <p className="text-[#1A1917]/40 text-xs leading-relaxed">{l}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Foto da equipe */}
       <section className="py-20 bg-[#FAFAF8] border-t border-[#E8E6E3]">
         <div className="max-w-7xl mx-auto px-6">
@@ -251,13 +226,13 @@ export default function QuemSomos() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7 }}
-            className="overflow-hidden border border-[#E8E6E3]"
+            className="border border-[#E8E6E3]"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/fotos/equipe.webp"
               alt="Equipe Fabriko"
-              className="w-full h-80 object-cover object-top"
+              className="w-full object-contain bg-[#F0EEE8]"
             />
           </motion.div>
         </div>

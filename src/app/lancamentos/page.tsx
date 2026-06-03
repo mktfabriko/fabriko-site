@@ -221,14 +221,14 @@ export default function Lancamentos() {
           style={{ background: "radial-gradient(ellipse at right top, #E67A22 0%, transparent 60%)" }} />
 
         <div className="relative max-w-7xl mx-auto px-6">
-          <motion.div initial="hidden" animate="show" variants={stagger}>
+          <motion.div initial="hidden" animate="show" variants={stagger} className="max-w-3xl">
             <motion.div variants={fadeUp} className="flex items-center gap-3 mb-5">
               <Sparkles className="h-4 w-4 text-[#E67A22]" />
               <p className="label-tag">Novidades Fabriko</p>
             </motion.div>
             <motion.h1
               variants={fadeUp}
-              className="text-[clamp(2.8rem,7vw,6rem)] font-[family-name:var(--font-oswald)] font-bold text-white leading-[0.92] mb-6 uppercase tracking-tight"
+              className="text-[clamp(3.5rem,8vw,7rem)] font-[family-name:var(--font-oswald)] font-bold text-white leading-[0.9] mb-6 uppercase tracking-tight"
             >
               Lança-<br />
               <span className="text-[#E67A22]">mentos</span>
