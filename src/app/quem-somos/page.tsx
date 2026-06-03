@@ -34,9 +34,9 @@ export default function QuemSomos() {
       <section className="relative bg-[#1A1917] pt-36 pb-20 overflow-hidden">
         <div className="absolute right-0 top-0 w-1/2 h-full opacity-5"
           style={{ background: "radial-gradient(ellipse at right top, #E67A22 0%, transparent 60%)" }} />
-        <div className="relative max-w-7xl mx-auto px-6">
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.p variants={fadeUp} className="label-tag mb-5">Nossa história</motion.p>
+            <motion.p variants={fadeUp} className="label-tag mb-5 inline-block">Nossa história</motion.p>
             <motion.h1
               variants={fadeUp}
               className="text-[clamp(2.8rem,7vw,6rem)] font-[family-name:var(--font-oswald)] font-bold text-white leading-[0.92] mb-6 uppercase tracking-tight"
@@ -44,7 +44,7 @@ export default function QuemSomos() {
               Fundada para ser<br />
               <span className="text-[#E67A22]">a mais confiável.</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-white/45 text-lg max-w-2xl">
+            <motion.p variants={fadeUp} className="text-white/45 text-lg mx-auto max-w-2xl">
               Em Americana-SP, em meio a um polo industrial em constante crescimento,
               nasceu o desejo de se tornar a empresa mais confiável na fabricação e
               fornecimento de móveis planejados essenciais e de alta qualidade.
@@ -60,26 +60,23 @@ export default function QuemSomos() {
             <div className="overflow-hidden">
               <div
                 className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${slideIndex * (100 / 1)}%)` }}
+                style={{ transform: `translateX(-${slideIndex * 100}%)` }}
               >
                 {FOTOS_FABRICA.map(({ src, legenda }, i) => (
                   <div
                     key={src}
-                    className="min-w-full sm:min-w-[50%] lg:min-w-[25%] px-2 group"
-                    style={{ flex: "0 0 auto" }}
+                    className="min-w-full px-0 group"
+                    style={{ flex: "0 0 100%" }}
                   >
-                    <div className="aspect-square overflow-hidden bg-[#F0EEE8] mb-2 relative">
+                    <div className="aspect-[16/7] overflow-hidden bg-[#F0EEE8] mb-3 relative">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={src}
                         alt={legenda}
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).style.display = "none";
-                        }}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       />
-                      <div className="absolute inset-0 flex items-end p-4 pointer-events-none">
-                        <span className="text-[#E67A22]/20 font-[family-name:var(--font-playfair)] font-black text-5xl leading-none select-none">
+                      <div className="absolute inset-0 flex items-end p-6 pointer-events-none bg-gradient-to-t from-black/30 to-transparent">
+                        <span className="text-white/30 font-[family-name:var(--font-playfair)] font-black text-6xl leading-none select-none">
                           {String(i + 1).padStart(2, "0")}
                         </span>
                       </div>
@@ -93,18 +90,30 @@ export default function QuemSomos() {
             {/* Botões prev/next */}
             <button
               onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 h-10 w-10 bg-white border border-[#E8E6E3] hover:border-[#E67A22]/40 flex items-center justify-center shadow-sm transition-colors z-10"
+              className="absolute left-3 top-1/2 -translate-y-6 h-10 w-10 bg-white/90 border border-[#E8E6E3] hover:border-[#E67A22]/40 flex items-center justify-center shadow-sm transition-colors z-10"
               aria-label="Anterior"
             >
               <ChevronLeft className="h-5 w-5 text-[#1A1917]/50" />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 h-10 w-10 bg-white border border-[#E8E6E3] hover:border-[#E67A22]/40 flex items-center justify-center shadow-sm transition-colors z-10"
+              className="absolute right-3 top-1/2 -translate-y-6 h-10 w-10 bg-white/90 border border-[#E8E6E3] hover:border-[#E67A22]/40 flex items-center justify-center shadow-sm transition-colors z-10"
               aria-label="Próximo"
             >
               <ChevronRight className="h-5 w-5 text-[#1A1917]/50" />
             </button>
+
+            {/* Dots */}
+            <div className="flex justify-center gap-2 mt-5">
+              {FOTOS_FABRICA.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setSlideIndex(i)}
+                  className={`h-1.5 transition-all ${i === slideIndex ? "w-6 bg-[#E67A22]" : "w-1.5 bg-[#1A1917]/20 hover:bg-[#1A1917]/40"}`}
+                  aria-label={`Foto ${i + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -230,7 +239,7 @@ export default function QuemSomos() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/fotos/equipe.webp"
+              src="/fotos/equipe2.png"
               alt="Equipe Fabriko"
               className="w-full object-contain bg-[#F0EEE8]"
             />

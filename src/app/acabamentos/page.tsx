@@ -39,6 +39,7 @@ const CATEGORIAS: Categoria[] = [
     desc: "Acabamentos com texturas únicas — remetem a pedras, metais e tecidos. Para projetos com personalidade marcante.",
     ambienteImg: AMB_CONCEITO,
     items: [
+      { nome: "Lino Chess", linha: "Chess", hex: ["#D8D4CC", "#C8C4BC"], swatchImg: "/items/10.webp" },
       { nome: "Atenna", linha: "Fancy", hex: ["#A89280", "#C4AE9A"], swatchImg: "/items/11.webp" },
       { nome: "Bronze", linha: "Magma", hex: ["#8B5E3C", "#A67248"], swatchImg: "/items/12.webp" },
       { nome: "Cosmos", linha: "Magma", hex: ["#2A2420", "#3E3530"], swatchImg: "/items/13.webp" },
@@ -61,6 +62,10 @@ const CATEGORIAS: Categoria[] = [
       { nome: "Azul Sereno", linha: "Matt", hex: "#A8B8D0", swatchImg: "/items/24.webp" },
       { nome: "Azul Secreto", linha: "Essencial", hex: "#3A4F6A", swatchImg: "/items/25.webp" },
       { nome: "Verde Jade", linha: "Matt", hex: "#5A8070", swatchImg: "/items/26.webp" },
+      { nome: "Frapê", linha: "Matt", hex: "#C8B89A", swatchImg: "/items/27.webp" },
+      { nome: "Branco TX Premium", linha: "Resistente à Umidade", hex: "#F0EDE8", swatchImg: "/items/28.webp" },
+      { nome: "Cafelatte", linha: "Matt", hex: "#9A7A60", swatchImg: "/items/29.webp" },
+      { nome: "Pérola Urbana", linha: "Essencial", hex: "#E8E0D4", swatchImg: "/items/30.webp" },
     ],
   },
   {
@@ -155,9 +160,9 @@ export default function Acabamentos() {
     <>
       {/* Hero */}
       <section className="relative bg-[#1A1917] pt-36 pb-20">
-        <div className="relative max-w-7xl mx-auto px-6">
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.p variants={fadeUp} className="label-tag mb-5">Portfólio de materiais</motion.p>
+            <motion.p variants={fadeUp} className="label-tag mb-5 inline-block">Portfólio de materiais</motion.p>
             <motion.h1
               variants={fadeUp}
               className="text-[clamp(2.8rem,7vw,6rem)] font-[family-name:var(--font-oswald)] font-bold text-white leading-[0.92] mb-6 uppercase tracking-tight"
@@ -165,7 +170,7 @@ export default function Acabamentos() {
               Acaba-<br />
               <span className="text-[#E67A22]">mentos</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-white/45 text-lg max-w-xl">
+            <motion.p variants={fadeUp} className="text-white/45 text-lg mx-auto max-w-xl">
               Selecionados entre os principais fornecedores de matéria-prima. Alinhados com as
               tendências da decoração e do design atual.
             </motion.p>

@@ -38,9 +38,9 @@ export default function Contato() {
     <>
       {/* Hero */}
       <section className="relative bg-[#1A1917] pt-36 pb-20">
-        <div className="relative max-w-7xl mx-auto px-6">
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.p variants={fadeUp} className="label-tag mb-5">Americana — SP</motion.p>
+            <motion.p variants={fadeUp} className="label-tag mb-5 inline-block">Americana — SP</motion.p>
             <motion.h1
               variants={fadeUp}
               className="text-[clamp(2.8rem,7vw,6rem)] font-[family-name:var(--font-playfair)] font-black text-white leading-[0.92]"

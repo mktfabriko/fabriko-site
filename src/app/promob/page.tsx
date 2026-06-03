@@ -166,12 +166,12 @@ export default function Promob() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#1A1917] pt-36 pb-20 overflow-hidden">
+      <section className="relative bg-[#1A1917] pt-36 pb-24 overflow-hidden border-b-4 border-[#E67A22]">
         <div className="absolute right-0 top-0 w-1/2 h-full opacity-5"
           style={{ background: "radial-gradient(ellipse at right top, #E67A22 0%, transparent 60%)" }} />
-        <div className="relative max-w-7xl mx-auto px-6">
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.p variants={fadeUp} className="label-tag mb-5">Projete com Fabriko</motion.p>
+            <motion.p variants={fadeUp} className="label-tag mb-5 inline-block">Projete com Fabriko</motion.p>
             <motion.h1
               variants={fadeUp}
               className="text-[clamp(2.8rem,7vw,6rem)] font-[family-name:var(--font-oswald)] font-bold text-white leading-[0.92] mb-6 uppercase tracking-tight"
@@ -179,7 +179,7 @@ export default function Promob() {
               Promob<br />
               <span className="text-[#E67A22]">Fabriko</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-white/45 text-lg max-w-2xl">
+            <motion.p variants={fadeUp} className="text-white/45 text-lg mx-auto max-w-2xl">
               A biblioteca exclusiva Fabriko no Promob Studio. Do acesso ao envio do pedido — com suporte técnico dedicado em cada etapa.
             </motion.p>
           </motion.div>
@@ -187,7 +187,7 @@ export default function Promob() {
       </section>
 
       {/* Suporte Técnico */}
-      <section className="py-24 bg-[#1A1917]">
+      <section className="py-24 bg-[#221F1D]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
             <motion.p variants={fadeUp} className="label-tag mb-5">Suporte exclusivo</motion.p>
