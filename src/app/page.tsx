@@ -342,12 +342,10 @@ export default function Home() {
             className="relative aspect-video bg-[#1A1917] overflow-hidden cursor-pointer group border border-[#E8E6E3]"
             onClick={() => setVideoOpen(true)}
           >
-            <video
-              src="/video-apresentacao.mp4"
+            <img
+              src="https://img.youtube.com/vi/p1NaTAbQBNw/maxresdefault.jpg"
+              alt="Apresentação Fabriko"
               className="absolute inset-0 w-full h-full object-cover opacity-60"
-              muted
-              playsInline
-              preload="metadata"
             />
             <div className="absolute inset-0 bg-[#1A1917]/40 group-hover:bg-[#1A1917]/20 transition-colors duration-300" />
             <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -547,11 +545,11 @@ export default function Home() {
             className="w-full max-w-5xl aspect-video"
             onClick={(e) => e.stopPropagation()}
           >
-            <video
-              src="/video-apresentacao.mp4"
+            <iframe
+              src="https://www.youtube.com/embed/p1NaTAbQBNw?autoplay=1"
               className="w-full h-full"
-              controls
-              autoPlay
+              allow="autoplay; encrypted-media"
+              allowFullScreen
             />
           </motion.div>
         </motion.div>
