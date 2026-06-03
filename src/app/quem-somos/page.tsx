@@ -11,10 +11,10 @@ const fadeUp = {
 const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.1 } } };
 
 const FOTOS_FABRICA = [
-  { src: "/fotos/2.png", legenda: "Parque fabril — Americana-SP" },
-  { src: "/fotos/4.png", legenda: "Maquinário CNC de última geração" },
-  { src: "/fotos/6.png", legenda: "Equipe de produção" },
-  { src: "/fotos/14.png", legenda: "Processo de acabamento PUR" },
+  { src: "/fotos/2.webp", legenda: "Parque fabril — Americana-SP" },
+  { src: "/fotos/4.webp", legenda: "Maquinário CNC de última geração" },
+  { src: "/fotos/6.webp", legenda: "Equipe de produção" },
+  { src: "/fotos/14.webp", legenda: "Processo de acabamento PUR" },
 ];
 
 export default function QuemSomos() {
@@ -255,7 +255,7 @@ export default function QuemSomos() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/fotos/equipe.png"
+              src="/fotos/equipe.webp"
               alt="Equipe Fabriko"
               className="w-full h-80 object-cover object-top"
             />

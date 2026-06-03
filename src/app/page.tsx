@@ -19,7 +19,7 @@ const LINHAS = [
     portas: "15mm",
     desc: "A linha de entrada com excelente custo-benefício. Caixas e portas em MDF 15mm, perfeita para projetos de alto volume.",
     detalhe: "Ideal para dormitórios, cozinhas e ambientes que exigem bom acabamento com praticidade.",
-    img: "/fotos/37.png",
+    img: "/fotos/37.webp",
   },
   {
     nome: "Milano",
@@ -27,7 +27,7 @@ const LINHAS = [
     portas: "18mm",
     desc: "O equilíbrio perfeito entre qualidade e valor. Caixas 15mm com portas premium em MDF 18mm.",
     detalhe: "A linha mais vendida. Combina robustez nas portas com leveza na estrutura.",
-    img: "/fotos/41.png",
+    img: "/fotos/41.webp",
   },
   {
     nome: "Maxximum",
@@ -35,15 +35,15 @@ const LINHAS = [
     portas: "18mm",
     desc: "Alta performance em toda a estrutura. MDF 18mm em caixas e portas para projetos de alto padrão.",
     detalhe: "Para o lojista que atende o cliente mais exigente. Resistência e sofisticação completas.",
-    img: "/fotos/50.png",
+    img: "/fotos/50.webp",
   },
 ];
 
 const ACABAMENTOS_PREVIEW = [
-  { cat: "Madeirado", img: "/items/6.png", itens: "Carvalho Natural, Freijó, Tauari, Pau Ferro, Louro Freijó..." },
-  { cat: "Unicolor", img: "/items/23.png", itens: "Branco Diamante, Beton, Cinza Sagrado, Grafito, Azul Sereno..." },
-  { cat: "Conceito", img: "/items/11.png", itens: "Atenna, Bronze, Cosmos, Lino Chess, Lana..." },
-  { cat: "Blend", img: "/items/38.png", itens: "Off White Suave, Gianduia, Ébano Chess, Lenho, Granile..." },
+  { cat: "Madeirado", img: "/items/6.webp", itens: "Carvalho Natural, Freijó, Tauari, Pau Ferro, Louro Freijó..." },
+  { cat: "Unicolor", img: "/items/23.webp", itens: "Branco Diamante, Beton, Cinza Sagrado, Grafito, Azul Sereno..." },
+  { cat: "Conceito", img: "/items/11.webp", itens: "Atenna, Bronze, Cosmos, Lino Chess, Lana..." },
+  { cat: "Blend", img: "/items/38.webp", itens: "Off White Suave, Gianduia, Ébano Chess, Lenho, Granile..." },
 ];
 
 const DIFERENCIAIS = [
@@ -63,7 +63,7 @@ export default function Home() {
       {/* ═══ HERO ═══════════════════════════════════════════════ */}
       <section
         className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#1A1917]"
-        style={{ backgroundImage: "url('/fotos/1.png')", backgroundSize: "cover", backgroundPosition: "center" }}
+        style={{ backgroundImage: "url('/fotos/1.webp')", backgroundSize: "cover", backgroundPosition: "center" }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-[#E67A22]/8 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0B] via-[#0D0D0B]/40 to-[#0D0D0B]/10" />

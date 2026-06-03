@@ -38,10 +38,10 @@ const GRUPOS = [
     grupo: "Alças — Coleção Avulso",
     desc: "Design clássico e contemporâneo. Disponíveis em 11 cores exclusivas.",
     items: [
-      { nome: "Alça Clássica", desc: "Design atemporal que une elegância e versatilidade.", tam: "64mm · 128mm", img: "/items/41.png" },
-      { nome: "Alça Ponta", desc: "Linhas retas e levemente inclinadas. Modernidade e discrição.", tam: "64mm · 128mm · 288mm", img: "/items/42.png" },
-      { nome: "Alça Concha", desc: "Clássico e aconchegante. Pegada ergonômica e estética charmosa.", tam: "64mm", img: "/items/43.png" },
-      { nome: "Alça Slim", desc: "Minimalista, funcional e elegante. Para projetos que valorizam leveza visual.", tam: "64mm · 128mm · 256mm", img: "/items/45.png" },
+      { nome: "Alça Clássica", desc: "Design atemporal que une elegância e versatilidade.", tam: "64mm · 128mm", img: "/items/41.webp" },
+      { nome: "Alça Ponta", desc: "Linhas retas e levemente inclinadas. Modernidade e discrição.", tam: "64mm · 128mm · 288mm", img: "/items/42.webp" },
+      { nome: "Alça Concha", desc: "Clássico e aconchegante. Pegada ergonômica e estética charmosa.", tam: "64mm", img: "/items/43.webp" },
+      { nome: "Alça Slim", desc: "Minimalista, funcional e elegante. Para projetos que valorizam leveza visual.", tam: "64mm · 128mm · 256mm", img: "/items/45.webp" },
     ],
     cores: CORES_AVULSO,
   },
@@ -49,8 +49,8 @@ const GRUPOS = [
     grupo: "Pontos e Abas — Coleção Avulso",
     desc: "Detalhes sofisticados e soluções modernas.",
     items: [
-      { nome: "Ponto Clássico", desc: "Toque de sofisticação para detalhes. Discreto, porém marcante.", tam: "25mm · 32mm", img: "/items/44.png" },
-      { nome: "Aba Reta Smart", desc: "Solução moderna, de fácil aplicação e estética limpa.", tam: "150mm", img: "/items/46.png" },
+      { nome: "Ponto Clássico", desc: "Toque de sofisticação para detalhes. Discreto, porém marcante.", tam: "25mm · 32mm", img: "/items/44.webp" },
+      { nome: "Aba Reta Smart", desc: "Solução moderna, de fácil aplicação e estética limpa.", tam: "150mm", img: "/items/46.webp" },
     ],
     cores: CORES_AVULSO,
   },
@@ -58,9 +58,9 @@ const GRUPOS = [
     grupo: "Abas Rometal",
     desc: "Design contemporâneo e funcional. 6 acabamentos exclusivos.",
     items: [
-      { nome: "Puxador Aria", desc: "Aba angular com design aerodinâmico. Leveza e modernidade.", tam: "96mm · 128mm · 160mm", img: "/items/49.png" },
-      { nome: "Puxador Cielo", desc: "Aba plana de perfil slim. Ergonomia e sofisticação em um único gesto.", tam: "96mm · 128mm", img: "/items/50.png" },
-      { nome: "Puxador Luna", desc: "Curvatura suave que entrega leveza e personalidade ao projeto.", tam: "96mm · 128mm · 192mm", img: "/items/51.png" },
+      { nome: "Puxador Aria", desc: "Aba angular com design aerodinâmico. Leveza e modernidade.", tam: "96mm · 128mm · 160mm", img: "/items/49.webp" },
+      { nome: "Puxador Cielo", desc: "Aba plana de perfil slim. Ergonomia e sofisticação em um único gesto.", tam: "96mm · 128mm", img: "/items/50.webp" },
+      { nome: "Puxador Luna", desc: "Curvatura suave que entrega leveza e personalidade ao projeto.", tam: "96mm · 128mm · 192mm", img: "/items/51.webp" },
     ],
     cores: CORES_ROMETAL,
   },
@@ -68,8 +68,8 @@ const GRUPOS = [
     grupo: "Perfil Integrado",
     desc: "Para fresagem em portas. Solução elegante e sem puxador exposto.",
     items: [
-      { nome: "Gola RM-52", desc: "Perfil gola em alumínio para aplicação em friso superior ou inferior de portas.", tam: "Sob medida", img: "/items/56.png" },
-      { nome: "Gola RM-53", desc: "Versão com encaixe reforçado. Alta sofisticação para projetos premium.", tam: "Sob medida", img: "/items/55.png" },
+      { nome: "Gola RM-52", desc: "Perfil gola em alumínio para aplicação em friso superior ou inferior de portas.", tam: "Sob medida", img: "/items/56.webp" },
+      { nome: "Gola RM-53", desc: "Versão com encaixe reforçado. Alta sofisticação para projetos premium.", tam: "Sob medida", img: "/items/55.webp" },
     ],
     cores: [
       { nome: "Anodizado", hex: "#A8A8A8" },
@@ -94,14 +94,14 @@ const MODELOS_PORTA = [
     desc: "Estilo clássico e sofisticado. Porta de 15mm com borda perimetral de 6mm, totalizando 21mm de espessura total. O detalhe que eleva o projeto.",
     spec: "Espessura total: 21mm · Borda perimetral de 6mm inclusa",
     tag: "Clássico",
-    img: "/items/66.png",
+    img: "/items/66.webp",
   },
   {
     nome: "Porta Metala Vetro",
     desc: "Estrutura em alumínio com vidro. Leveza, modernidade e sofisticação máxima. Acompanha puxador modelo Novo em ampla gama de cores.",
     spec: "Estrutura alumínio + vidro · Puxador exclusivo Novo incluso",
     tag: "Premium",
-    img: "/items/67.png",
+    img: "/items/67.webp",
   },
 ];
 
@@ -282,7 +282,7 @@ export default function Catalogo() {
             <div className="overflow-hidden border border-[#E8E6E3]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/items/71.png"
+                src="/items/71.webp"
                 alt="Painéis e prateleiras com LED"
                 className="w-full h-72 object-cover object-top"
               />

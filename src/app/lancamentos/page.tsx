@@ -38,7 +38,7 @@ const LANCAMENTOS: Lancamento[] = [
       "Já disponível no Promob Studio Fabriko",
     ],
     cor: "#2A2A28",
-    img: "/fotos/29.png",
+    img: "/fotos/29.webp",
     novo: true,
   },
   {
@@ -55,7 +55,7 @@ const LANCAMENTOS: Lancamento[] = [
       "Resistente a marcas e manchas superficiais",
     ],
     cor: "#C8963C",
-    img: "/fotos/44.png",
+    img: "/fotos/44.webp",
     novo: true,
   },
   {
@@ -72,7 +72,7 @@ const LANCAMENTOS: Lancamento[] = [
       "Entrega no prazo padrão de 20 dias úteis",
     ],
     cor: "#8B6914",
-    img: "/items/66.png",
+    img: "/items/66.webp",
     novo: false,
   },
   {
@@ -89,7 +89,7 @@ const LANCAMENTOS: Lancamento[] = [
       "Consulte disponibilidade e prazo com seu consultor",
     ],
     cor: "#3A3A3A",
-    img: "/items/67.png",
+    img: "/items/67.webp",
     novo: false,
   },
   {
@@ -106,7 +106,7 @@ const LANCAMENTOS: Lancamento[] = [
       "Soluções para nichos, estantes e painéis de TV",
     ],
     cor: "#E67A22",
-    img: "/items/71.png",
+    img: "/items/71.webp",
     novo: false,
   },
   {
@@ -123,7 +123,7 @@ const LANCAMENTOS: Lancamento[] = [
       "Disponível no catálogo Fabriko 2026",
     ],
     cor: "#A0A0A0",
-    img: "/items/50.png",
+    img: "/items/50.webp",
     novo: true,
   },
 ];

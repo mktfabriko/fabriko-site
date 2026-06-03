@@ -14,10 +14,10 @@ const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } };
 type Acabamento = { nome: string; linha: string; hex: string | string[]; img?: string; swatchImg?: string };
 type Categoria = { cat: string; desc: string; items: Acabamento[]; ambienteImg: string };
 
-const AMB_MADEIRADO = "/fotos/28.png";
-const AMB_UNICOLOR  = "/fotos/33.png";
-const AMB_CONCEITO  = "/fotos/31.png";
-const AMB_BLEND     = "/fotos/44.png";
+const AMB_MADEIRADO = "/fotos/28.webp";
+const AMB_UNICOLOR  = "/fotos/33.webp";
+const AMB_CONCEITO  = "/fotos/31.webp";
+const AMB_BLEND     = "/fotos/44.webp";
 
 const CATEGORIAS: Categoria[] = [
   {
@@ -25,14 +25,14 @@ const CATEGORIAS: Categoria[] = [
     desc: "Acabamentos que reproduzem a textura e o visual da madeira natural. Tendência dominante na decoração contemporânea.",
     ambienteImg: AMB_MADEIRADO,
     items: [
-      { nome: "Carvalho Natural", linha: "Naturale", hex: ["#8B6914", "#A07C2A"], swatchImg: "/items/2.png" },
-      { nome: "Pau Ferro Natural", linha: "Essencial Wood", hex: ["#3D1F0A", "#5A3015"], swatchImg: "/items/6.png" },
-      { nome: "Tauari", linha: "Madeiras do Brasil", hex: ["#9E6B3A", "#B8834A"], swatchImg: "/items/3.png" },
-      { nome: "Itapuã", linha: "Essencial Wood", hex: ["#5C2D0A", "#7A3D14"], swatchImg: "/items/4.png" },
-      { nome: "Louro Freijó", linha: "Trend", hex: ["#7A5C28", "#96723A"], swatchImg: "/items/5.png" },
-      { nome: "Freijó", linha: "Syncro", hex: ["#6B4E24", "#8A6530"], swatchImg: "/items/7.png" },
-      { nome: "Carvalho Hanover", linha: "Design", hex: ["#7A7060", "#948978"], swatchImg: "/items/8.png" },
-      { nome: "Lino Chess", linha: "Chess", hex: ["#C8B89A", "#D4C8AE"], swatchImg: "/items/10.png" },
+      { nome: "Carvalho Natural", linha: "Naturale", hex: ["#8B6914", "#A07C2A"], swatchImg: "/items/2.webp" },
+      { nome: "Pau Ferro Natural", linha: "Essencial Wood", hex: ["#3D1F0A", "#5A3015"], swatchImg: "/items/6.webp" },
+      { nome: "Tauari", linha: "Madeiras do Brasil", hex: ["#9E6B3A", "#B8834A"], swatchImg: "/items/3.webp" },
+      { nome: "Itapuã", linha: "Essencial Wood", hex: ["#5C2D0A", "#7A3D14"], swatchImg: "/items/4.webp" },
+      { nome: "Louro Freijó", linha: "Trend", hex: ["#7A5C28", "#96723A"], swatchImg: "/items/5.webp" },
+      { nome: "Freijó", linha: "Syncro", hex: ["#6B4E24", "#8A6530"], swatchImg: "/items/7.webp" },
+      { nome: "Carvalho Hanover", linha: "Design", hex: ["#7A7060", "#948978"], swatchImg: "/items/8.webp" },
+      { nome: "Lino Chess", linha: "Chess", hex: ["#C8B89A", "#D4C8AE"], swatchImg: "/items/10.webp" },
     ],
   },
   {
@@ -40,10 +40,10 @@ const CATEGORIAS: Categoria[] = [
     desc: "Acabamentos com texturas únicas — remetem a pedras, metais e tecidos. Para projetos com personalidade marcante.",
     ambienteImg: AMB_CONCEITO,
     items: [
-      { nome: "Atenna", linha: "Fancy", hex: ["#A89280", "#C4AE9A"], swatchImg: "/items/11.png" },
-      { nome: "Bronze", linha: "Magma", hex: ["#8B5E3C", "#A67248"], swatchImg: "/items/12.png" },
-      { nome: "Cosmos", linha: "Magma", hex: ["#2A2420", "#3E3530"], swatchImg: "/items/13.png" },
-      { nome: "Lino Chess", linha: "Chess", hex: ["#D4C8AE", "#C0B496"], swatchImg: "/items/10.png" },
+      { nome: "Atenna", linha: "Fancy", hex: ["#A89280", "#C4AE9A"], swatchImg: "/items/11.webp" },
+      { nome: "Bronze", linha: "Magma", hex: ["#8B5E3C", "#A67248"], swatchImg: "/items/12.webp" },
+      { nome: "Cosmos", linha: "Magma", hex: ["#2A2420", "#3E3530"], swatchImg: "/items/13.webp" },
+      { nome: "Lino Chess", linha: "Chess", hex: ["#D4C8AE", "#C0B496"], swatchImg: "/items/10.webp" },
       { nome: "Lana", linha: "Conceito", hex: ["#C8C0B0", "#D8D0C0"] },
     ],
   },
@@ -52,25 +52,25 @@ const CATEGORIAS: Categoria[] = [
     desc: "Paleta sólida e atual. Do branco clássico ao grafite urbano, dos tons terrosos às cores tendência. Sempre com acabamento premium.",
     ambienteImg: AMB_UNICOLOR,
     items: [
-      { nome: "Branco Diamante", linha: "Essencial", hex: "#F5F3EF", swatchImg: "/items/15.png" },
-      { nome: "Branco TX", linha: "Cores", hex: "#EEECE8", swatchImg: "/items/16.png" },
-      { nome: "Branco TX Premium", linha: "Resistente à Umidade", hex: "#F0EEE8", swatchImg: "/items/17.png" },
-      { nome: "Pérola Urbana", linha: "Essencial", hex: "#E0DDD5", swatchImg: "/items/18.png" },
-      { nome: "Off White Suave", linha: "Sense", hex: "#D8D4C8", swatchImg: "/items/19.png" },
-      { nome: "Beige", linha: "Matt", hex: "#D4C8B0", swatchImg: "/items/20.png" },
-      { nome: "Cafelatte", linha: "Matt", hex: "#B8A090", swatchImg: "/items/21.png" },
-      { nome: "Frapê", linha: "Matt", hex: "#9E8870", swatchImg: "/items/22.png" },
-      { nome: "Amêndoa", linha: "Natura", hex: "#C8A87A", swatchImg: "/items/23.png" },
-      { nome: "Ocre Solar", linha: "Velluto", hex: "#C8963C", swatchImg: "/items/24.png" },
-      { nome: "Cinza Cristal", linha: "Chess", hex: "#C0BCBA", swatchImg: "/items/25.png" },
-      { nome: "Cinza Sagrado", linha: "Essencial", hex: "#A0A09A", swatchImg: "/items/26.png" },
-      { nome: "Beton", linha: "Matt", hex: "#909090", swatchImg: "/items/27.png" },
-      { nome: "Grafito", linha: "Chess", hex: "#4A4A48", swatchImg: "/items/28.png" },
-      { nome: "Asfalto", linha: "Supermatte", hex: "#383836", swatchImg: "/items/29.png" },
-      { nome: "Sal Rosa", linha: "Matt", hex: "#E8C4C0", swatchImg: "/items/30.png" },
-      { nome: "Azul Sereno", linha: "Matt", hex: "#A8B8D0", swatchImg: "/items/31.png" },
-      { nome: "Azul Secreto", linha: "Essencial", hex: "#3A4F6A", swatchImg: "/items/32.png" },
-      { nome: "Verde Jade", linha: "Matt", hex: "#5A8070", swatchImg: "/items/33.png" },
+      { nome: "Branco Diamante", linha: "Essencial", hex: "#F5F3EF", swatchImg: "/items/15.webp" },
+      { nome: "Branco TX", linha: "Cores", hex: "#EEECE8", swatchImg: "/items/16.webp" },
+      { nome: "Branco TX Premium", linha: "Resistente à Umidade", hex: "#F0EEE8", swatchImg: "/items/17.webp" },
+      { nome: "Pérola Urbana", linha: "Essencial", hex: "#E0DDD5", swatchImg: "/items/18.webp" },
+      { nome: "Off White Suave", linha: "Sense", hex: "#D8D4C8", swatchImg: "/items/19.webp" },
+      { nome: "Beige", linha: "Matt", hex: "#D4C8B0", swatchImg: "/items/20.webp" },
+      { nome: "Cafelatte", linha: "Matt", hex: "#B8A090", swatchImg: "/items/21.webp" },
+      { nome: "Frapê", linha: "Matt", hex: "#9E8870", swatchImg: "/items/22.webp" },
+      { nome: "Amêndoa", linha: "Natura", hex: "#C8A87A", swatchImg: "/items/23.webp" },
+      { nome: "Ocre Solar", linha: "Velluto", hex: "#C8963C", swatchImg: "/items/24.webp" },
+      { nome: "Cinza Cristal", linha: "Chess", hex: "#C0BCBA", swatchImg: "/items/25.webp" },
+      { nome: "Cinza Sagrado", linha: "Essencial", hex: "#A0A09A", swatchImg: "/items/26.webp" },
+      { nome: "Beton", linha: "Matt", hex: "#909090", swatchImg: "/items/27.webp" },
+      { nome: "Grafito", linha: "Chess", hex: "#4A4A48", swatchImg: "/items/28.webp" },
+      { nome: "Asfalto", linha: "Supermatte", hex: "#383836", swatchImg: "/items/29.webp" },
+      { nome: "Sal Rosa", linha: "Matt", hex: "#E8C4C0", swatchImg: "/items/30.webp" },
+      { nome: "Azul Sereno", linha: "Matt", hex: "#A8B8D0", swatchImg: "/items/31.webp" },
+      { nome: "Azul Secreto", linha: "Essencial", hex: "#3A4F6A", swatchImg: "/items/32.webp" },
+      { nome: "Verde Jade", linha: "Matt", hex: "#5A8070", swatchImg: "/items/33.webp" },
     ],
   },
   {
@@ -78,12 +78,12 @@ const CATEGORIAS: Categoria[] = [
     desc: "A fusão de texturas e tons. Acabamentos que combinam elementos madeirados, sólidos e efeitos especiais em uma estética única.",
     ambienteImg: AMB_BLEND,
     items: [
-      { nome: "Off White Suave", linha: "Sense", hex: ["#D8D4C8", "#C8C4B8"], swatchImg: "/items/34.png" },
-      { nome: "Gianduia", linha: "Sense", hex: ["#B08060", "#C89A70"], swatchImg: "/items/35.png" },
-      { nome: "Ébano Chess", linha: "Chess", hex: ["#2A2018", "#3A3020"], swatchImg: "/items/36.png" },
-      { nome: "Lenho", linha: "Natura", hex: ["#8A6840", "#A07E50"], swatchImg: "/items/37.png" },
-      { nome: "Freijó Natural", linha: "Natura", hex: ["#7A5830", "#946840"], swatchImg: "/items/38.png" },
-      { nome: "Granile", linha: "Colore", hex: ["#C0B4A8", "#A89E90"], swatchImg: "/items/39.png" },
+      { nome: "Off White Suave", linha: "Sense", hex: ["#D8D4C8", "#C8C4B8"], swatchImg: "/items/34.webp" },
+      { nome: "Gianduia", linha: "Sense", hex: ["#B08060", "#C89A70"], swatchImg: "/items/35.webp" },
+      { nome: "Ébano Chess", linha: "Chess", hex: ["#2A2018", "#3A3020"], swatchImg: "/items/36.webp" },
+      { nome: "Lenho", linha: "Natura", hex: ["#8A6840", "#A07E50"], swatchImg: "/items/37.webp" },
+      { nome: "Freijó Natural", linha: "Natura", hex: ["#7A5830", "#946840"], swatchImg: "/items/38.webp" },
+      { nome: "Granile", linha: "Colore", hex: ["#C0B4A8", "#A89E90"], swatchImg: "/items/39.webp" },
     ],
   },
 ];
