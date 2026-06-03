@@ -220,9 +220,9 @@ export default function Lancamentos() {
         <div className="absolute right-0 top-0 w-1/2 h-full opacity-5"
           style={{ background: "radial-gradient(ellipse at right top, #E67A22 0%, transparent 60%)" }} />
 
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
+        <div className="relative max-w-4xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.div variants={fadeUp} className="flex items-center justify-center gap-3 mb-5">
+            <motion.div variants={fadeUp} className="flex items-center gap-3 mb-5">
               <Sparkles className="h-4 w-4 text-[#E67A22]" />
               <p className="label-tag">Novidades Fabriko</p>
             </motion.div>
@@ -233,7 +233,7 @@ export default function Lancamentos() {
               Lança-<br />
               <span className="text-[#E67A22]">mentos</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-white/45 text-lg mx-auto max-w-2xl">
+            <motion.p variants={fadeUp} className="text-white/45 text-lg max-w-2xl">
               Novos acabamentos, modelos e acessórios para elevar seus projetos.
               Clique em qualquer card para ver todos os detalhes.
             </motion.p>

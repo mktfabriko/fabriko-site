@@ -206,9 +206,9 @@ export default function Projetos() {
     <>
       {/* Hero */}
       <section className="relative bg-[#1A1917] pt-36 pb-20">
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
+        <div className="relative max-w-4xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.p variants={fadeUp} className="label-tag mb-5 inline-block">Ambientes & Aplicações</motion.p>
+            <motion.p variants={fadeUp} className="label-tag mb-5">Ambientes & Aplicações</motion.p>
             <motion.h1
               variants={fadeUp}
               className="text-[clamp(2.8rem,7vw,6rem)] font-[family-name:var(--font-oswald)] font-bold text-white leading-[0.92] mb-6 uppercase tracking-tight"
@@ -216,7 +216,7 @@ export default function Projetos() {
               Projetos em<br />
               <span className="text-[#E67A22]">destaque</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-white/45 text-lg mx-auto max-w-xl">
+            <motion.p variants={fadeUp} className="text-white/45 text-lg max-w-xl">
               Referências de ambientes criados com móveis planejados de alto padrão.
               Da cozinha ao escritório corporativo — inspiração para cada projeto.
             </motion.p>

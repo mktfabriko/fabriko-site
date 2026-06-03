@@ -160,9 +160,9 @@ export default function Acabamentos() {
     <>
       {/* Hero */}
       <section className="relative bg-[#1A1917] pt-36 pb-20">
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
+        <div className="relative max-w-4xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.p variants={fadeUp} className="label-tag mb-5 inline-block">Portfólio de materiais</motion.p>
+            <motion.p variants={fadeUp} className="label-tag mb-5">Portfólio de materiais</motion.p>
             <motion.h1
               variants={fadeUp}
               className="text-[clamp(2.8rem,7vw,6rem)] font-[family-name:var(--font-oswald)] font-bold text-white leading-[0.92] mb-6 uppercase tracking-tight"
@@ -170,7 +170,7 @@ export default function Acabamentos() {
               Acaba-<br />
               <span className="text-[#E67A22]">mentos</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-white/45 text-lg mx-auto max-w-xl">
+            <motion.p variants={fadeUp} className="text-white/45 text-lg max-w-xl">
               Selecionados entre os principais fornecedores de matéria-prima. Alinhados com as
               tendências da decoração e do design atual.
             </motion.p>

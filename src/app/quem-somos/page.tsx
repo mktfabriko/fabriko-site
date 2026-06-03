@@ -34,9 +34,9 @@ export default function QuemSomos() {
       <section className="relative bg-[#1A1917] pt-36 pb-20 overflow-hidden">
         <div className="absolute right-0 top-0 w-1/2 h-full opacity-5"
           style={{ background: "radial-gradient(ellipse at right top, #E67A22 0%, transparent 60%)" }} />
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
+        <div className="relative max-w-4xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.p variants={fadeUp} className="label-tag mb-5 inline-block">Nossa história</motion.p>
+            <motion.p variants={fadeUp} className="label-tag mb-5">Nossa história</motion.p>
             <motion.h1
               variants={fadeUp}
               className="text-[clamp(2.8rem,7vw,6rem)] font-[family-name:var(--font-oswald)] font-bold text-white leading-[0.92] mb-6 uppercase tracking-tight"
@@ -44,7 +44,7 @@ export default function QuemSomos() {
               Fundada para ser<br />
               <span className="text-[#E67A22]">a mais confiável.</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-white/45 text-lg mx-auto max-w-2xl">
+            <motion.p variants={fadeUp} className="text-white/45 text-lg max-w-2xl">
               Em Americana-SP, em meio a um polo industrial em constante crescimento,
               nasceu o desejo de se tornar a empresa mais confiável na fabricação e
               fornecimento de móveis planejados essenciais e de alta qualidade.

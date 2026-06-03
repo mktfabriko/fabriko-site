@@ -169,9 +169,9 @@ export default function Promob() {
       <section className="relative bg-[#1A1917] pt-36 pb-24 overflow-hidden border-b-4 border-[#E67A22]">
         <div className="absolute right-0 top-0 w-1/2 h-full opacity-5"
           style={{ background: "radial-gradient(ellipse at right top, #E67A22 0%, transparent 60%)" }} />
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
+        <div className="relative max-w-4xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
-            <motion.p variants={fadeUp} className="label-tag mb-5 inline-block">Projete com Fabriko</motion.p>
+            <motion.p variants={fadeUp} className="label-tag mb-5">Projete com Fabriko</motion.p>
             <motion.h1
               variants={fadeUp}
               className="text-[clamp(2.8rem,7vw,6rem)] font-[family-name:var(--font-oswald)] font-bold text-white leading-[0.92] mb-6 uppercase tracking-tight"
@@ -179,7 +179,7 @@ export default function Promob() {
               Promob<br />
               <span className="text-[#E67A22]">Fabriko</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-white/45 text-lg mx-auto max-w-2xl">
+            <motion.p variants={fadeUp} className="text-white/45 text-lg max-w-2xl">
               A biblioteca exclusiva Fabriko no Promob Studio. Do acesso ao envio do pedido — com suporte técnico dedicado em cada etapa.
             </motion.p>
           </motion.div>
@@ -187,23 +187,23 @@ export default function Promob() {
       </section>
 
       {/* Suporte Técnico */}
-      <section className="py-24 bg-[#221F1D]">
+      <section className="py-24 bg-white border-b border-[#E8E6E3]">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
             <motion.p variants={fadeUp} className="label-tag mb-5">Suporte exclusivo</motion.p>
-            <motion.h2 variants={fadeUp} className="text-4xl font-[family-name:var(--font-playfair)] font-black text-white max-w-2xl mb-12">
+            <motion.h2 variants={fadeUp} className="text-4xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] max-w-2xl mb-12">
               Seu projeto tem suporte técnico dedicado.
             </motion.h2>
-            <motion.div variants={stagger} className="grid md:grid-cols-3 gap-px bg-white/10">
+            <motion.div variants={stagger} className="grid md:grid-cols-3 gap-px bg-[#E8E6E3]">
               {[
                 { t: "Dúvidas de Projeto", d: "Suporte via WhatsApp com consultor técnico para esclarecer qualquer dúvida no Promob Fabriko.", icon: "💬" },
                 { t: "Implementação", d: "Apoio na configuração da biblioteca, instalação do Promob e primeiros pedidos do lojista parceiro.", icon: "⚙️" },
                 { t: "Correções e Ajustes", d: "Erros de produção resolvidos em até 5 dias úteis. Análises complexas em até 15 dias.", icon: "🔧" },
               ].map(({ t, d, icon }) => (
-                <motion.div key={t} variants={fadeUp} className="bg-[#221F1D] p-8 hover:bg-[#2A2725] transition-colors">
+                <motion.div key={t} variants={fadeUp} className="bg-white p-8 hover:bg-[#FAFAF8] transition-colors">
                   <p className="text-2xl mb-4">{icon}</p>
-                  <h3 className="text-white font-semibold text-sm mb-3">{t}</h3>
-                  <p className="text-white/45 text-xs leading-relaxed">{d}</p>
+                  <h3 className="text-[#1A1917] font-semibold text-sm mb-3">{t}</h3>
+                  <p className="text-[#6B6966] text-xs leading-relaxed">{d}</p>
                 </motion.div>
               ))}
             </motion.div>
