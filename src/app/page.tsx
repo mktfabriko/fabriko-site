@@ -50,9 +50,9 @@ const DIFERENCIAIS = [
   { n: "01", titulo: "100% MDF", desc: "Toda a produção em MDF de alta qualidade, com bordas de 1mm e colagem PUR para máxima resistência e acabamento premium." },
   { n: "02", titulo: "Via Promob", desc: "Biblioteca exclusiva no Promob Studio. Projete milímetro a milímetro com todos nossos acabamentos, puxadores e especificações." },
   { n: "03", titulo: "Prazo de 20 dias", desc: "20 dias úteis após liberação financeira. Processos padronizados e maquinário CNC garantem consistência e pontualidade." },
-  { n: "04", titulo: "Consultoria ativa", desc: "Suporte técnico online permanente. Seu consultor Fabriko acompanha cada pedido do projeto à entrega." },
+  { n: "04", titulo: "Consultoria ativa", desc: "Suporte técnico online permanente. Seu consultor Fabriko acompanha cada pedido do início ao fim." },
   { n: "05", titulo: "Capacidade escalável", desc: "Estrutura industrial preparada para crescer junto com o volume de pedidos, sem comprometer prazos nem qualidade." },
-  { n: "06", titulo: "Financeiro Santander", desc: "Convênio com Santander Financeira e maquininha PagBank para facilitar as vendas do lojista ao cliente final." },
+  { n: "06", titulo: "Soluções Financeiras", desc: "Convênio com Santander Financeira e maquininha PagBank para facilitar as vendas do lojista ao cliente final." },
 ];
 
 export default function Home() {
@@ -86,7 +86,7 @@ export default function Home() {
 
             <motion.p variants={fadeUp} className="text-white/50 text-sm leading-relaxed max-w-sm">
               Mais do que produção — somos o ponto de apoio para lojistas que querem crescer com
-              organização, agilidade e segurança. Via Promob, do projeto à entrega.
+              organização, agilidade e segurança.
             </motion.p>
           </motion.div>
         </div>
@@ -315,14 +315,13 @@ export default function Home() {
               variants={fadeUp}
               className="text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] leading-tight mb-7"
             >
-              Somos a fábrica que o lojista sempre quis ter.
+              Somos a fábrica que o lojista sempre quis.
             </motion.h2>
             <motion.ul variants={stagger} className="space-y-3 md:space-y-4">
               {[
                 "Prazo de 20 dias úteis — documentado e cumprido em cada pedido",
                 "Setor de suporte técnico Promob 100% dedicado ao lojista parceiro",
-                "Produção em MDF com borda PUR 1mm — acabamento que não decepciona",
-                "Processo transparente do pedido à entrega, com rastreio em tempo real",
+                "Produção em MDF com borda PUR 1mm — acabamento premium.",
                 "Equipe que conhece o seu negócio e está sempre disponível",
               ].map((item) => (
                 <motion.li key={item} variants={fadeUp} className="flex items-start gap-3 text-[#6B6966] text-sm">
@@ -436,7 +435,7 @@ export default function Home() {
               Cansado de fábrica que atrasa, não atende e ainda culpa o projeto?
             </motion.h2>
             <motion.p variants={fadeUp} className="text-[#1A1917]/50 text-sm md:text-base mb-5 md:mb-6 max-w-xl">
-              A maioria das fábricas entrega com atraso, não tem suporte técnico e deixa o lojista sozinho na hora do problema.
+              Fábricas que entregam com atraso, não têm suporte técnico e deixam o lojista sozinho na hora do problema.
               Na Fabriko é diferente: prazo garantido, processo transparente e um setor de suporte Promob exclusivo — dedicado ao seu sucesso.
             </motion.p>
             <motion.div variants={stagger} className="flex flex-col sm:flex-row gap-4 md:gap-6 mb-8 md:mb-10">
