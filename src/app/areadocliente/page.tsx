@@ -127,7 +127,7 @@ export default function AreaDoCliente() {
     <div className="min-h-screen bg-[#FAFAF8]">
 
       {/* ── Hero ── */}
-      <div className="bg-[#1A1917] pt-24 pb-12 px-6">
+      <div className="bg-[#1A1917] pt-32 pb-12 md:pt-40 md:pb-16 px-6">
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <p className="text-[#E67A22] text-[0.65rem] font-bold tracking-[0.18em] uppercase mb-3">
