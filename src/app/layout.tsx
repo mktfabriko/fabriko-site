@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Playfair_Display, Oswald } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -43,9 +41,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="pt-BR" className={`${dmSans.variable} ${playfair.variable} ${oswald.variable}`}>
       <body className="min-h-screen flex flex-col bg-white">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
