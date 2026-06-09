@@ -341,22 +341,6 @@ export default function AreaDoCliente() {
 
       {/* ══ GUIA OPERACIONAL ══════════════════════════════════════════ */}
       <div>
-        {/* Pill nav sticky */}
-        <div className="sticky top-0 z-30 bg-white border-b border-[#E8E6E3] shadow-sm">
-          <div className="max-w-5xl mx-auto px-6 py-3 flex gap-1.5 overflow-x-auto scrollbar-hide">
-            {SECOES.map(({ id, n, label }) => (
-              <a key={id} href={`#${id}`} onClick={() => setActive(id)}
-                className={`whitespace-nowrap text-[11px] font-bold uppercase tracking-widest px-4 py-2 transition-all ${
-                  active === id
-                    ? "bg-[#E67A22] text-white"
-                    : "text-[#1A1917]/40 hover:text-[#1A1917] border border-[#E8E6E3] hover:border-[#1A1917]/20"
-                }`}>
-                {label}
-              </a>
-            ))}
-          </div>
-        </div>
-
         {/* Header do guia */}
         <div className="bg-white border-b border-[#E8E6E3] px-6 py-6">
           <div className="max-w-5xl mx-auto">
