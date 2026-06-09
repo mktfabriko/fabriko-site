@@ -1,12 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Clock, Mail, Phone, AlertTriangle, Check, ChevronDown, ChevronRight,
-  ExternalLink, CreditCard, Landmark, Smartphone, Package, Wrench,
-  Download, Info, AlertCircle, FileText, Menu, X, Play,
-  GraduationCap, Lock, MessageCircle, ArrowDown,
+  ExternalLink, Info, AlertCircle, FileText, X, Play,
+  GraduationCap, Lock, MessageCircle,
 } from "lucide-react";
 
 // ─── navegação ────────────────────────────────────────────────────────────────
@@ -204,47 +203,11 @@ function MediaPlaceholder({ label = "Vídeo explicativo em breve" }: { label?: s
   );
 }
 
-// ─── Sidebar ──────────────────────────────────────────────────────────────────
-
-function Sidebar({ active, onSelect, mobile, onClose }: {
-  active: string; onSelect: (id: string) => void; mobile?: boolean; onClose?: () => void;
-}) {
-  return (
-    <div className={mobile
-      ? "flex flex-col h-full w-72 bg-[#1A1917]"
-      : "hidden lg:flex flex-col w-64 shrink-0 bg-[#1A1917] fixed top-[60px] left-0 bottom-0 overflow-y-auto z-20"
-    }>
-      <div className="px-6 pt-8 pb-6 border-b border-white/10">
-        <p className="text-[#E67A22] text-[10px] font-bold tracking-[0.2em] uppercase mb-1">Guia do Parceiro</p>
-        <p className="text-white font-[family-name:var(--font-playfair)] font-bold text-base leading-tight">Manual Operacional</p>
-        <p className="text-white/25 text-[10px] mt-1">Rev. 3 · 17/03/2026</p>
-      </div>
-      <nav className="flex-1 py-4 px-3">
-        {SECOES.map(({ id, n, label }) => (
-          <a key={id} href={`#${id}`}
-            onClick={() => { onSelect(id); onClose?.(); }}
-            className={`flex items-center gap-3 px-3 py-2.5 mb-0.5 transition-all group ${
-              active === id
-                ? "bg-[#E67A22]/15 border-l-2 border-[#E67A22] text-white"
-                : "border-l-2 border-transparent text-white/40 hover:text-white hover:bg-white/5"
-            }`}>
-            <span className={`text-[10px] font-bold tabular-nums shrink-0 ${active === id ? "text-[#E67A22]" : "text-white/20 group-hover:text-white/40"}`}>{n}</span>
-            <span className="text-xs font-medium">{label}</span>
-          </a>
-        ))}
-      </nav>
-      <div className="px-6 py-5 border-t border-white/10">
-        <p className="text-white/20 text-[10px]">FABRIKO · Americana-SP</p>
-      </div>
-    </div>
-  );
-}
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function AreaDoCliente() {
   const [active, setActive] = useState("promob");
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [videoOpen, setVideoOpen] = useState(false);
   const [academyVideo, setAcademyVideo] = useState<string | null>(null);
   const [scrollPct, setScrollPct] = useState(0);
@@ -272,24 +235,9 @@ export default function AreaDoCliente() {
     <div className="min-h-screen bg-[#FAFAF8]">
 
       {/* ── Barra de progresso ── */}
-      <div className="fixed top-[60px] left-0 right-0 z-50 h-0.5 bg-white/10">
+      <div className="fixed top-0 left-0 right-0 z-50 h-0.5 bg-white/10">
         <motion.div className="h-full bg-[#E67A22]" style={{ width: `${scrollPct}%` }} />
       </div>
-
-      {/* ── Mobile sidebar overlay ── */}
-      <AnimatePresence>
-        {sidebarOpen && (
-          <>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-black/60 lg:hidden" onClick={() => setSidebarOpen(false)} />
-            <motion.div initial={{ x: -288 }} animate={{ x: 0 }} exit={{ x: -288 }}
-              transition={{ type: "tween", duration: 0.22 }}
-              className="fixed top-0 left-0 bottom-0 z-50 lg:hidden">
-              <Sidebar active={active} onSelect={setActive} mobile onClose={() => setSidebarOpen(false)} />
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
 
       {/* ══ HERO ════════════════════════════════════════════════════ */}
       <section className="bg-[#1A1917] pt-32 pb-0 md:pt-36 relative overflow-hidden">
@@ -392,35 +340,35 @@ export default function AreaDoCliente() {
       </section>
 
       {/* ══ GUIA OPERACIONAL ══════════════════════════════════════════ */}
-      <div className="flex">
-        {/* Sidebar desktop */}
-        <Sidebar active={active} onSelect={setActive} />
-
-        {/* Conteúdo */}
-        <div className="lg:ml-64 flex-1">
-
-          {/* Mobile top bar */}
-          <div className="lg:hidden sticky top-[60px] z-30 bg-[#1A1917] px-4 py-3 flex items-center gap-3 border-b border-white/10">
-            <button onClick={() => setSidebarOpen(true)} className="text-white/60 hover:text-white transition-colors">
-              <Menu className="h-5 w-5" />
-            </button>
-            <div>
-              <p className="text-white text-sm font-semibold leading-none">Guia Operacional</p>
-              <p className="text-white/30 text-[10px] mt-0.5">
-                {SECOES.find(s => s.id === active)?.n} · {SECOES.find(s => s.id === active)?.label}
-              </p>
-            </div>
+      <div>
+        {/* Pill nav sticky */}
+        <div className="sticky top-0 z-30 bg-white border-b border-[#E8E6E3] shadow-sm">
+          <div className="max-w-5xl mx-auto px-6 py-3 flex gap-1.5 overflow-x-auto scrollbar-hide">
+            {SECOES.map(({ id, n, label }) => (
+              <a key={id} href={`#${id}`} onClick={() => setActive(id)}
+                className={`whitespace-nowrap text-[11px] font-bold uppercase tracking-widest px-4 py-2 transition-all ${
+                  active === id
+                    ? "bg-[#E67A22] text-white"
+                    : "text-[#1A1917]/40 hover:text-[#1A1917] border border-[#E8E6E3] hover:border-[#1A1917]/20"
+                }`}>
+                {label}
+              </a>
+            ))}
           </div>
+        </div>
 
-          {/* Header do guia */}
-          <div className="bg-white border-b border-[#E8E6E3] px-8 py-6">
+        {/* Header do guia */}
+        <div className="bg-white border-b border-[#E8E6E3] px-6 py-6">
+          <div className="max-w-5xl mx-auto">
             <p className="text-[10px] font-bold uppercase tracking-widest text-[#E67A22] mb-1">Manual Operacional</p>
             <h2 className="text-xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917]">Guia Completo de Procedimentos</h2>
             <p className="text-[#6B6966] text-xs mt-1">Rev. 3 · 17/03/2026 · Leitura recomendada antes do primeiro pedido</p>
           </div>
+        </div>
 
           {/* Consulta rápida */}
-          <div className="px-8 py-7 border-b border-[#E8E6E3] bg-[#FAFAF8]">
+          <div className="px-6 py-7 border-b border-[#E8E6E3] bg-[#FAFAF8]">
+            <div className="max-w-5xl mx-auto">
             <p className="text-[10px] font-bold uppercase tracking-widest text-[#1A1917]/30 mb-4">Consulta rápida</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5">
               {QUICK.map(({ label, valor, sub, link }) => (
@@ -438,10 +386,12 @@ export default function AreaDoCliente() {
                     </div>
               ))}
             </div>
+            </div>
           </div>
 
           {/* ── Seções ── */}
-          <div className="px-8 divide-y divide-[#E8E6E3]">
+          <div className="px-6 divide-y divide-[#E8E6E3]">
+            <div className="max-w-5xl mx-auto divide-y divide-[#E8E6E3]">
 
             {/* 01 */}
             <section id="promob" className="py-10 scroll-mt-20">
@@ -752,8 +702,8 @@ export default function AreaDoCliente() {
               </div>
             </section>
 
+            </div>{/* fim max-w inner */}
           </div>{/* fim seções */}
-        </div>{/* fim conteúdo */}
       </div>{/* fim guia */}
 
       {/* ══ FABRIKO ACADEMY ════════════════════════════════════════ */}
