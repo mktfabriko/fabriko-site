@@ -134,7 +134,7 @@ const CATEGORIAS_LIST = ["Todos", ...CATEGORIAS.map((c) => c.cat)];
 // ─── Modal ────────────────────────────────────────────────────────────────────
 
 function AcabamentoModal({ item, fallbackImg, onClose }: { item: Acabamento; fallbackImg: string; onClose: () => void }) {
-  const galeria = item.galeria && item.galeria.length > 0 ? item.galeria : [fallbackImg];
+  const galeria = item.galeria && item.galeria.length > 0 ? item.galeria : [item.swatchImg ?? fallbackImg];
   const [idx, setIdx] = useState(0);
   const [expanded, setExpanded] = useState(false);
 
@@ -287,7 +287,7 @@ function AcabamentoModal({ item, fallbackImg, onClose }: { item: Acabamento; fal
 
 function AcabamentoCard({ item, categoryAmbienteImg, onClick }: { item: Acabamento; categoryAmbienteImg: string; onClick: () => void }) {
   const [hovered, setHovered] = useState(false);
-  const hoverImg = item.hoverImg ?? categoryAmbienteImg;
+  const hoverImg = item.hoverImg ?? item.swatchImg ?? categoryAmbienteImg;
   const bg = Array.isArray(item.hex)
     ? `linear-gradient(135deg, ${item.hex[0]}, ${item.hex[1]})`
     : item.hex;
@@ -363,7 +363,7 @@ export default function Acabamentos() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#1A1917] pt-28 pb-12 md:pt-36 md:pb-20">
+      <section className="relative bg-[#1A1917] pt-48 pb-12 md:pt-52 md:pb-16">
         <div className="relative max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
             <motion.p variants={fadeUp} className="label-tag mb-5">Portfólio de materiais</motion.p>

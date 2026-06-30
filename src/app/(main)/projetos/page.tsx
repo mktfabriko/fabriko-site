@@ -205,7 +205,7 @@ export default function Projetos() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#1A1917] pt-28 pb-12 md:pt-36 md:pb-20">
+      <section className="relative bg-[#1A1917] pt-48 pb-12 md:pt-52 md:pb-16">
         <div className="relative max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" animate="show" variants={stagger}>
             <motion.p variants={fadeUp} className="label-tag mb-5">Ambientes & Aplicações</motion.p>

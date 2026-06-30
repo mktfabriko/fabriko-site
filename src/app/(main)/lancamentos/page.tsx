@@ -213,7 +213,7 @@ export default function Lancamentos() {
   return (
     <>
       {/* Hero Banner */}
-      <section className="relative bg-[#1A1917] pt-28 pb-12 md:pt-36 md:pb-20 overflow-hidden">
+      <section className="relative bg-[#1A1917] pt-48 pb-12 md:pt-52 md:pb-16 overflow-hidden">
         <div className="absolute inset-0"
           style={{ background: "radial-gradient(ellipse at 70% 50%, #E67A22/10 0%, transparent 60%)" }}
         />

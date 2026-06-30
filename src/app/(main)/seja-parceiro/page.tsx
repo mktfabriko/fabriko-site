@@ -49,7 +49,7 @@ export default function SejaParceiro() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#1A1917] pt-28 pb-12 md:pt-36 md:pb-20 overflow-hidden">
+      <section className="relative bg-[#1A1917] pt-48 pb-12 md:pt-52 md:pb-16 overflow-hidden">
         <div className="absolute bottom-0 left-0 w-1/2 h-1/2 opacity-5"
           style={{ background: "radial-gradient(ellipse at left bottom, #E67A22, transparent 70%)" }}
         />

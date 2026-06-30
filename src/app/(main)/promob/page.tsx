@@ -166,7 +166,7 @@ export default function Promob() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#1A1917] pt-28 pb-14 md:pt-36 md:pb-24 overflow-hidden border-b-4 border-[#E67A22]">
+      <section className="relative bg-[#1A1917] pt-48 pb-12 md:pt-52 md:pb-16 overflow-hidden border-b-4 border-[#E67A22]">
         <div className="absolute right-0 top-0 w-1/2 h-full opacity-5"
           style={{ background: "radial-gradient(ellipse at right top, #E67A22 0%, transparent 60%)" }} />
         <div className="relative max-w-7xl mx-auto px-6">
