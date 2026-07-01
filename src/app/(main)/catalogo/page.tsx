@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { CatalogoForm } from "@/components/CatalogoForm";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -290,6 +291,32 @@ export default function Catalogo() {
               />
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Receba o catálogo */}
+      <section className="py-14 md:py-24 bg-[#1A1917]" id="catalogo">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="label-tag mb-4">Catálogo completo</p>
+              <h2 className="text-3xl md:text-4xl font-[family-name:var(--font-playfair)] font-black text-white mb-4">
+                Receba o catálogo da Fabriko.
+              </h2>
+              <p className="text-white/45 text-sm leading-relaxed mb-6">
+                Preencha seus dados e enviamos o catálogo completo direto no seu e-mail —
+                linhas, acabamentos, puxadores e modelos de porta.
+              </p>
+              <ul className="space-y-2.5 text-white/55 text-sm">
+                <li>✓ Envio imediato por e-mail</li>
+                <li>✓ 3 linhas e dezenas de acabamentos</li>
+                <li>✓ Sem compromisso</li>
+              </ul>
+            </div>
+            <div className="bg-white/[0.03] border border-white/10 p-7 md:p-9">
+              <CatalogoForm />
+            </div>
+          </div>
         </div>
       </section>
 

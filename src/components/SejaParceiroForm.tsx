@@ -48,8 +48,8 @@ export function SejaParceiroForm() {
           Recebemos seu cadastro!
         </h3>
         <p className="text-[#6B6966] text-sm leading-relaxed">
-          Você receberá a apresentação Fabriko no e-mail informado.<br />
-          Nosso time também entrará em contato pelo WhatsApp em breve.
+          Recebemos seus dados com sucesso.<br />
+          Nosso time comercial entrará em contato em breve.
         </p>
       </motion.div>
     );
