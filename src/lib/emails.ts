@@ -28,27 +28,40 @@ function wrap(inner: string): string {
 }
 
 // Aviso interno para o responsável da Fabriko: novo lead captado.
-export function leadNotifyHtml(origem: string, data: LeadData): string {
+type LeadExtra = { empresa?: string; cidade?: string; estado?: string; segmento?: string; mensagem?: string };
+
+export function leadNotifyHtml(origem: string, data: LeadData, extra: LeadExtra = {}): string {
   const zap = onlyDigits(data.whatsapp);
   const waLink = zap ? `https://wa.me/${zap.length <= 11 ? "55" + zap : zap}` : "#";
+
+  const rows: [string, string][] = [
+    ["Nome", data.nome],
+    ["E-mail", `<a href="mailto:${data.email}" style="color:#E67A22;text-decoration:none">${data.email}</a>`],
+    ["WhatsApp / Tel.", data.whatsapp],
+  ];
+  if (extra.empresa) rows.push(["Empresa", extra.empresa]);
+  const local = [extra.cidade, extra.estado].filter(Boolean).join(" / ");
+  if (local) rows.push(["Cidade / UF", local]);
+  if (extra.segmento) rows.push(["Segmento", extra.segmento]);
+  if (extra.mensagem) rows.push(["Mensagem", extra.mensagem]);
+
+  const rowsHtml = rows
+    .map(([label, value], i) => {
+      const border = i < rows.length - 1 ? "border-bottom:1px solid #E8E6E3;" : "";
+      return `<tr>
+        <td style="padding:14px 18px;${border}color:#999;font-size:12px;width:130px;vertical-align:top">${label}</td>
+        <td style="padding:14px 18px;${border}color:#1A1917;font-size:14px">${value}</td>
+      </tr>`;
+    })
+    .join("");
+
   return wrap(`
     <p style="color:#E67A22;font-size:11px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px">Novo lead pelo site</p>
     <h2 style="color:#1A1917;font-size:22px;margin:0 0 4px">${data.nome}</h2>
     <p style="color:#6B6966;font-size:13px;margin:0 0 24px">Origem: <strong>${origem}</strong></p>
 
     <table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #E8E6E3;border-radius:8px;overflow:hidden">
-      <tr>
-        <td style="padding:14px 18px;border-bottom:1px solid #E8E6E3;color:#999;font-size:12px;width:120px">Nome</td>
-        <td style="padding:14px 18px;border-bottom:1px solid #E8E6E3;color:#1A1917;font-size:14px">${data.nome}</td>
-      </tr>
-      <tr>
-        <td style="padding:14px 18px;border-bottom:1px solid #E8E6E3;color:#999;font-size:12px">E-mail</td>
-        <td style="padding:14px 18px;border-bottom:1px solid #E8E6E3;font-size:14px"><a href="mailto:${data.email}" style="color:#E67A22;text-decoration:none">${data.email}</a></td>
-      </tr>
-      <tr>
-        <td style="padding:14px 18px;color:#999;font-size:12px">WhatsApp</td>
-        <td style="padding:14px 18px;color:#1A1917;font-size:14px">${data.whatsapp}</td>
-      </tr>
+      ${rowsHtml}
     </table>
 
     <div style="text-align:center;margin:28px 0 4px">

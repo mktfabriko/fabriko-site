@@ -7,19 +7,23 @@ import { leadNotifyHtml } from "@/lib/emails";
 //  2) avisa o(s) responsável(is) da Fabriko por e-mail, com o contato do lead
 export async function POST(req: NextRequest) {
   try {
-    const { nome, email, whatsapp } = await req.json();
+    const body = await req.json();
+    const { nome, email, empresa, cidade, estado, segmento, mensagem } = body;
+    // aceita "whatsapp" (form da home) ou "telefone" (form completo do Seja Parceiro)
+    const whatsapp = body.whatsapp || body.telefone || "";
     if (!nome || !email || !whatsapp) {
       return NextResponse.json({ error: "Campos obrigatórios" }, { status: 400 });
     }
 
     const lead = { nome, email, whatsapp };
+    const extra = { empresa, cidade, estado, segmento, mensagem };
     const results = await Promise.allSettled([
       appendToSheet("Parceiros", lead),
       NOTIFY_EMAILS.length > 0
         ? sendEmail({
             to: NOTIFY_EMAILS,
             subject: `🔔 Novo lead (Seja Parceiro): ${nome}`,
-            html: leadNotifyHtml("Seja Parceiro", lead),
+            html: leadNotifyHtml("Seja Parceiro", lead, extra),
             replyTo: email,
           })
         : Promise.resolve(false),

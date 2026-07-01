@@ -19,7 +19,7 @@ export function SejaParceiroForm() {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("/api/parceiro", {
+      const res = await fetch("/api/catalogo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -45,11 +45,11 @@ export function SejaParceiroForm() {
       >
         <CheckCircle2 className="h-12 w-12 text-[#E67A22] mx-auto mb-4" />
         <h3 className="font-[family-name:var(--font-playfair)] font-black text-2xl text-[#1A1917] mb-2">
-          Recebemos seu cadastro!
+          Apresentação enviada!
         </h3>
         <p className="text-[#6B6966] text-sm leading-relaxed">
-          Recebemos seus dados com sucesso.<br />
-          Nosso time comercial entrará em contato em breve.
+          Enviamos a apresentação Fabriko para o seu e-mail.<br />
+          (Confira também a caixa de spam/promoções.)
         </p>
       </motion.div>
     );

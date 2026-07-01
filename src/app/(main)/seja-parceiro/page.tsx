@@ -36,14 +36,33 @@ export default function SejaParceiro() {
     nome: "", empresa: "", cidade: "", estado: "", telefone: "", email: "", segmento: "", mensagem: "",
   });
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/parceiro", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setSent(true);
+      } else {
+        setError("Erro ao enviar. Tente novamente.");
+      }
+    } catch {
+      setError("Erro de conexão. Tente novamente.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -246,11 +265,18 @@ export default function SejaParceiro() {
                       className="w-full border border-[#E8E6E3] focus:border-[#E67A22]/50 outline-none text-[#1A1917] text-sm px-3 py-3 transition-colors resize-none bg-white placeholder:text-[#1A1917]/30" />
                   </div>
 
-                  <button type="submit"
-                    className="group w-full flex items-center justify-center gap-3 bg-[#E67A22] hover:bg-[#C85E0F] text-white text-xs font-bold py-4 tracking-widest uppercase transition-all">
-                    <Send className="h-3.5 w-3.5" />
-                    Enviar cadastro
-                    <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                  {error && <p className="text-red-500 text-xs">{error}</p>}
+                  <button type="submit" disabled={loading}
+                    className="group w-full flex items-center justify-center gap-3 bg-[#E67A22] hover:bg-[#C85E0F] disabled:opacity-60 text-white text-xs font-bold py-4 tracking-widest uppercase transition-all">
+                    {loading ? (
+                      "Enviando..."
+                    ) : (
+                      <>
+                        <Send className="h-3.5 w-3.5" />
+                        Enviar cadastro
+                        <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                      </>
+                    )}
                   </button>
                 </form>
               </div>
