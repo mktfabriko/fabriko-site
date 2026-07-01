@@ -55,6 +55,24 @@ const DIFERENCIAIS = [
   { n: "06", titulo: "Soluções Financeiras", desc: "Convênio com Santander Financeira e maquininha PagBank para facilitar as vendas do lojista ao cliente final." },
 ];
 
+const DIFERENCIAIS_TECNICOS = [
+  {
+    img: "/fotos/5.webp",
+    titulo: "Borda 1mm & cola PUR",
+    desc: "Bordas de 1 mm coladas com tecnologia PUR (poliuretano reativo): sem linha de cola aparente e muito mais resistentes à umidade e ao calor. Acabamento premium e durabilidade em cada peça.",
+  },
+  {
+    img: "/fotos/25.webp",
+    titulo: "Portas especiais",
+    desc: "Muito além do padrão: portas com borda perimetral, puxador integrado (Integrated Slim), ripados e recortes exclusivos. O detalhe que diferencia o seu projeto da concorrência.",
+  },
+  {
+    img: "/fotos/45.webp",
+    titulo: "Tampos orgânicos",
+    desc: "Tampos e painéis em formas livres e orgânicas, projetados sob medida no Promob. Curvas suaves e design autoral para ambientes que fogem do comum.",
+  },
+];
+
 export default function Home() {
   const [videoOpen, setVideoOpen] = useState(false);
 
@@ -112,6 +130,57 @@ export default function Home() {
             ))}
           </div>
         </motion.div>
+      </section>
+
+      {/* ═══ DIFERENCIAIS TÉCNICOS ═══════════════════════════════ */}
+      <section className="py-14 md:py-24 bg-[#FAFAF8] border-b border-[#E8E6E3]">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={stagger}
+            className="mb-10 md:mb-14 max-w-2xl"
+          >
+            <motion.p variants={fadeUp} className="label-tag mb-4">Diferenciais Fabriko</motion.p>
+            <motion.h2
+              variants={fadeUp}
+              className="text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917]"
+            >
+              Detalhes que <span className="text-[#E67A22]">elevam</span> o seu projeto.
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={stagger}
+            className="grid md:grid-cols-3 gap-6"
+          >
+            {DIFERENCIAIS_TECNICOS.map(({ img, titulo, desc }) => (
+              <motion.div
+                key={titulo}
+                variants={fadeUp}
+                className="bg-white border border-[#E8E6E3] overflow-hidden group"
+              >
+                <div className="relative h-56 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={img}
+                    alt={titulo}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1917]/50 to-transparent" />
+                </div>
+                <div className="p-6 md:p-7">
+                  <h3 className="text-[#1A1917] font-[family-name:var(--font-playfair)] font-black text-xl mb-3">{titulo}</h3>
+                  <p className="text-[#6B6966] text-sm leading-relaxed">{desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </section>
 
       {/* ═══ LINHAS ══════════════════════════════════════════════ */}
