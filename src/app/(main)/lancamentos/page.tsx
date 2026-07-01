@@ -25,20 +25,20 @@ type Lancamento = {
 
 const LANCAMENTOS: Lancamento[] = [
   {
-    id: "supermatte",
-    tag: "Novo acabamento",
-    titulo: "Linha Supermatte",
-    subtitulo: "O fosco que não mostra nada.",
-    desc: "Superfície com altíssima resistência a impressões digitais e riscos. Acabamento fosco profundo — para projetos onde perfeição é o único padrão.",
+    id: "lacca",
+    tag: "Nova linha",
+    titulo: "Linha Lacca",
+    subtitulo: "A cor exata que o cliente imaginar.",
+    desc: "A nova linha de produtos da Fabriko: peças pintadas sob medida na cor que o cliente desejar. Acabamento laca de alto brilho ou fosco, com liberdade total de personalização.",
     detalhes: [
-      "Resistência superior a riscos e impressões digitais",
-      "Acabamento fosco de profundidade óptica exclusiva",
-      "Disponível em Asfalto, Cinza e Branco Gelo",
-      "Compatível com todas as linhas Fabriko",
-      "Já disponível no Promob Studio Fabriko",
+      "Pintura sob medida — qualquer cor, inclusive por referência",
+      "Acabamento laca em alto brilho ou fosco aveludado",
+      "Ideal para projetos exclusivos e de alto padrão",
+      "Compatível com todas as linhas e modelos de porta Fabriko",
+      "Disponível via Promob Studio Fabriko",
     ],
-    cor: "#2A2A28",
-    img: "/fotos/29.webp",
+    cor: "#C0392B",
+    img: "/diferenciais/lacca.webp",
     novo: true,
   },
   {

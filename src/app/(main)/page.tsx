@@ -58,28 +58,39 @@ const DIFERENCIAIS = [
 const DIFERENCIAIS_TECNICOS = [
   {
     img: "/fotos/5.webp",
+    href: "/linhas",
     titulo: "Borda 1mm & cola PUR",
     desc: "Bordas de 1 mm coladas com tecnologia PUR (poliuretano reativo): sem linha de cola aparente e muito mais resistentes à umidade e ao calor. Acabamento premium e durabilidade em cada peça.",
   },
   {
     img: "/diferenciais/portas-especiais.webp",
+    href: "/catalogo",
     titulo: "Portas especiais",
     desc: "Muito além do padrão: portas com borda perimetral, puxador integrado, ripados e modelos clássicos. O detalhe que diferencia o seu projeto da concorrência.",
   },
   {
     img: "/diferenciais/tampos-organicos.webp",
+    href: "/promob",
     titulo: "Tampos orgânicos",
     desc: "Tampos e painéis em formas livres e orgânicas, projetados sob medida no Promob. Curvas suaves e design autoral para ambientes que fogem do comum.",
   },
   {
     img: "/diferenciais/perfis-usinados.webp",
+    href: "/catalogo",
     titulo: "Perfis usinados",
     desc: "Usinagem direta na peça: cava-madeira, canaletas para LED e puxadores integrados. Design limpo, sem ferragens aparentes, com toda a precisão do maquinário CNC.",
   },
   {
     img: "/diferenciais/lacca.webp",
+    href: "/lancamentos",
     titulo: "Lacca",
     desc: "Peças pintadas na cor exata que o cliente desejar. Acabamento laca sob medida — liberdade total de cores para projetos exclusivos e personalizados.",
+  },
+  {
+    img: "/diferenciais/suporte-promob.webp",
+    href: "/promob",
+    titulo: "Suporte técnico Promob",
+    desc: "Time técnico exclusivo no Promob Studio — do projeto à liberação. Consultoria dedicada ao lojista para você nunca ficar sozinho na hora do problema.",
   },
 ];
 
@@ -168,25 +179,33 @@ export default function Home() {
             variants={stagger}
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {DIFERENCIAIS_TECNICOS.map(({ img, titulo, desc }) => (
-              <motion.div
-                key={titulo}
-                variants={fadeUp}
-                className="bg-white border border-[#E8E6E3] overflow-hidden group"
-              >
-                <div className="relative h-56 overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={img}
-                    alt={titulo}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1917]/50 to-transparent" />
-                </div>
-                <div className="p-6 md:p-7">
-                  <h3 className="text-[#1A1917] font-[family-name:var(--font-playfair)] font-black text-xl mb-3">{titulo}</h3>
-                  <p className="text-[#6B6966] text-sm leading-relaxed">{desc}</p>
-                </div>
+            {DIFERENCIAIS_TECNICOS.map(({ img, href, titulo, desc }) => (
+              <motion.div key={titulo} variants={fadeUp}>
+                <Link
+                  href={href}
+                  className="group flex h-full flex-col bg-white border border-[#E8E6E3] overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-[#E67A22]/50"
+                >
+                  <div className="relative h-52 overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={img}
+                      alt={titulo}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A1917]/80 via-[#1A1917]/15 to-transparent" />
+                    <div className="absolute bottom-0 left-0 h-1 w-0 bg-[#E67A22] transition-all duration-500 group-hover:w-full" />
+                    <h3 className="absolute bottom-4 left-5 right-5 text-white font-[family-name:var(--font-playfair)] font-black text-xl leading-tight">
+                      {titulo}
+                    </h3>
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <p className="text-[#6B6966] text-sm leading-relaxed mb-5 flex-1">{desc}</p>
+                    <span className="inline-flex items-center gap-1.5 text-[#E67A22] text-[11px] font-bold uppercase tracking-widest">
+                      Saiba mais
+                      <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
