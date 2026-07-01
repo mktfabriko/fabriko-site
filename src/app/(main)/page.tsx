@@ -62,14 +62,24 @@ const DIFERENCIAIS_TECNICOS = [
     desc: "Bordas de 1 mm coladas com tecnologia PUR (poliuretano reativo): sem linha de cola aparente e muito mais resistentes à umidade e ao calor. Acabamento premium e durabilidade em cada peça.",
   },
   {
-    img: "/fotos/25.webp",
+    img: "/diferenciais/portas-especiais.webp",
     titulo: "Portas especiais",
-    desc: "Muito além do padrão: portas com borda perimetral, puxador integrado (Integrated Slim), ripados e recortes exclusivos. O detalhe que diferencia o seu projeto da concorrência.",
+    desc: "Muito além do padrão: portas com borda perimetral, puxador integrado, ripados e modelos clássicos. O detalhe que diferencia o seu projeto da concorrência.",
   },
   {
-    img: "/fotos/45.webp",
+    img: "/diferenciais/tampos-organicos.webp",
     titulo: "Tampos orgânicos",
     desc: "Tampos e painéis em formas livres e orgânicas, projetados sob medida no Promob. Curvas suaves e design autoral para ambientes que fogem do comum.",
+  },
+  {
+    img: "/diferenciais/perfis-usinados.webp",
+    titulo: "Perfis usinados",
+    desc: "Usinagem direta na peça: cava-madeira, canaletas para LED e puxadores integrados. Design limpo, sem ferragens aparentes, com toda a precisão do maquinário CNC.",
+  },
+  {
+    img: "/diferenciais/lacca.webp",
+    titulo: "Lacca",
+    desc: "Peças pintadas na cor exata que o cliente desejar. Acabamento laca sob medida — liberdade total de cores para projetos exclusivos e personalizados.",
   },
 ];
 
@@ -156,7 +166,7 @@ export default function Home() {
             whileInView="show"
             viewport={{ once: true, amount: 0.1 }}
             variants={stagger}
-            className="grid md:grid-cols-3 gap-6"
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {DIFERENCIAIS_TECNICOS.map(({ img, titulo, desc }) => (
               <motion.div
