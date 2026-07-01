@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Play, X, Check, ChevronRight } from "lucide-react";
 import { SejaParceiroForm } from "@/components/SejaParceiroForm";
 
@@ -58,44 +58,153 @@ const DIFERENCIAIS = [
 const DIFERENCIAIS_TECNICOS = [
   {
     img: "/fotos/5.webp",
-    href: "/linhas",
     titulo: "Borda 1mm & cola PUR",
+    subtitulo: "Acabamento premium que dura.",
     desc: "Bordas de 1 mm coladas com tecnologia PUR (poliuretano reativo): sem linha de cola aparente e muito mais resistentes à umidade e ao calor. Acabamento premium e durabilidade em cada peça.",
+    detalhes: [
+      "Fita de borda de 1 mm em todas as peças",
+      "Colagem PUR (poliuretano reativo), sem linha de cola aparente",
+      "Alta resistência à umidade, ao calor e ao descolamento",
+      "Toque suave e acabamento uniforme",
+      "Padrão em todas as linhas Fabriko",
+    ],
   },
   {
     img: "/diferenciais/portas-especiais.webp",
-    href: "/catalogo",
     titulo: "Portas especiais",
+    subtitulo: "O detalhe que diferencia o projeto.",
     desc: "Muito além do padrão: portas com borda perimetral, puxador integrado, ripados e modelos clássicos. O detalhe que diferencia o seu projeto da concorrência.",
+    detalhes: [
+      "Borda perimetral (efeito de 21 mm de espessura)",
+      "Puxador integrado — sem ferragens aparentes",
+      "Ripados, frisos e usinagens exclusivas",
+      "Modelos clássicos (Provence) e contemporâneos",
+      "Disponíveis em todos os acabamentos do portfólio",
+    ],
   },
   {
     img: "/diferenciais/tampos-organicos.webp",
-    href: "/promob",
     titulo: "Tampos orgânicos",
+    subtitulo: "Formas livres, sem limites.",
     desc: "Tampos e painéis em formas livres e orgânicas, projetados sob medida no Promob. Curvas suaves e design autoral para ambientes que fogem do comum.",
+    detalhes: [
+      "Tampos e painéis em formas curvas e orgânicas",
+      "Projetados sob medida no Promob Studio",
+      "Ideais para mesas, bancadas e ilhas",
+      "Bordas acabadas com o mesmo padrão premium",
+      "Personalização total de medidas e formatos",
+    ],
   },
   {
     img: "/diferenciais/perfis-usinados.webp",
-    href: "/catalogo",
     titulo: "Perfis usinados",
+    subtitulo: "Usinagem de precisão CNC.",
     desc: "Usinagem direta na peça: cava-madeira, canaletas para LED e puxadores integrados. Design limpo, sem ferragens aparentes, com toda a precisão do maquinário CNC.",
+    detalhes: [
+      "Cava-madeira usinada diretamente na peça",
+      "Canaletas para fita LED integradas",
+      "Puxadores usinados e cavas de pega",
+      "Design limpo, sem ferragens aparentes",
+      "Precisão e repetibilidade do maquinário CNC",
+    ],
   },
   {
     img: "/diferenciais/lacca.webp",
-    href: "/lancamentos",
     titulo: "Lacca",
+    subtitulo: "A cor exata que o cliente imaginar.",
     desc: "Peças pintadas na cor exata que o cliente desejar. Acabamento laca sob medida — liberdade total de cores para projetos exclusivos e personalizados.",
+    detalhes: [
+      "Pintura sob medida — qualquer cor, inclusive por referência",
+      "Acabamento laca em alto brilho ou fosco aveludado",
+      "Nova linha de produtos Fabriko",
+      "Ideal para projetos exclusivos e de alto padrão",
+      "Compatível com todas as linhas e modelos de porta",
+    ],
   },
   {
     img: "/diferenciais/suporte-promob.webp",
-    href: "/promob",
     titulo: "Suporte técnico Promob",
+    subtitulo: "Você nunca fica sozinho.",
     desc: "Time técnico exclusivo no Promob Studio — do projeto à liberação. Consultoria dedicada ao lojista para você nunca ficar sozinho na hora do problema.",
+    detalhes: [
+      "Time técnico exclusivo no Promob Studio Fabriko",
+      "Acompanhamento do projeto até a liberação",
+      "Consultor dedicado ao lojista",
+      "Biblioteca Fabriko sempre atualizada no Promob",
+      "Suporte ágil na hora do problema",
+    ],
   },
 ];
 
+type Diferencial = (typeof DIFERENCIAIS_TECNICOS)[number];
+
+function DiferencialModal({ item, onClose }: { item: Diferencial; onClose: () => void }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[200] bg-black/80 flex items-center justify-center p-4 lg:p-12"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.94, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.94, opacity: 0, y: 20 }}
+        transition={{ duration: 0.25 }}
+        className="w-full max-w-2xl bg-white overflow-hidden relative max-h-[90vh] overflow-y-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="relative h-52 overflow-hidden bg-[#1A1917]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={item.img} alt={item.titulo} className="w-full h-full object-cover opacity-70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1A1917]/90 to-transparent" />
+          <span className="absolute bottom-5 left-6 text-[#E67A22] text-[10px] font-bold uppercase tracking-widest">Diferencial Fabriko</span>
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 h-8 w-8 bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-colors"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+
+        <div className="p-8">
+          <h2 className="text-2xl font-[family-name:var(--font-playfair)] font-black text-[#1A1917] mb-1">{item.titulo}</h2>
+          <p className="text-[#E67A22] text-sm font-medium mb-4">{item.subtitulo}</p>
+          <p className="text-[#6B6966] text-sm leading-relaxed mb-6">{item.desc}</p>
+
+          <div className="border-t border-[#E8E6E3] pt-5">
+            <p className="text-[#1A1917]/35 text-xs font-bold uppercase tracking-widest mb-4">Detalhes</p>
+            <ul className="space-y-2.5">
+              {item.detalhes.map((d) => (
+                <li key={d} className="flex items-start gap-3 text-[#6B6966] text-sm">
+                  <ChevronRight className="h-3.5 w-3.5 text-[#E67A22] shrink-0 mt-0.5" />
+                  {d}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex gap-3 mt-8">
+            <Link href="/seja-parceiro" onClick={onClose}
+              className="flex-1 group flex items-center justify-center gap-2 bg-[#E67A22] hover:bg-[#C85E0F] text-white text-xs font-bold py-3.5 tracking-widest uppercase transition-all">
+              Quero ser parceiro
+              <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <button onClick={onClose}
+              className="border border-[#E8E6E3] text-[#1A1917]/40 hover:border-[#1A1917]/20 hover:text-[#1A1917] text-xs font-medium px-5 tracking-widest uppercase transition-all">
+              Fechar
+            </button>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 export default function Home() {
   const [videoOpen, setVideoOpen] = useState(false);
+  const [difSelecionado, setDifSelecionado] = useState<Diferencial | null>(null);
 
   return (
     <>
@@ -179,33 +288,34 @@ export default function Home() {
             variants={stagger}
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {DIFERENCIAIS_TECNICOS.map(({ img, href, titulo, desc }) => (
-              <motion.div key={titulo} variants={fadeUp}>
-                <Link
-                  href={href}
-                  className="group flex h-full flex-col bg-white border border-[#E8E6E3] overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-[#E67A22]/50"
+            {DIFERENCIAIS_TECNICOS.map((item) => (
+              <motion.div key={item.titulo} variants={fadeUp}>
+                <button
+                  type="button"
+                  onClick={() => setDifSelecionado(item)}
+                  className="group flex h-full w-full flex-col text-left bg-white border border-[#E8E6E3] overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-[#E67A22]/50 cursor-pointer"
                 >
                   <div className="relative h-52 overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={img}
-                      alt={titulo}
+                      src={item.img}
+                      alt={item.titulo}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1A1917]/80 via-[#1A1917]/15 to-transparent" />
                     <div className="absolute bottom-0 left-0 h-1 w-0 bg-[#E67A22] transition-all duration-500 group-hover:w-full" />
                     <h3 className="absolute bottom-4 left-5 right-5 text-white font-[family-name:var(--font-playfair)] font-black text-xl leading-tight">
-                      {titulo}
+                      {item.titulo}
                     </h3>
                   </div>
                   <div className="flex flex-1 flex-col p-6">
-                    <p className="text-[#6B6966] text-sm leading-relaxed mb-5 flex-1">{desc}</p>
+                    <p className="text-[#6B6966] text-sm leading-relaxed mb-5 flex-1">{item.desc}</p>
                     <span className="inline-flex items-center gap-1.5 text-[#E67A22] text-[11px] font-bold uppercase tracking-widest">
-                      Saiba mais
+                      Ver detalhes
                       <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </div>
-                </Link>
+                </button>
               </motion.div>
             ))}
           </motion.div>
@@ -617,6 +727,13 @@ export default function Home() {
           </motion.div>
         </motion.div>
       )}
+
+      {/* ═══ MODAL DIFERENCIAIS ═══════════════════════════════════ */}
+      <AnimatePresence>
+        {difSelecionado && (
+          <DiferencialModal item={difSelecionado} onClose={() => setDifSelecionado(null)} />
+        )}
+      </AnimatePresence>
     </>
   );
 }
