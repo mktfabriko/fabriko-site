@@ -95,7 +95,6 @@ const CATEGORIAS: Categoria[] = [
       { nome: "Verde Jade", linha: "Matt", hex: "#5A8070", swatchImg: "/items/26.webp",
         detalhes: "Verde matizado com toque de pedra preciosa. Tendência de alto padrão em projetos de design de interiores premium." },
       { nome: "Sálvia Matt", linha: "Matt", hex: "#6D7860", fabricante: "Arauco", swatchImg: "/items/73.webp",
-        hoverImg: "/lancamentos/salvia-matt.webp",
         detalhes: "Verde sálvia acinzentado em acabamento fosco. Tom herbal sereno que equilibra madeirados e neutros sem pesar na composição do ambiente." },
       { nome: "Frapê", linha: "Matt", hex: "#C8B89A", swatchImg: "/items/27.webp",
         detalhes: "Caramelo claro com toque matte. Neutro quente que combina naturalmente com madeirados e tons terra." },

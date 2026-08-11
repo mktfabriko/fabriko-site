@@ -76,7 +76,7 @@ const LANCAMENTOS: Lancamento[] = [
     ],
     cor: "#C0392B",
     img: "/diferenciais/lacca.webp",
-    novo: true,
+    novo: false,
   },
   {
     id: "velluto",
@@ -93,7 +93,7 @@ const LANCAMENTOS: Lancamento[] = [
     ],
     cor: "#C8963C",
     img: "/fotos/44.webp",
-    novo: true,
+    novo: false,
   },
   {
     id: "porta-provence",
