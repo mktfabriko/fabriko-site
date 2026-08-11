@@ -41,8 +41,8 @@ const LINHAS = [
 
 const ACABAMENTOS_PREVIEW = [
   { cat: "Madeirado", img: "/items/6.webp", itens: "Carvalho Natural, Freijó, Tauari, Pau Ferro, Louro Freijó..." },
-  { cat: "Unicolor", img: "/items/22.webp", itens: "Branco Diamante, Beton, Cinza Sagrado, Grafito, Azul Sereno..." },
-  { cat: "Conceito", img: "/items/11.webp", itens: "Atenna, Bronze, Cosmos, Lino Chess, Lana..." },
+  { cat: "Unicolor", img: "/items/22.webp", itens: "Branco Diamante, Beton, Cinza Sagrado, Grafito, Sálvia Matt..." },
+  { cat: "Conceito", img: "/items/11.webp", itens: "Atenna, Bronze, Cosmos, Lino Chess..." },
   { cat: "Blend", img: "/items/38.webp", itens: "Off White Suave, Gianduia, Ébano Chess, Lenho, Granile..." },
 ];
 

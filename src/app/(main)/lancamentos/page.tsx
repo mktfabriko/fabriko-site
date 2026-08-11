@@ -25,6 +25,43 @@ type Lancamento = {
 
 const LANCAMENTOS: Lancamento[] = [
   {
+    id: "cantos-curvos",
+    tag: "Novo módulo",
+    titulo: "Cantos Curvos",
+    subtitulo: "Raio de 150mm. Curva de 90°.",
+    desc: "Novos módulos de canto curvo em dois modelos: Simples, para módulos de parede, e Duplo, para ilhas. Usinagem CNC e serviços de borda já inclusos no preço, com montagem totalmente em minifix.",
+    detalhes: [
+      "Canto Curvo Simples — curva em um lado, indicado para módulos de parede",
+      "Canto Curvo Duplo — curva nos dois lados, indicado para módulos de ilha",
+      "Raio de 150mm e curva de 90° em todos os módulos",
+      "Usinagem CNC e serviços de borda da marcenaria inclusos na precificação",
+      "Montagem 100% em minifix — sem cola",
+      "Enviado montado e com embalagem reforçada até o momento da instalação",
+      "Valor competitivo frente ao praticado no mercado",
+      "Disponível no Promob em Itens Complementares › Itens Avulsos › Painéis › Painéis/Cantos Curvos",
+    ],
+    cor: "#8B6914",
+    img: "/lancamentos/cantos-curvos.webp",
+    novo: true,
+  },
+  {
+    id: "salvia-matt",
+    tag: "Nova cor",
+    titulo: "Sálvia Matt",
+    subtitulo: "Verde herbal em acabamento fosco.",
+    desc: "Novo padrão da Arauco no grupo Unicolor. Verde sálvia acinzentado com superfície matte — um tom natural e sereno que equilibra madeirados e neutros sem pesar na composição.",
+    detalhes: [
+      "Padrão Arauco disponível no grupo Unicolor",
+      "Verde sálvia acinzentado com acabamento fosco",
+      "Combina com madeirados claros, brancos e tons terrosos",
+      "Ideal para cozinhas, dormitórios e projetos de estética natural",
+      "Já disponível no catálogo de cores via Promob Studio Fabriko",
+    ],
+    cor: "#6D7860",
+    img: "/lancamentos/salvia-matt.webp",
+    novo: true,
+  },
+  {
     id: "lacca",
     tag: "Nova linha",
     titulo: "Linha Lacca",

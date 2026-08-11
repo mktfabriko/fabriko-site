@@ -239,7 +239,7 @@ export default function QuemSomos() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/fotos/equipe2.png"
+              src="/fotos/equipe3.webp"
               alt="Equipe Fabriko"
               className="w-full object-contain bg-[#F0EEE8]"
             />
